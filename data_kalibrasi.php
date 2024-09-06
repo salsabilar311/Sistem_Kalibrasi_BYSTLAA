@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kalibrasi - BYSTLAA</title>
+    <!-- DESAIN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
@@ -23,13 +24,13 @@
                 <a href="index.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-home"></i> Beranda</a>
               </li>
               <li class="">
-                <a href="data.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-table"></i> Form Data Kalibrasi</a>
+                <a href="data_kalibrasi.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-table"></i> Form Data Kalibrasi</a>
               </li>
               <li class="">
-                <a href="input.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-keyboard"></i> Form Input Kalibrasi</a>
+                <a href="input_pengukuran.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-keyboard"></i> Form Input Pengukuran</a>
               </li>
               <li class="">
-                <a href="progress.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-chart-bar"></i> Form Progress Kalibrasi</a>
+                <a href="progress.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-chart-bar"></i> Form Progres Kalibrasi</a>
               </li>
               <li class="">
                 <a href="analisis.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-diagnoses"></i> Analisis Kalibrasi</a>
@@ -62,8 +63,14 @@
             </div>
           </nav>
 
-          <div class="container-fluid m-4">
-            <h4>Data Kalibrasi BYSTLAA</h4>
+          <div class="container-fluid p-4">
+            <div class="row mt-2">
+              <div class="col-4"><h4>Data Kalibrasi BYSTLAA</h4></div>
+
+              <div class="col-8" style="text-align: right;">
+                <button class="btn btn-primary btn-lg">Input Kalibrasi</button>
+              </div>
+            </div>
             
             <!-- form kalibrasi -->
               <div class="row">
@@ -85,48 +92,20 @@
                       </thead>
                       <!-- isi tabel -->
                       <tbody>
-                        <tr class="text-center">
-                          <td rowspan="10">Tegangan DC</td>
-                          <td rowspan="2">400mV</td>
-                          <td class="text-end">100,0000mV</td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td class="text-end">100,0000mV</td>
-                          <td class="text-end">0,1000mV</td>
-                          <td class="text-end">1,1000mV</td>
-                          <td class="text-end">1,1000mV</td>
-                        </tr>
-                        <tr class="text-center">
-                          <td class="text-end">300,0000mV</td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td class="text-end">100,0000mV</td>
-                          <td class="text-end">0,1000mV</td>
-                          <td class="text-end">1,1000mV</td>
-                          <td class="text-end">1,1000mV</td>
-                        </tr>
-                        <tr class="text-center">
-                          <td rowspan="2">4V</td>
-                          <td class="text-end">1,0000V</td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td class="text-end">100,0000mV</td>
-                          <td class="text-end">0,1000mV</td>
-                          <td class="text-end">1,1000mV</td>
-                          <td class="text-end">1,1000mV</td>
-                        </tr>
+                        <td>No. Order</td>
+                        <td>Nama Alat</td>
+                        <td>Merk</td>
+                        <td>Tipe</td>
+                        <td>No. Seri</td>
+                        <td>Asal</td>
+                        <td>Tanggal Kalibrasi</td>
+                        <td>
+                          <div class="btn p-0">
+                            <a href="input.php" class="btn btn-secondary">Edit</a>
+                            <a href="edit.php" class="btn btn-danger">Delete</a>
+                            <a href="delete.php" class="btn btn-info" >Detail</a>
+                          </div>
+                        </td>
                       </tbody>
                     </table>
                   </div>
