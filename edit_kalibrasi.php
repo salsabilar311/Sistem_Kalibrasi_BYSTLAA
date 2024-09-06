@@ -63,41 +63,10 @@
           </nav>
 
           <div class="container-fluid p-4">
-            <h4>Progres Kalibrasi BYSTLAA</h4>
 
               <!-- table view progres kalibrasi -->
               <div class="row">
-                <div class="card col-12 p-0 m-2" style="width: 99%;">
-                  <div class="card-body">
-                    <table class="table-bordered table-sm fs-6 p-0" style="width: 100%;" >
-                      <thead class="text-white bg-dark text-center">
-                        <tr>
-                          <td>No</td>
-                          <td>No. Order</td>
-                          <td>Pemilik</td>
-                          <td>Tanggal Kalibrasi</td>
-                          <td>Keterangan</td>
-                          <td>Action</td>
-                        </tr>
-                      </thead>
-                      <tbody  class="text-center">
-                        <tr>
-                        <td>1</td>
-                        <td>12345</td>
-                        <td>Balai Yasa</td>
-                        <td>11/9/2023</td>
-                        <td>-</td>
-                        <td>
-                          <div class="btn p-0">
-                            <a href="edit.php" class="btn btn-info">Detail</a>
-                            <a href="delete.php" class="btn btn-danger">Delete</a>
-                        </div>
-                        </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+                
               </div>
               
           </div>
