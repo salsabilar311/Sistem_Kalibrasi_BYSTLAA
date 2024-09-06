@@ -65,72 +65,71 @@
           <div class="container-fluid m-4">
             <h4>Data Kalibrasi BYSTLAA</h4>
             
-            <div class="row">
-              <div class="col-6">
-                <div class="card">
-                  <div class="card-header">Data</div>
+            <!-- form kalibrasi -->
+              <div class="row">
+                <div class="card p-0 m-2">           
                   <div class="card-body">
-                    hellaw
+                    <table class="table-bordered table-sm fs-6" style="width: 100%">
+                      <thead class="text-white bg-dark text-center">
+                        <!-- header tabel -->
+                        <tr>
+                          <td>No. Order</td>
+                          <td>Nama Alat</td>
+                          <td>Merk</td>
+                          <td>Tipe</td>
+                          <td>No. Seri</td>
+                          <td>Asal</td>
+                          <td>Tanggal Kalibrasi</td>
+                          <td>Action</td>
+                        </tr>
+                      </thead>
+                      <!-- isi tabel -->
+                      <tbody>
+                        <tr class="text-center">
+                          <td rowspan="10">Tegangan DC</td>
+                          <td rowspan="2">400mV</td>
+                          <td class="text-end">100,0000mV</td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td class="text-end">100,0000mV</td>
+                          <td class="text-end">0,1000mV</td>
+                          <td class="text-end">1,1000mV</td>
+                          <td class="text-end">1,1000mV</td>
+                        </tr>
+                        <tr class="text-center">
+                          <td class="text-end">300,0000mV</td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td class="text-end">100,0000mV</td>
+                          <td class="text-end">0,1000mV</td>
+                          <td class="text-end">1,1000mV</td>
+                          <td class="text-end">1,1000mV</td>
+                        </tr>
+                        <tr class="text-center">
+                          <td rowspan="2">4V</td>
+                          <td class="text-end">1,0000V</td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td class="text-end">100,0000mV</td>
+                          <td class="text-end">0,1000mV</td>
+                          <td class="text-end">1,1000mV</td>
+                          <td class="text-end">1,1000mV</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="card">
-                  <div class="card-header">
-                    Input Data
-                  </div>
-                  <div class="card-body">
-                    <form action="">
-                      <div class="row">
-                        <div class="col-2">No. Order</div>
-                        <div class="col-4"><input type="text"></div>
-                        <div class="col-2">Tempat</div>
-                        <div class="col-4"><input type="text"></div>
-                      </div>
-                      <div class="row mt-2">
-                        <div class="col-2">Nama Alat</div>
-                        <div class="col-4"><input type="text"></div>
-                        <div class="col-2">Tanggal</div>
-                        <div class="col-4"><input type="date"></div>
-                      </div>
-                      <div class="row mt-2">
-                        <div class="col-2">Merk</div>
-                        <div class="col-4"><input type="text"></div>
-                        <div class="col-2">Suhu</div>
-                        <div class="col-4"><input type="text"></div>
-                      </div>
-                      <div class="row mt-2">
-                        <div class="col-2">Tipe</div>
-                        <div class="col-4"><input type="text"></div>
-                        <div class="col-2">Kelembaban</div>
-                        <div class="col-4"><input type="text"></div>
-                      </div>
-                      <div class="row mt-2">
-                        <div class="col-2">No. Seri</div>
-                        <div class="col-10"><input type="text"></div>
-                      </div>
-                      <div class="row mt-5">
-                        <h6 for="" class="mb-3">Alat Kalibrasi</h6>
-                        <div class="col-3">Resolusi</div>
-                        <div class="col-9">
-                          <input type="text" style="width: 100%">
-                        </div>
-                      </div>
-                      <div class="row mt-2">
-                        <div class="col-3">Alat standar</div>
-                        <div class="col-9">
-                          <input type="text" style="width: 100%">
-                        </div>
-                      </div>
-                      <div class="row mt-2">
-                        <div class="col-3">Metode Kalibrasi</div>
-                        <div class="col-9">
-                          <input type="text" style="width: 100%">
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
               </div>
             </div>
             
