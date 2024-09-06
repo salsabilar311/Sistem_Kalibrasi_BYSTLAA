@@ -680,7 +680,7 @@
                                                         </thead>
                                                         <tbody>
                                                           <tr class="text-center">
-                                                            <td rowspan="6">Arus DC</td>
+                                                            <td rowspan="6">Arus AC</td>
                                                             <td>500 μA</td>
                                                             <td class="text-end">400,000 μA</td>
                                                             <td><input type="text" style="width: 100px"></td>
