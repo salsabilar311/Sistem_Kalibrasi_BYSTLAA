@@ -68,7 +68,7 @@
               <div class="col-4"><h4>Data Kalibrasi BYSTLAA</h4></div>
 
               <div class="col-8" style="text-align: right;">
-                <button class="btn btn-primary btn-lg">Input Kalibrasi</button>
+                <button class="btn btn-primary">Input Kalibrasi</button>
               </div>
             </div>
             

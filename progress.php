@@ -63,82 +63,19 @@
           </nav>
 
           <div class="container-fluid p-4">
-            <h4>Progress Kalibrasi BYSTLAA</h4>
-            
-            <!-- <div class="row">
-                <div class="card col-10 p-0 m-2" style="width: 99%;">
-                  <div class="card-header fw-bold">Detail Alat yang diukur</div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-2">No. Order</div>
-                      <div class="col-4">
-                        <input type="text">
-                      </div>
-                      <div class="col-2">Tempat Kalibrasi</div>
-                      <div class="col-4">BYSTLAA</div>
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-2">Nama Alat</div>
-                      <div class="col-4">
-                        <input type="text">
-                      </div>
-                      <div class="col-2">Tanggal Kalibrasi</div>
-                      <div class="col-4">
-                        <input type="date">
-                      </div>
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-2">Merk Alat</div>
-                      <div class="col-4">
-                        <input type="text">
-                      </div>
-                      <div class="col-2">Suhu</div>
-                      <div class="col-4">(23 ± 1.3)°C</div>
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-2">Tipe</div>
-                      <div class="col-4">
-                        <input type="text">
-                      </div>
-                      <div class="col-2">Kelembaban</div>
-                      <div class="col-4">(57 ± 3.1) %</div>
-                    </div>
-                    
-                    <div class="row mt-2">
-                      
-                      <div class="col-2">Identitas Pemilik</div>
-                      <div class="col-4"><input type="text"></div>
-                      <div class="col-2">Resolusi</div>
-                      <div class="col-4">: Multi Resolusi</div>
-                      
-                          
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-2">Alat standar</div>
-                      <div class="col-10">
-                        : Precision Multi Product Calibration Transmille, 3041A
-                      </div>
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-2">Metoda kalibrasi</div>
-                      <div class="col-10">: Perbandingan langsung</div>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div> -->
+            <h4>Progres Kalibrasi BYSTLAA</h4>
 
+              <!-- table view progres kalibrasi -->
               <div class="row">
                 <div class="card col-12 p-0 m-2" style="width: 99%;">
-                  <div class="card-header fw-bold">Progress Kalibrasi</div>
                   <div class="card-body">
                     <table class="table-bordered table-sm fs-6 p-0" style="width: 100%;" >
                       <thead class="text-white bg-dark text-center">
                         <tr>
                           <td>No</td>
                           <td>No. Order</td>
-                          <td>Identitas Pemilik</td>
-                          <td>Tgl_Masuk</td>
+                          <td>Pemilik</td>
+                          <td>Tanggal Kalibrasi</td>
                           <td>Keterangan</td>
                           <td>Action</td>
                         </tr>
@@ -152,9 +89,8 @@
                         <td>-</td>
                         <td>
                           <div class="btn p-0">
-                            <a href="input.php" class="btn btn-primary btn-md">Input</a>
-                            <a href="edit.php" class="btn btn-secondary ">Edit</a>
-                            <a href="delete.php" class="btn btn-danger " >Delete</a>
+                            <a href="edit.php" class="btn btn-info">Detail</a>
+                            <a href="delete.php" class="btn btn-danger">Delete</a>
                         </div>
                         </td>
                         </tr>
