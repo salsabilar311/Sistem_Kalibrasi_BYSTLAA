@@ -85,7 +85,7 @@
                         <!-- header tabel -->
                         <tr>
                           <td>No. Order</td>
-                          <td>Nama Alat</td>
+                          <td>Kalibrator</td>
                           <td>Merk</td>
                           <td>Tipe</td>
                           <td>No. Seri</td>
@@ -97,14 +97,17 @@
                       <!-- isi tabel -->
                       <tbody>
                       <?php
-                        $data_kalibrasi = mysqli_query($conn, "SELECT * FROM detail");
+                        $data_kalibrasi = mysqli_query($conn, "SELECT d.detail_order, m.nama_merk, d.id_tipe, d.no_seri, d.region, d.tgl_kalibrasi, t.nama_tipe, d.calibrator
+                                                                FROM detail d
+                                                                INNER JOIN merk m ON d.id_merk = m.id_merk
+                                                                INNER JOIN tipe t ON d.id_tipe = t.id_tipe");
                         while ($data=mysqli_fetch_array($data_kalibrasi)){
                       ?>
                         <tr>
-                          <td><?= $data['no_order']; ?></td>
-                          <td>Digital multimeter</td>
-                          <td><?= $data['id_merk']; ?></td>
-                          <td><?= $data['id_tipe']; ?></td>
+                          <td><?= $data['detail_order']; ?></td>
+                          <td><?= $data['calibrator']; ?></td>
+                          <td><?= $data['nama_merk']; ?></td>
+                          <td><?= $data['nama_tipe']; ?></td>
                           <td><?= $data['no_seri']; ?></td>
                           <td><?= $data['region']; ?></td>
                           <td><?= $data['tgl_kalibrasi']; ?></td>
@@ -112,7 +115,7 @@
                             <div class="btn p-0">
                               <a href="edit_kalibrasi.php" class="btn btn-secondary">Edit</a>
                               <a href="edit.php" class="btn btn-danger">Delete</a>
-                              <a href="detail_kalibrasi.php" class="btn btn-info" >Detail</a>
+                              <a href="detail_kalibrasi.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-info" >Detail</a>
                             </div>
                           </td>
                         </tr>

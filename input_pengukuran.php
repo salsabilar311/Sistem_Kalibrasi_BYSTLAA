@@ -1,3 +1,6 @@
+<?php 
+  include 'koneksi.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -72,9 +75,12 @@
                 No. Order
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <?php
+                  $data_kalibrasi = mysqli_query($conn, "SELECT * FROM detail");
+                  foreach($data_kalibrasi as $row) {
+                ?>
+                <li><a class="dropdown-item" href="#"><?php echo $row['detail_order']; ?></a></li>
+                <?php } ?>
               </ul>
             </div>
 

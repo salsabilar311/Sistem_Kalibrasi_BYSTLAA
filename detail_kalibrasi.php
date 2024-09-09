@@ -1,3 +1,6 @@
+<?php 
+  include 'koneksi.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -74,106 +77,118 @@
                 <div class="card col-10 p-0 m-2" style="width: 99%;">
                   <div class="card-body">
                     <!-- no order -->
-                    <div class="row">
-                      <div class="col-2">No. Order</div>
-                      <div class="col-4"><input type="text" name="no_order" style="width: 100px;" readonly></div>
-                    </div>
+                    <?php
+                      $detail_order = $_GET['detail_order'];
+                      $query = "SELECT d.no_order, d.detail_order, m.nama_merk, t.nama_tipe, d.no_seri, d.tgl_kalibrasi, p.name_owner, d.calibrator, d.tgl_masuk, d.tgl_sertifikat 
+                                FROM detail d
+                                INNER JOIN merk m ON d.id_merk = m.id_merk
+                                INNER JOIN tipe t ON d.id_tipe = t.id_tipe
+                                INNER JOIN pemilik p ON d.region = p.region
+                                WHERE d.detail_order = '$detail_order'";
+                      $result = mysqli_query($conn, $query);
+                      if ($data = mysqli_fetch_assoc($result)) {
+                    ?>
+                      <div class="row">
+                        <div class="col-2">No. Order</div>
+                        <div class="col-4"><?php echo ": " .$data['no_order']; ?></div>
+                      </div>
 
-                    <!-- detail order -->
-                    <div class="row mt-2">
-                      <div class="col-2">Detail Order</div>
-                      <div class="col-4"><input type="text" name="detail_order" style="width: 300px;" readonly></div>
-                    </div>
+                      <!-- detail order -->
+                      <div class="row mt-2">
+                        <div class="col-2">Detail Order</div>
+                        <div class="col-4"><?php echo ": " .$data['detail_order']; ?></div>
+                      </div>
 
-                    <!-- nama alat -->
-                    <div class="row mt-2">
-                      <div class="col-2">Nama Alat</div>
-                      <div class="col-4"><input type="text" name="nama_alat" style="width: 200px;" value="Digital multimeter" readonly></div>
-                    </div>
+                      <!-- nama alat -->
+                      <div class="row mt-2">
+                        <div class="col-2">Nama Alat</div>
+                        <div class="col-4">: Digital multimeter</div>
+                      </div>
 
-                    <!-- merk -->
-                    <div class="row mt-2">
-                      <div class="col-2">Merk</div>
-                      <div class="col-4"><input type="text" name="merk" style="width: 100px;" readonly></div>
-                    </div>
+                      <!-- merk -->
+                      <div class="row mt-2">
+                        <div class="col-2">Merk</div>
+                        <div class="col-4"><?php echo ": " .$data['nama_merk']; ?></div>
+                      </div>
 
-                    <!-- tipe -->
-                    <div class="row mt-2">
-                      <div class="col-2">Tipe</div>
-                      <div class="col-4"><input type="text" name="tipe" style="width: 100px;" readonly></div>
-                    </div>
+                      <!-- tipe -->
+                      <div class="row mt-2">
+                        <div class="col-2">Tipe</div>
+                        <div class="col-4"><?php echo ": " .$data['nama_tipe']; ?></div>
+                      </div>
 
-                    <!-- no seri -->
-                    <div class="row mt-2">
-                      <div class="col-2">No. Seri</div>
-                      <div class="col-4"><input type="text" name="no_seri" style="width: 200px;" readonly></div>
-                    </div>
+                      <!-- no seri -->
+                      <div class="row mt-2">
+                        <div class="col-2">No. Seri</div>
+                        <div class="col-4"><?php echo ": " .$data['no_seri']; ?></div>
+                      </div>
 
-                    <!-- resolusi -->
-                    <div class="row mt-2">
-                      <div class="col-2">Resolusi</div>
-                      <div class="col-4"><input type="text" name="resolusi" style="width: 200px;" value="Multi resolusi" readonly></div>
-                    </div>
+                      <!-- resolusi -->
+                      <div class="row mt-2">
+                        <div class="col-2">Resolusi</div>
+                        <div class="col-4">: Multi resolusi</div>
+                      </div>
 
-                    <!-- alat standar -->
-                    <div class="row mt-2">
-                      <div class="col-2">Detail Order</div>
-                      <div class="col-4"><input type="text" name="alat_standar" style="width: 500px;" value="Precision Multi Product Calibration Transmille, 3041A" readonly></div>
-                    </div>
-                    
-                    <!-- metode kalibrasi -->
-                    <div class="row mt-2">
-                      <div class="col-2">Metode Kalibrasi</div>
-                      <div class="col-4"><input type="text" name="metode_kalibrasi" style="width: 200px;" value="Perbandingan Langsung" readonly></div>
-                    </div>
+                      <!-- alat standar -->
+                      <div class="row mt-2">
+                        <div class="col-2">Alat standar</div>
+                        <div class="col-6">: Precision Multi Product Calibration Transmille, 3041A</div>
+                      </div>
+                      
+                      <!-- metode kalibrasi -->
+                      <div class="row mt-2">
+                        <div class="col-2">Metode Kalibrasi</div>
+                        <div class="col-4">: Perbandingan Langsung</div>
+                      </div>
 
-                    <!-- tempat -->
-                    <div class="row mt-2">
-                      <div class="col-2">Tempat</div>
-                      <div class="col-4"><input type="text" name="tempat" style="width: 200px;" value="BYSTLAA" readonly></div>
-                    </div>
+                      <!-- tempat -->
+                      <div class="row mt-2">
+                        <div class="col-2">Tempat</div>
+                        <div class="col-4">: BYSTLAA</div>
+                      </div>
 
-                    <!-- tgl kalibrasi -->
-                    <div class="row mt-2">
-                      <div class="col-2">Tanggal Kalibrasi</div>
-                      <div class="col-4"><input type="text" name="tgl_kalibrasi" style="width: 200px;" readonly></div>
-                    </div>
+                      <!-- tgl kalibrasi -->
+                      <div class="row mt-2">
+                        <div class="col-2">Tanggal Kalibrasi</div>
+                        <div class="col-4"><?php echo ": " .$data['tgl_kalibrasi']; ?></div>
+                      </div>
 
-                    <!-- suhu -->
-                    <div class="row mt-2">
-                      <div class="col-2">Suhu</div>
-                      <div class="col-4"><input type="text" name="suhu" style="width: 100px;" value="(23  ± 1.3)°С" readonly></div>
-                    </div>
-                    
-                    <!-- kelembapan -->
-                    <div class="row mt-2">
-                      <div class="col-2">Kelembapan</div>
-                      <div class="col-4"><input type="text" name="kelembapan" style="width: 100px;" value="(55± 3,1) %" readonly></div>
-                    </div>
+                      <!-- suhu -->
+                      <div class="row mt-2">
+                        <div class="col-2">Suhu</div>
+                        <div class="col-4">: (23  ± 1.3)°С</div>
+                      </div>
+                      
+                      <!-- kelembapan -->
+                      <div class="row mt-2">
+                        <div class="col-2">Kelembapan</div>
+                        <div class="col-4">: (55± 3,1) %</div>
+                      </div>
 
-                    <!-- asal -->
-                    <div class="row mt-2">
-                      <div class="col-2">Asal</div>
-                      <div class="col-4"><input type="text" name="asal" style="width: 100px;" readonly></div>
-                    </div>
+                      <!-- asal -->
+                      <div class="row mt-2">
+                        <div class="col-2">Asal</div>
+                        <div class="col-4"><?php echo ": " .$data['name_owner']; ?></div>
+                      </div>
 
-                    <!-- kalibrator -->
-                    <div class="row mt-2">
-                      <div class="col-2">Kalibrator</div>
-                      <div class="col-4"><input type="text" name="kalibrator" style="width: 100px;" readonly></div>
-                    </div>
+                      <!-- kalibrator -->
+                      <div class="row mt-2">
+                        <div class="col-2">Kalibrator</div>
+                        <div class="col-4"><?php echo ": " .$data['calibrator']; ?></div>
+                      </div>
 
-                    <!-- tgl masuk -->
-                    <div class="row mt-2">
-                      <div class="col-2">Tanggal Masuk</div>
-                      <div class="col-4"><input type="text" name="tgl_masuk" style="width: 100px;" readonly></div>
-                    </div>
+                      <!-- tgl masuk -->
+                      <div class="row mt-2">
+                        <div class="col-2">Tanggal Masuk</div>
+                        <div class="col-4"><?php echo ": " .$data['tgl_masuk']; ?></div>
+                      </div>
 
-                    <!-- tgl sertifikat -->
-                    <div class="row mt-2">
-                      <div class="col-2">Tanggal Sertifikat</div>
-                      <div class="col-4"><input type="text" name="tgl_sertifikat" style="width: 100px;" readonly></div>
-                    </div>
+                      <!-- tgl sertifikat -->
+                      <div class="row mt-2">
+                        <div class="col-2">Tanggal Sertifikat</div>
+                        <div class="col-4"><?php echo ": " .$data['tgl_sertifikat']; ?></div>
+                      </div>
+                    <?php } ?>
                   </div>
                 </div>
               </div>
