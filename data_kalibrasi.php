@@ -68,7 +68,7 @@
               <div class="col-4"><h4>Data Kalibrasi BYSTLAA</h4></div>
 
               <div class="col-8" style="text-align: right;">
-                <button class="btn btn-primary">Input Kalibrasi</button>
+                <a href="edit_kalibrasi.php" class="btn btn-primary">Input Kalibrasi</a>
               </div>
             </div>
             
@@ -103,7 +103,7 @@
                           <div class="btn p-0">
                             <a href="edit_kalibrasi.php" class="btn btn-secondary">Edit</a>
                             <a href="edit.php" class="btn btn-danger">Delete</a>
-                            <a href="delete.php" class="btn btn-info" >Detail</a>
+                            <a href="detail_kalibrasi.php" class="btn btn-info" >Detail</a>
                           </div>
                         </td>
                       </tbody>

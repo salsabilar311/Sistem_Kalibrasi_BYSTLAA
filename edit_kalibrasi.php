@@ -119,7 +119,7 @@
                           </select></div>
                           <div class="col-6" style="text-align: right;">
                             <a href="edit_kalibrasi.php" class="btn btn-primary">Simpan</a>
-                            <a href="edit_kalibrasi.php" class="btn btn-secondary">Batal</a>
+                            <a href="data_kalibrasi.php" class="btn btn-secondary">Batal</a>
                           </div>
                         </div>
 
