@@ -1,3 +1,6 @@
+<?php 
+  include 'koneksi.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +32,7 @@
                 <a href="input_pengukuran.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-keyboard"></i> Form Input Pengukuran</a>
               </li>
               <li class="">
-                <a href="progress.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-chart-bar"></i> Form Progres Kalibrasi</a>
+                <a href="progres.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-chart-bar"></i> Form Progres Kalibrasi</a>
               </li>
               <li class="">
                 <a href="analisis.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-diagnoses"></i> Analisis Kalibrasi</a>
@@ -81,19 +84,29 @@
                         </tr>
                       </thead>
                       <tbody  class="text-center">
-                        <tr>
-                        <td>1</td>
-                        <td>12345</td>
-                        <td>Balai Yasa</td>
-                        <td>11/9/2023</td>
-                        <td>-</td>
-                        <td>
-                          <div class="btn p-0">
-                            <a href="detail_progress_kalibrasi.php" class="btn btn-info">Detail</a>
-                            <a href="delete.php" class="btn btn-danger">Delete</a>
-                        </div>
-                        </td>
-                        </tr>
+                      <?php
+                        $data_kalibrasi = mysqli_query($conn, "SELECT d.detail_order, p.name_owner, d.tgl_kalibrasi
+                                                                FROM detail d
+                                                                INNER JOIN pemilik p ON d.region = p.region");
+                        $row_number = 1;
+                        while ($data=mysqli_fetch_array($data_kalibrasi)){
+                      ?>
+                          <tr>
+                            <td><?= $row_number; ?></td>
+                            <td><?= $data['detail_order']; ?></td>
+                            <td><?= $data['name_owner']; ?></td>
+                            <td><?= $data['tgl_kalibrasi']; ?></td>
+                            <td>-</td>
+                            <td>
+                              <div class="btn p-0">
+                                <a href="detail_progres_kalibrasi.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-info">Detail</a>
+                                <a href="delete.php" class="btn btn-danger">Delete</a>
+                            </div>
+                            </td>
+                          </tr>
+                      <?php
+                      $row_number++;
+                      } ?>
                       </tbody>
                     </table>
                   </div>
