@@ -1,3 +1,7 @@
+<?php 
+  include 'koneksi.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -92,26 +96,33 @@
                       </thead>
                       <!-- isi tabel -->
                       <tbody>
-                        <td>No. Order</td>
-                        <td>Nama Alat</td>
-                        <td>Merk</td>
-                        <td>Tipe</td>
-                        <td>No. Seri</td>
-                        <td>Asal</td>
-                        <td>Tanggal Kalibrasi</td>
-                        <td>
-                          <div class="btn p-0">
-                            <a href="edit_kalibrasi.php" class="btn btn-secondary">Edit</a>
-                            <a href="edit.php" class="btn btn-danger">Delete</a>
-                            <a href="detail_kalibrasi.php" class="btn btn-info" >Detail</a>
-                          </div>
-                        </td>
+                      <?php
+                        $data_kalibrasi = mysqli_query($conn, "SELECT * FROM detail");
+                        while ($data=mysqli_fetch_array($data_kalibrasi)){
+                      ?>
+                        <tr>
+                          <td><?= $data['no_order']; ?></td>
+                          <td>Digital multimeter</td>
+                          <td><?= $data['id_merk']; ?></td>
+                          <td><?= $data['id_tipe']; ?></td>
+                          <td><?= $data['no_seri']; ?></td>
+                          <td><?= $data['region']; ?></td>
+                          <td><?= $data['tgl_kalibrasi']; ?></td>
+                          <td>
+                            <div class="btn p-0">
+                              <a href="edit_kalibrasi.php" class="btn btn-secondary">Edit</a>
+                              <a href="edit.php" class="btn btn-danger">Delete</a>
+                              <a href="detail_kalibrasi.php" class="btn btn-info" >Detail</a>
+                            </div>
+                          </td>
+                        </tr>
+                      <?php } ?>
                       </tbody>
                     </table>
                   </div>
               </div>
             </div>
-            
+            <!-- end table -->
           </div>
           
       </div>

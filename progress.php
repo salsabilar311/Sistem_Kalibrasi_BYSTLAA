@@ -89,7 +89,7 @@
                         <td>-</td>
                         <td>
                           <div class="btn p-0">
-                            <a href="edit.php" class="btn btn-info">Detail</a>
+                            <a href="detail_progress_kalibrasi.php" class="btn btn-info">Detail</a>
                             <a href="delete.php" class="btn btn-danger">Delete</a>
                         </div>
                         </td>
