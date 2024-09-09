@@ -64,9 +64,67 @@
 
           <div class="container-fluid p-4">
 
-              <!-- table view progres kalibrasi -->
               <div class="row">
-                
+                <div class="card col-10 p-0 m-2" style="width: 99%;">
+                  <form action="input_kalibrasi.php" method="POST">
+                    <div class="card-header fw-bold">Edit Data Kalibrasi</div>
+                      <div class="card-body">
+                        <!-- no order DAN tgl kalibrasi -->
+                        <div class="row">
+                          <div class="col-2">No. Order</div>
+                          <div class="col-4"><input type="text" name="no_order" style="width: 100px;"></div>
+                          <div class="col-2">Tanggal Kalibrasi</div>
+                          <div class="col-4"><input type="date" name="tgl_kalibrasi"></div>
+                        </div> 
+
+                        <!-- merk DAN kalibrator -->
+                        <div class="row mt-2">
+                          <div class="col-2">Merk</div>
+                          <div class="col-4"><select class= "p-1" name="merk" id="merk">
+                            <option value="fluke">Fluke</option>
+                            <option value="sanwa">Sanwa</option>
+                            <option value="krisbow">Krisbow</option>
+                            <option value="kyoritsu">Kyoritsu</option>
+                          </select></div>
+                          <div class="col-2">Kalibrator</div>
+                          <div class="col-4"><select class="p-1" name="kalibrator" id="kalibrator">
+                            <option value="k1">K1</option>
+                            <option value="k2">K2</option>
+                          </select></div>
+                        </div>
+
+                        <!-- tipe DAN tgl masuk -->
+                        <div class="row mt-2">
+                          <div class="col-2">Tipe</div>
+                          <div class="col-4"><select class="p-1" name="tipe" id="tipe">
+                            <option value="179">179</option>
+                          </select></div>
+                          <div class="col-2">Tanggal Masuk</div>
+                          <div class="col-4"><input type="date" name="tgl_masuk" id="tgl_masuk"></div>
+                        </div>
+
+                        <!-- no seri DAN tgl sertifikat-->
+                        <div class="row mt-2">
+                          <div class="col-2">No. Seri</div>
+                          <div class="col-4"><input type="text" name="no_seri" style="width: 50%;"></div>
+                          <div class="col-2">Tanggal Sertifikat</div>
+                          <div class="col-4"><input type="date" name="tgl_sertifikat" id="tgl_sertifikat"></div>
+                        </div>
+
+                        <!-- asal -->
+                        <div class="row mt-2">
+                          <div class="col-2">Asal</div>
+                          <div class="col-4"><select class="p-1" name="asal" id="asal">
+                            <option value="stl_d1">STL-D1</option>
+                          </select></div>
+                          <div class="col-6" style="text-align: right;">
+                            <a href="edit_kalibrasi.php" class="btn btn-primary">Simpan</a>
+                            <a href="edit_kalibrasi.php" class="btn btn-secondary">Batal</a>
+                          </div>
+                        </div>
+
+                  </form>
+                </div>
               </div>
               
           </div>
