@@ -1,3 +1,29 @@
+<?php 
+  include 'koneksi.php';
+
+  if(isset($_POST['submit'])){
+    $no_order=$_POST['no_order'];
+    $tgl_kalibrasi=$_POST['tgl_kalibrasi'];
+    $merk=$_POST['merk'];
+    $calibrator=$_POST['calibrator'];
+    $tipe=$_POST['tipe'];
+    $tgl_masuk=$_POST['tgl_masuk'];
+    $no_seri=$_POST['no_seri'];
+    $asal=$_POST['asal']; 
+    $tgl_sertifikat=$_POST['tgl_sertifikat'];
+
+    $sql = "INSERT INTO detail (no_order, tgl_kalibrasi, id_merk, calibrator, id_tipe, tgl_masuk, no_seri, region, tgl_sertifikat, detail_order)
+        VALUES ('$no_order', '$tgl_kalibrasi', '$merk', '$calibrator', '$tipe', '$tgl_masuk', '$no_seri', '$asal', '$tgl_sertifikat',
+        CONCAT('$no_order', '-', '$calibrator', '-', '$asal', '-', YEAR('$tgl_kalibrasi')))";
+    $result=mysqli_query($conn, $sql);
+    if($result){
+      echo "Data inserted successfully";
+    }
+    else{
+      die(mysqli_error($conn));
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66,13 +92,17 @@
 
               <div class="row">
                 <div class="card col-10 p-0 m-2" style="width: 99%;">
-                  <form action="input_kalibrasi.php" method="POST">
+                  <form action="" method="POST">
                     <div class="card-header fw-bold">Input Data Kalibrasi</div>
                       <div class="card-body">
                         <!-- no order DAN tgl kalibrasi -->
                         <div class="row">
+                          <!-- no random untuk no order -->
+                          <?php
+                            $no_order = mt_rand(1, 999);
+                          ?>
                           <div class="col-2">No. Order</div>
-                          <div class="col-4"><input type="text" name="no_order" style="width: 100px;"></div>
+                          <div class="col-4"><input type="text" name="no_order" style="width: 100px;" value="<?php echo $no_order; ?>"></div>
                           <div class="col-2">Tanggal Kalibrasi</div>
                           <div class="col-4"><input type="date" name="tgl_kalibrasi"></div>
                         </div> 
@@ -80,16 +110,26 @@
                         <!-- merk DAN kalibrator -->
                         <div class="row mt-2">
                           <div class="col-2">Merk</div>
-                          <div class="col-4"><select class= "p-1" name="merk" id="merk">
-                            <option value="fluke">Fluke</option>
-                            <option value="sanwa">Sanwa</option>
-                            <option value="krisbow">Krisbow</option>
-                            <option value="kyoritsu">Kyoritsu</option>
+                          <div class="col-4"><select class= "p-1" name="merk" id="merk" onchange="tipe()">
+                            <?php
+                              $query_merk = mysqli_query($conn, "SELECT * FROM merk");
+                              while($data = mysqli_fetch_array($query_merk)){
+                            ?>
+                            <option value="<?php echo $data['id_merk']?>"><?php echo $data['nama_merk']?></option>
+                            <?php
+                              }
+                            ?>
                           </select></div>
                           <div class="col-2">Kalibrator</div>
-                          <div class="col-4"><select class="p-1" name="kalibrator" id="kalibrator">
-                            <option value="k1">K1</option>
-                            <option value="k2">K2</option>
+                          <div class="col-4"><select class="p-1" name="calibrator" id="calibrator">
+                            <?php
+                                $query_k = mysqli_query($conn, "SELECT * FROM kalibrator");
+                                while($data = mysqli_fetch_array($query_k)){
+                              ?>
+                              <option value="<?php echo $data['calibrator']?>"><?php echo $data['calibrator']?></option>
+                              <?php
+                                }
+                            ?>
                           </select></div>
                         </div>
 
@@ -97,8 +137,16 @@
                         <div class="row mt-2">
                           <div class="col-2">Tipe</div>
                           <div class="col-4"><select class="p-1" name="tipe" id="tipe">
-                            <option value="179">179</option>
-                          </select></div>
+                            <option value="19">19</option>
+                          </select>
+                          <!-- script untuk merk yang di klik sesuai sama tipe -->
+                          <script>
+                            function tipe() {
+                              var merkId = $('#merk').val(); // Menggunakan ID yang benar
+                              $('#tipe').load("ambil-data.php?id=" + merkId);
+                            }
+                          </script>
+                          </div>
                           <div class="col-2">Tanggal Masuk</div>
                           <div class="col-4"><input type="date" name="tgl_masuk" id="tgl_masuk"></div>
                         </div>
@@ -115,10 +163,17 @@
                         <div class="row mt-2">
                           <div class="col-2">Asal</div>
                           <div class="col-4"><select class="p-1" name="asal" id="asal">
-                            <option value="stl_d1">STL-D1</option>
+                          <?php
+                              $query_asal = mysqli_query($conn, "SELECT * FROM pemilik");
+                              while($data = mysqli_fetch_array($query_asal)){
+                            ?>
+                            <option value="<?php echo $data['region']?>"><?php echo $data['region']?></option>
+                            <?php
+                              }
+                          ?>
                           </select></div>
                           <div class="col-6" style="text-align: right;">
-                            <a href="edit_kalibrasi.php" class="btn btn-primary">Simpan</a>
+                            <button type="submit" class="btn btn-primary" name="submit">Simpan</button>
                             <a href="data_kalibrasi.php" class="btn btn-secondary">Batal</a>
                           </div>
                         </div>

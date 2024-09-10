@@ -111,10 +111,16 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <!-- TEGANGAN DC -->
+                        <?php
+                          $query = "SELECT * FROM pengukuran";
+                          $result = mysqli_query($conn, $query);
+                          while ($data = mysqli_fetch_assoc($result)) {
+                        ?>
                         <tr class="text-center">
-                          <td rowspan="14">Tegangan DC</td>
-                          <td rowspan="3">600 mV</td>
-                          <td class="text-end">100,0000 mV</td>
+                          <td rowspan="14"><?php echo $data['besaran_ukur']; ?></td>
+                          <td rowspan="3"><?php echo $data['range_'] . " " . $data['s_range'];?></td>
+                          <td class="text-end"><?php echo $data['standar'] . " " . $data['s_standar'];?></td>
                           <td><input type="text" style="width: 100px"></td>
                           <td><input type="text" style="width: 100px"></td>
                           <td><input type="text" style="width: 100px"></td>
@@ -122,11 +128,11 @@
                           <td><input type="text" style="width: 100px"></td>
                           <td><input type="text" style="width: 100px"></td>
                           <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
-                          <td class="text-end">0,1000mV</td>
-                          <td class="text-end">1,1000mV</td>
-                          <td class="text-end">1,1000mV</td>
+                          <td class="text-end"><?php echo $data['koreksi_standar'] . " " . $data['s_koreksi_standar'];?></td>
+                          <td class="text-end"><?php echo $data['std_dev'] . " " . $data['s_std_dev'];?></td>
+                          <td class="text-end"><?php echo $data['rata_rata_koreksi'] . " " . $data['s_rata_rata_koreksi'];?></td>
                         </tr>
-                        <tr class="text-center">
+                        <!-- <tr class="text-center">
                           <td class="text-end">300,000 mV</td>
                           <td><input type="text" style="width: 100px"></td>
                           <td><input type="text" style="width: 100px"></td>
@@ -151,8 +157,7 @@
                             <td class="text-end">0,1000mV</td>
                             <td class="text-end">1,1000mV</td>
                             <td class="text-end">1,1000mV</td>
-                          </tr>
-                        
+                        </tr>     
                         <tr class="text-center">
                           <td rowspan="3">6 V</td>
                           <td class="text-end">1,000 V</td>
@@ -299,17 +304,19 @@
                                       <td class="text-end">0,1000mV</td>
                                       <td class="text-end">1,1000mV</td>
                                       <td class="text-end">1,1000mV</td>
-                                    </tr>
+                                    </tr> -->
+                                    <?php } ?>
                                 </tbody>
                             </table>
                             <div class="btn pt-3 pb-0" style="float: right;">
                               <a href="input.html" class="btn btn-primary ">Submit</a>
                               <a href="edit.html" class="btn btn-secondary ">Edit</a>
                               <a href="delete.html" class="btn btn-danger " >Clear</a>
-                          </div>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <!-- TEGANGAN DC -->
                       
                       <div class="row">
                         <div class="card p-0 m-2">

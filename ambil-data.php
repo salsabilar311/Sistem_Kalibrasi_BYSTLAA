@@ -1,14 +1,11 @@
 <?php
-include "koneksi.php";
+include 'koneksi.php';
+// Pastikan koneksi database sudah dibuat
 
-$id = $_GET['id'];
-$query = mysqli_query($conn, "select * from tipe where id_merk = '$id'");
+$merkId = $_GET['id'];
 
-while($data = mysqli_fetch_array($query)){
-  ?>
+$query_tipe = mysqli_query($conn, "SELECT * FROM tipe WHERE id_merk = '$merkId'");
 
-  <option value="<?php echo $data['id_tipe']?>"><?php echo $data['id_tipe']?></option>
-
-<?php
+while ($data = mysqli_fetch_array($query_tipe)) {
+    echo "<option value='" . $data['id_tipe'] . "'>" . $data['nama_tipe'] . "</option>";
 }
-?>

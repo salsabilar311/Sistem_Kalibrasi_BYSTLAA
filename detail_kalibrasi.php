@@ -168,7 +168,7 @@
                       <!-- asal -->
                       <div class="row mt-2">
                         <div class="col-2">Asal</div>
-                        <div class="col-4"><?php echo ": " .$data['name_owner']; ?></div>
+                        <div class="col-6"><?php echo ": " .$data['name_owner']; ?></div>
                       </div>
 
                       <!-- kalibrator -->
