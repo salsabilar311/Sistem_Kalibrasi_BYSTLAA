@@ -113,19 +113,19 @@
                       <tbody>
                         <!-- TEGANGAN DC -->
                         <tr class="text-center">
-                          <td rowspan="14">Tegangan DC</td>
-                          <td rowspan="3">600 mV</td>
-                          <td class="text-end">100,0000 mV</td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px"></td>
-                          <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
-                          <td class="text-end">0,1000mV</td>
-                          <td class="text-end">1,1000mV</td>
-                          <td class="text-end">1,1000mV</td>
+                          <td rowspan="14" name="besaran_ukur" id="besaran_ukur">Tegangan DC</td>
+                          <td rowspan="3" name="range" id="range">600 mV</td>
+                          <td class="text-end" name="standar" id="standar">100,0000 mV</td>
+                          <td><input type="text" style="width: 100px" name="x1" id="x1"></td>
+                          <td><input type="text" style="width: 100px" name="x2" id="x2"></td>
+                          <td><input type="text" style="width: 100px" name="x3" id="x3"></td>
+                          <td><input type="text" style="width: 100px" name="x4" id="x4"></td>
+                          <td><input type="text" style="width: 100px" name="x5" id="x5"></td>
+                          <td><input type="text" style="width: 100px" name="x6" id="x6"></td>
+                          <td><input type="text" style="width: 100px; text-align: right" value="0" readonly name="rata_rata" id="rata_rata"></td>
+                          <td class="text-end" name="koreksi_standar" id="koreksi_standar">0,1000mV</td>
+                          <td class="text-end" name="std_deviasi" id="std_deviasi">1,1000mV</td>
+                          <td class="text-end" name="rata_rata_koreksi" id="rata_rata_koreksi">1,1000mV</td>
                         </tr>
                         <tr class="text-center">
                           <td class="text-end">300,000 mV</td>
