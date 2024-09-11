@@ -1,5 +1,42 @@
 <?php 
   include 'koneksi.php';
+  $detail_order = $_GET['detail_order'];
+
+  // edit data to database
+  if(isset($_POST['submit'])){
+    $no_order=$_POST['no_order'];
+    $tgl_kalibrasi=$_POST['tgl_kalibrasi'];
+    $merk=$_POST['merk'];
+    $calibrator=$_POST['calibrator'];
+    $tipe=$_POST['tipe'];
+    $tgl_masuk=$_POST['tgl_masuk'];
+    $no_seri=$_POST['no_seri'];
+    $asal=$_POST['asal']; 
+    $tgl_sertifikat=$_POST['tgl_sertifikat'];
+    $parts = explode('-', $detail_order);
+    $no_order_from_detail = trim($parts[0]);
+
+    $sql = "UPDATE detail
+            SET no_order = '$no_order',
+            tgl_kalibrasi = '$tgl_kalibrasi',
+            id_merk = '$merk',
+            calibrator = '$calibrator',
+            id_tipe = '$tipe',
+            tgl_masuk = '$tgl_masuk',
+            no_seri = '$no_seri',
+            region = '$asal',
+            tgl_sertifikat = '$tgl_sertifikat'
+            WHERE no_order = '$no_order_from_detail'";
+    $result=mysqli_query($conn, $sql);
+    if($result){
+      header('Location: data_kalibrasi.php');
+      exit();
+    }
+    else{
+      die(mysqli_error($conn));
+    }
+  }
+  // edit data to database
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,12 +106,11 @@
 
               <div class="row">
                 <div class="card col-10 p-0 m-2" style="width: 99%;">
-                  <form action="input_kalibrasi.php" method="POST">
+                  <form action="" method="POST">
                     <div class="card-header fw-bold">Edit Data Kalibrasi</div>
                       <div class="card-body">
                       <?php
-                        $detail_order = $_GET['detail_order'];
-                        $query = "SELECT d.no_order, d.detail_order, m.nama_merk, t.nama_tipe, d.no_seri, d.tgl_kalibrasi, p.name_owner, d.calibrator, d.tgl_masuk, d.tgl_sertifikat, d.region 
+                        $query = "SELECT d.no_order, d.detail_order, m.nama_merk, t.nama_tipe, d.no_seri, d.tgl_kalibrasi, p.name_owner, d.calibrator, d.tgl_masuk, d.tgl_sertifikat, d.region, d.id_merk 
                                   FROM detail d
                                   INNER JOIN merk m ON d.id_merk = m.id_merk
                                   INNER JOIN tipe t ON d.id_tipe = t.id_tipe
@@ -86,7 +122,7 @@
                         <!-- no order DAN tgl kalibrasi -->
                         <div class="row">
                           <div class="col-2">No. Order</div>
-                          <div class="col-4"><input type="text" name="no_order" style="width: 100px;" value="<?php echo $data['no_order']; ?>"></div>
+                          <div class="col-4"><input type="text" name="no_order" style="width: 100px;" value="<?php echo $data['no_order']; ?>" readonly></div>
                           <div class="col-2">Tanggal Kalibrasi</div>
                           <div class="col-4"><input type="date" name="tgl_kalibrasi" value="<?php echo $data['tgl_kalibrasi']; ?>"></div>
                         </div> 
@@ -94,16 +130,16 @@
                         <!-- merk DAN kalibrator -->
                         <div class="row mt-2">
                           <div class="col-2">Merk</div>
-                          <div class="col-4"><select class= "p-1" name="merk" id="merk" value="<?php echo $data['nama_merk']; ?>">
-                            <option value="fluke" <?php if ($data['nama_merk'] == 'Fluke') echo 'selected'; ?>>Fluke</option>
-                            <option value="sanwa" <?php if ($data['nama_merk'] == 'Sanwa') echo 'selected'; ?>>Sanwa</option>
-                            <option value="krisbow" <?php if ($data['nama_merk'] == 'Krisbow') echo 'selected'; ?>>Krisbow</option>
-                            <option value="kyoritsu" <?php if ($data['nama_merk'] == 'Kyoritsu') echo 'selected'; ?>>Kyoritsu</option>
+                          <div class="col-4"><select class= "p-1" name="merk" id="merk">
+                            <option value="1" <?php if ($data['id_merk'] == '1') echo 'selected'; ?>>Fluke</option>
+                            <option value="2" <?php if ($data['id_merk'] == '2') echo 'selected'; ?>>Sanwa</option>
+                            <option value="3" <?php if ($data['id_merk'] == '3') echo 'selected'; ?>>Krisbow</option>
+                            <option value="4" <?php if ($data['id_merk'] == '4') echo 'selected'; ?>>Kyoritsu</option>
                           </select></div>
                           <div class="col-2">Kalibrator</div>
-                          <div class="col-4"><select class="p-1" name="kalibrator" id="kalibrator">
-                            <option value="k1" <?php if ($data['calibrator'] == 'K1') echo 'selected'; ?>>K1</option>
-                            <option value="k2" <?php if ($data['calibrator'] == 'K2') echo 'selected'; ?>>K2</option>
+                          <div class="col-4"><select class="p-1" name="calibrator" id="calibrator">
+                            <option value="K1" <?php if ($data['calibrator'] == 'K1') echo 'selected'; ?>>K1</option>
+                            <option value="K2" <?php if ($data['calibrator'] == 'K2') echo 'selected'; ?>>K2</option>
                           </select></div>
                         </div>
 
@@ -111,7 +147,7 @@
                         <div class="row mt-2">
                           <div class="col-2">Tipe</div>
                           <div class="col-4"><select class="p-1" name="tipe" id="tipe">
-                            <option value="179">179</option>
+                            <option value="19">19</option>
                           </select></div>
                           <div class="col-2">Tanggal Masuk</div>
                           <div class="col-4"><input type="date" name="tgl_masuk" id="tgl_masuk" value="<?php echo $data['tgl_masuk']; ?>"></div>
@@ -129,26 +165,26 @@
                         <div class="row mt-2">
                           <div class="col-2">Asal</div>
                           <div class="col-4"><select class="p-1" name="asal" id="asal">
-                            <option value="bpstl" <?php if ($data['region'] == 'BPSTL') echo 'selected'; ?>>BPSTL</option>
-                            <option value="bystlaa" <?php if ($data['region'] == 'BYSTLAA') echo 'selected'; ?>>BYSTLAA</option>
-                            <option value="laa_d1" <?php if ($data['region'] == 'LAA D1') echo 'selected'; ?>>LAA D1</option>
-                            <option value="laa_d6" <?php if ($data['region'] == 'LAA D6') echo 'selected'; ?>>LAA D6</option>
-                            <option value="stl_d1" <?php if ($data['region'] == 'STL D1') echo 'selected'; ?>>STL D1</option>
-                            <option value="stl_d2" <?php if ($data['region'] == 'STL D2') echo 'selected'; ?>>STL D2</option>
-                            <option value="stl_d3" <?php if ($data['region'] == 'STL D3') echo 'selected'; ?>>STL D3</option>
-                            <option value="stl_d4" <?php if ($data['region'] == 'STL D4') echo 'selected'; ?>>STL D4</option>
-                            <option value="stl_d5" <?php if ($data['region'] == 'STL D5') echo 'selected'; ?>>STL D5</option>
-                            <option value="stl_d6" <?php if ($data['region'] == 'STL D6') echo 'selected'; ?>>STL D6</option>
-                            <option value="stl_d7" <?php if ($data['region'] == 'STL D7') echo 'selected'; ?>>STL D7</option>
-                            <option value="stl_d8" <?php if ($data['region'] == 'STL D8') echo 'selected'; ?>>STL D8</option>
-                            <option value="stl_d9" <?php if ($data['region'] == 'STL D9') echo 'selected'; ?>>STL D9</option>
-                            <option value="stl_dI" <?php if ($data['region'] == 'STL DI') echo 'selected'; ?>>STL DI</option>
-                            <option value="stl_dII" <?php if ($data['region'] == 'STL DII') echo 'selected'; ?>>STL DII</option>
-                            <option value="stl_dIII" <?php if ($data['region'] == 'STL DIII') echo 'selected'; ?>>STL DIII</option>
-                            <option value="stl_dIV" <?php if ($data['region'] == 'STL DIV') echo 'selected'; ?>>STL DIV</option>
+                            <option value="BPSTL" <?php if ($data['region'] == 'BPSTL') echo 'selected'; ?>>BPSTL</option>
+                            <option value="BYSTLAA" <?php if ($data['region'] == 'BYSTLAA') echo 'selected'; ?>>BYSTLAA</option>
+                            <option value="LAA D1" <?php if ($data['region'] == 'LAA D1') echo 'selected'; ?>>LAA D1</option>
+                            <option value="LAA D6" <?php if ($data['region'] == 'LAA D6') echo 'selected'; ?>>LAA D6</option>
+                            <option value="STL D1" <?php if ($data['region'] == 'STL D1') echo 'selected'; ?>>STL D1</option>
+                            <option value="STL D2" <?php if ($data['region'] == 'STL D2') echo 'selected'; ?>>STL D2</option>
+                            <option value="STL D3" <?php if ($data['region'] == 'STL D3') echo 'selected'; ?>>STL D3</option>
+                            <option value="STL D4" <?php if ($data['region'] == 'STL D4') echo 'selected'; ?>>STL D4</option>
+                            <option value="STL D5" <?php if ($data['region'] == 'STL D5') echo 'selected'; ?>>STL D5</option>
+                            <option value="STL D6" <?php if ($data['region'] == 'STL D6') echo 'selected'; ?>>STL D6</option>
+                            <option value="STL D7" <?php if ($data['region'] == 'STL D7') echo 'selected'; ?>>STL D7</option>
+                            <option value="STL D8" <?php if ($data['region'] == 'STL D8') echo 'selected'; ?>>STL D8</option>
+                            <option value="STL D9" <?php if ($data['region'] == 'STL D9') echo 'selected'; ?>>STL D9</option>
+                            <option value="STL DI" <?php if ($data['region'] == 'STL DI') echo 'selected'; ?>>STL DI</option>
+                            <option value="STL DII" <?php if ($data['region'] == 'STL DII') echo 'selected'; ?>>STL DII</option>
+                            <option value="STL DIII" <?php if ($data['region'] == 'STL DIII') echo 'selected'; ?>>STL DIII</option>
+                            <option value="STL DIV" <?php if ($data['region'] == 'STL DIV') echo 'selected'; ?>>STL DIV</option>
                           </select></div>
                           <div class="col-6" style="text-align: right;">
-                            <a href="edit_kalibrasi.php" class="btn btn-primary">Simpan</a>
+                            <button type="submit" class="btn btn-primary" name="submit">Simpan</button>
                             <a href="data_kalibrasi.php" class="btn btn-secondary">Batal</a>
                           </div>
                         <?php } ?>
@@ -173,4 +209,4 @@
       });
     </script>
   </body>
-    </html>
+</html>

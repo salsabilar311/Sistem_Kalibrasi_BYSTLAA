@@ -1,6 +1,5 @@
 <?php
 include 'koneksi.php';
-// Pastikan koneksi database sudah dibuat
 
 $merkId = $_GET['id'];
 

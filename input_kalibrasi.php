@@ -1,6 +1,7 @@
 <?php 
   include 'koneksi.php';
 
+  // input data to database
   if(isset($_POST['submit'])){
     $no_order=$_POST['no_order'];
     $tgl_kalibrasi=$_POST['tgl_kalibrasi'];
@@ -17,12 +18,14 @@
         CONCAT('$no_order', '-', '$calibrator', '-', '$asal', '-', YEAR('$tgl_kalibrasi')))";
     $result=mysqli_query($conn, $sql);
     if($result){
-      echo "Data inserted successfully";
+      header('Location: data_kalibrasi.php');
+      exit();
     }
     else{
       die(mysqli_error($conn));
     }
   }
+  // input data to database
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,7 +113,7 @@
                         <!-- merk DAN kalibrator -->
                         <div class="row mt-2">
                           <div class="col-2">Merk</div>
-                          <div class="col-4"><select class= "p-1" name="merk" id="merk" onchange="tipe()">
+                          <div class="col-4"><select class= "p-1" name="merk" id="merk" onchange="load_tipe()">
                             <?php
                               $query_merk = mysqli_query($conn, "SELECT * FROM merk");
                               while($data = mysqli_fetch_array($query_merk)){
@@ -141,7 +144,7 @@
                           </select>
                           <!-- script untuk merk yang di klik sesuai sama tipe -->
                           <script>
-                            function tipe() {
+                            function load_tipe() {
                               var merkId = $('#merk').val(); // Menggunakan ID yang benar
                               $('#tipe').load("ambil-data.php?id=" + merkId);
                             }
@@ -197,4 +200,4 @@
       });
     </script>
   </body>
-    </html>
+</html>
