@@ -130,7 +130,7 @@
                         <!-- merk DAN kalibrator -->
                         <div class="row mt-2">
                           <div class="col-2">Merk</div>
-                          <div class="col-4"><select class= "p-1" name="merk" id="merk">
+                          <div class="col-4"><select class= "p-1" name="merk" id="merk" onchange="tipe()" required>
                             <option value="1" <?php if ($data['id_merk'] == '1') echo 'selected'; ?>>Fluke</option>
                             <option value="2" <?php if ($data['id_merk'] == '2') echo 'selected'; ?>>Sanwa</option>
                             <option value="3" <?php if ($data['id_merk'] == '3') echo 'selected'; ?>>Krisbow</option>
@@ -146,9 +146,55 @@
                         <!-- tipe DAN tgl masuk -->
                         <div class="row mt-2">
                           <div class="col-2">Tipe</div>
-                          <div class="col-4"><select class="p-1" name="tipe" id="tipe">
-                            <option value="19">19</option>
-                          </select></div>
+                          <div class="col-4">
+                            <select class="p-1" name="tipe" id="tipe" required>
+                              <option value="">Pilih Tipe</option>
+                              <!-- Tipe yang terisi otomatis saat pertama kali dimuat, berdasarkan merk yang sudah ada -->
+                              <?php
+                              // Ambil tipe yang sesuai dari database berdasarkan merk
+                              $query_tipe = mysqli_query($conn, "SELECT * FROM tipe WHERE id_merk = '".$data['id_merk']."'");
+                              while ($tipe = mysqli_fetch_array($query_tipe)) {
+                                  $selected = ($data['id_tipe'] == $tipe['id_tipe']) ? 'selected' : '';
+                                  echo "<option value='".$tipe['id_tipe']."' ".$selected.">".$tipe['nama_tipe']."</option>";
+                              }
+                              ?>
+                            </select>
+                          </div>
+                          <!-- MASIH BELUM BENER TIPE NYA -->
+                          <script>
+                            function tipe() {
+                              var id_merk = $('#merk').val();
+                              // Kosongkan dropdown tipe sebelum mengisi data baru
+                              $('#tipe').empty().append('<option value="">Pilih Tipe</option>');
+
+                              // Jika merk dipilih, lakukan ajax untuk mendapatkan tipe baru
+                              if (id_merk != '') {
+                                $.ajax({
+                                  url: 'ambil-data.php',
+                                  type: 'GET',
+                                  data: { id: id_merk },
+                                  success: function(response) {
+                                    // Masukkan response (yang berisi <option>) ke dalam dropdown tipe
+                                    $('#tipe').append(response);
+                                  },
+                                  error: function() {
+                                    alert('Gagal mengambil data tipe');
+                                  }
+                                });
+                              }
+                            }
+                          </script>
+
+                          <!-- <div class="col-4"><select class="p-1" name="tipe" id="tipe"></select> -->
+                            <!-- <option value="19">19</option> -->
+                            <!-- <script>
+                              function tipe(){
+                                var id_merk = $('#merk').val();
+                                $('#tipe').load("ambil-data.php?id="+id_merk+"");
+                              }
+                            </script> -->
+                            
+                          <!-- </div> -->
                           <div class="col-2">Tanggal Masuk</div>
                           <div class="col-4"><input type="date" name="tgl_masuk" id="tgl_masuk" value="<?php echo $data['tgl_masuk']; ?>"></div>
                         </div>
@@ -202,11 +248,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <!-- <script src="https://ajax.goggleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
-    <script>
+    <!-- <script>
       $(".sidebar ul li").on("click", function () {
         $(".sidebar ul li.active").removeClass("active");
         $(this).addClass("active");
       });
-    </script>
+    </script> -->
   </body>
 </html>
