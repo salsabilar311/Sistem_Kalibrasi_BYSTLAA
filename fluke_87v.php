@@ -116,12 +116,12 @@
                           <td rowspan="14">Tegangan DC</td>
                           <td rowspan="3">600 mV</td>
                           <td class="text-end">100,0000 mV</td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
                           <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                           <td class="text-end">0,1000mV</td>
                           <td class="text-end">1,1000mV</td>
@@ -129,12 +129,12 @@
                         </tr>
                         <tr class="text-center">
                           <td class="text-end">300,000 mV</td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
                           <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                           <td class="text-end">0,1000mV</td>
                           <td class="text-end">1,1000mV</td>
@@ -142,12 +142,12 @@
                         </tr>
                         <tr class="text-center">
                             <td class="text-end">500,000 mV</td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                             <td class="text-end">0,1000mV</td>
                             <td class="text-end">1,1000mV</td>
@@ -156,12 +156,12 @@
                         <tr class="text-center">
                           <td rowspan="3">6 V</td>
                           <td class="text-end">1,000 V</td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
-                          <td><input type="text" style="width: 100px" readonly></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
+                          <td><input type="text" style="width: 100px"></td>
                           <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                           <td class="text-end">0,1000mV</td>
                           <td class="text-end">1,1000mV</td>
@@ -169,12 +169,12 @@
                         </tr>
                         <tr class="text-center">
                             <td class="text-end">3,000 V</td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                             <td class="text-end">0,1000mV</td>
                             <td class="text-end">1,1000mV</td>
@@ -182,12 +182,12 @@
                           </tr>
                           <tr class="text-center">
                             <td class="text-end">5,000 V</td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                             <td class="text-end">0,1000mV</td>
                             <td class="text-end">1,1000mV</td>
@@ -196,12 +196,12 @@
                           <tr class="text-center">
                             <td rowspan="3">60 V</td>
                             <td class="text-end">10,000 V</td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
-                            <td><input type="text" style="width: 100px" readonly></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
+                            <td><input type="text" style="width: 100px"></td>
                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                             <td class="text-end">0,1000mV</td>
                             <td class="text-end">1,1000mV</td>
@@ -209,12 +209,12 @@
                           </tr>
                           <tr class="text-center">
                               <td class="text-end">30,000 V</td>
-                              <td><input type="text" style="width: 100px" readonly></td>
-                              <td><input type="text" style="width: 100px" readonly></td>
-                              <td><input type="text" style="width: 100px" readonly></td>
-                              <td><input type="text" style="width: 100px" readonly></td>
-                              <td><input type="text" style="width: 100px" readonly></td>
-                              <td><input type="text" style="width: 100px" readonly></td>
+                              <td><input type="text" style="width: 100px"></td>
+                              <td><input type="text" style="width: 100px"></td>
+                              <td><input type="text" style="width: 100px"></td>
+                              <td><input type="text" style="width: 100px"></td>
+                              <td><input type="text" style="width: 100px"></td>
+                              <td><input type="text" style="width: 100px"></td>
                               <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                               <td class="text-end">0,1000mV</td>
                               <td class="text-end">1,1000mV</td>
@@ -222,12 +222,12 @@
                             </tr>
                             <tr class="text-center">
                               <td class="text-end">50,000 V</td>
-                              <td><input type="text" style="width: 100px" readonly></td>
-                              <td><input type="text" style="width: 100px" readonly></td>
-                              <td><input type="text" style="width: 100px" readonly></td>
-                              <td><input type="text" style="width: 100px" readonly></td>
-                              <td><input type="text" style="width: 100px" readonly></td>
-                              <td><input type="text" style="width: 100px" readonly></td>
+                              <td><input type="text" style="width: 100px"></td>
+                              <td><input type="text" style="width: 100px"></td>
+                              <td><input type="text" style="width: 100px"></td>
+                              <td><input type="text" style="width: 100px"></td>
+                              <td><input type="text" style="width: 100px"></td>
+                              <td><input type="text" style="width: 100px"></td>
                               <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                               <td class="text-end">0,1000mV</td>
                               <td class="text-end">1,1000mV</td>
@@ -236,12 +236,12 @@
                             <tr class="text-center">
                                 <td rowspan="3">600 V</td>
                                 <td class="text-end">100,000 V</td>
-                                <td><input type="text" style="width: 100px" readonly></td>
-                                <td><input type="text" style="width: 100px" readonly></td>
-                                <td><input type="text" style="width: 100px" readonly></td>
-                                <td><input type="text" style="width: 100px" readonly></td>
-                                <td><input type="text" style="width: 100px" readonly></td>
-                                <td><input type="text" style="width: 100px" readonly></td>
+                                <td><input type="text" style="width: 100px"></td>
+                                <td><input type="text" style="width: 100px"></td>
+                                <td><input type="text" style="width: 100px"></td>
+                                <td><input type="text" style="width: 100px"></td>
+                                <td><input type="text" style="width: 100px"></td>
+                                <td><input type="text" style="width: 100px"></td>
                                 <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                 <td class="text-end">0,1000mV</td>
                                 <td class="text-end">1,1000mV</td>
@@ -249,12 +249,12 @@
                               </tr>
                               <tr class="text-center">
                                   <td class="text-end">300,000 V</td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
                                   <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                   <td class="text-end">0,1000mV</td>
                                   <td class="text-end">1,1000mV</td>
@@ -262,12 +262,12 @@
                                 </tr>
                                 <tr class="text-center">
                                   <td class="text-end">500,000 V</td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
                                   <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                   <td class="text-end">0,1000mV</td>
                                   <td class="text-end">1,1000mV</td>
@@ -276,12 +276,12 @@
                                 <tr class="text-center">
                                     <td rowspan="2">1000 V</td>
                                     <td class="text-end">700,000 V</td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
                                     <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                     <td class="text-end">0,1000mV</td>
                                     <td class="text-end">1,1000mV</td>
@@ -289,12 +289,12 @@
                                   </tr>
                                   <tr class="text-center">
                                       <td class="text-end">1000,000 V</td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
                                       <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                       <td class="text-end">0,1000mV</td>
                                       <td class="text-end">1,1000mV</td>
@@ -303,9 +303,9 @@
                                 </tbody>
                             </table>
                             <div class="btn pt-3 pb-0" style="float: right;">
-                              <a href="#" class="btn btn-primary" >Submit</a>
-                              <a href="#" class="btn btn-secondary">Edit</a>
-                              <a href="#" class="btn btn-danger" >Clear</a>
+                              <a href="input.html" class="btn btn-primary ">Submit</a>
+                              <a href="edit.html" class="btn btn-secondary ">Edit</a>
+                              <a href="delete.html" class="btn btn-danger " >Clear</a>
                             </div>
                           </div>
                         </div>
@@ -342,12 +342,12 @@
                                   <td rowspan="14">Tegangan AC</td>
                                   <td rowspan="3">600 mV</td>
                                   <td class="text-end">100,000 mV</td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
                                   <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                   <td class="text-end">0,1000mV</td>
                                   <td class="text-end">1,1000mV</td>
@@ -355,12 +355,12 @@
                                 </tr>
                                 <tr class="text-center">
                                   <td class="text-end">300,000 V</td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
                                   <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                   <td class="text-end">0,1000mV</td>
                                   <td class="text-end">1,1000mV</td>
@@ -368,12 +368,12 @@
                                 </tr>
                                 <tr class="text-center">
                                     <td class="text-end">500,000 V</td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
                                     <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                     <td class="text-end">0,1000mV</td>
                                     <td class="text-end">1,1000mV</td>
@@ -383,12 +383,12 @@
                                 <tr class="text-center">
                                   <td rowspan="3">6V</td>
                                   <td class="text-end">1,00000 V</td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
-                                  <td><input type="text" style="width: 100px" readonly></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
+                                  <td><input type="text" style="width: 100px"></td>
                                   <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                   <td class="text-end">0,1000mV</td>
                                   <td class="text-end">1,1000mV</td>
@@ -396,12 +396,12 @@
                                 </tr>
                                 <tr class="text-center">
                                     <td class="text-end">3,0000 V</td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
                                     <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                     <td class="text-end">0,1000mV</td>
                                     <td class="text-end">1,1000mV</td>
@@ -409,12 +409,12 @@
                                   </tr>
                                   <tr class="text-center">
                                     <td class="text-end">5,0000 V</td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
                                     <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                     <td class="text-end">0,1000mV</td>
                                     <td class="text-end">1,1000mV</td>
@@ -423,12 +423,12 @@
                                   <tr class="text-center">
                                     <td rowspan="3">60 V</td>
                                     <td class="text-end">10,0000 V</td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
-                                    <td><input type="text" style="width: 100px" readonly></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
+                                    <td><input type="text" style="width: 100px"></td>
                                     <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                     <td class="text-end">0,1000mV</td>
                                     <td class="text-end">1,1000mV</td>
@@ -436,12 +436,12 @@
                                   </tr>
                                   <tr class="text-center">
                                       <td class="text-end">30,000 V</td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
                                       <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                       <td class="text-end">0,1000mV</td>
                                       <td class="text-end">1,1000mV</td>
@@ -449,12 +449,12 @@
                                     </tr>
                                     <tr class="text-center">
                                       <td class="text-end">50,000 V</td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
-                                      <td><input type="text" style="width: 100px" readonly></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
+                                      <td><input type="text" style="width: 100px"></td>
                                       <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                       <td class="text-end">0,1000mV</td>
                                       <td class="text-end">1,1000mV</td>
@@ -463,12 +463,12 @@
                                     <tr class="text-center">
                                         <td rowspan="3">600 V</td>
                                         <td class="text-end">100,000 V</td>
-                                        <td><input type="text" style="width: 100px" readonly></td>
-                                        <td><input type="text" style="width: 100px" readonly></td>
-                                        <td><input type="text" style="width: 100px" readonly></td>
-                                        <td><input type="text" style="width: 100px" readonly></td>
-                                        <td><input type="text" style="width: 100px" readonly></td>
-                                        <td><input type="text" style="width: 100px" readonly></td>
+                                        <td><input type="text" style="width: 100px"></td>
+                                        <td><input type="text" style="width: 100px"></td>
+                                        <td><input type="text" style="width: 100px"></td>
+                                        <td><input type="text" style="width: 100px"></td>
+                                        <td><input type="text" style="width: 100px"></td>
+                                        <td><input type="text" style="width: 100px"></td>
                                         <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                         <td class="text-end">0,1000mV</td>
                                         <td class="text-end">1,1000mV</td>
@@ -476,12 +476,12 @@
                                       </tr>
                                       <tr class="text-center">
                                           <td class="text-end">300,00 V</td>
-                                          <td><input type="text" style="width: 100px" readonly></td>
-                                          <td><input type="text" style="width: 100px" readonly></td>
-                                          <td><input type="text" style="width: 100px" readonly></td>
-                                          <td><input type="text" style="width: 100px" readonly></td>
-                                          <td><input type="text" style="width: 100px" readonly></td>
-                                          <td><input type="text" style="width: 100px" readonly></td>
+                                          <td><input type="text" style="width: 100px"></td>
+                                          <td><input type="text" style="width: 100px"></td>
+                                          <td><input type="text" style="width: 100px"></td>
+                                          <td><input type="text" style="width: 100px"></td>
+                                          <td><input type="text" style="width: 100px"></td>
+                                          <td><input type="text" style="width: 100px"></td>
                                           <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                           <td class="text-end">0,1000mV</td>
                                           <td class="text-end">1,1000mV</td>
@@ -489,12 +489,12 @@
                                         </tr>
                                         <tr class="text-center">
                                           <td class="text-end">500,00 V</td>
-                                          <td><input type="text" style="width: 100px" readonly></td>
-                                          <td><input type="text" style="width: 100px" readonly></td>
-                                          <td><input type="text" style="width: 100px" readonly></td>
-                                          <td><input type="text" style="width: 100px" readonly></td>
-                                          <td><input type="text" style="width: 100px" readonly></td>
-                                          <td><input type="text" style="width: 100px" readonly></td>
+                                          <td><input type="text" style="width: 100px"></td>
+                                          <td><input type="text" style="width: 100px"></td>
+                                          <td><input type="text" style="width: 100px"></td>
+                                          <td><input type="text" style="width: 100px"></td>
+                                          <td><input type="text" style="width: 100px"></td>
+                                          <td><input type="text" style="width: 100px"></td>
                                           <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                           <td class="text-end">0,1000mV</td>
                                           <td class="text-end">1,1000mV</td>
@@ -503,12 +503,12 @@
                                         <tr class="text-center">
                                             <td rowspan="2">1000 V</td>
                                             <td class="text-end">700,00 V</td>
-                                            <td><input type="text" style="width: 100px" readonly></td>
-                                            <td><input type="text" style="width: 100px" readonly></td>
-                                            <td><input type="text" style="width: 100px" readonly></td>
-                                            <td><input type="text" style="width: 100px" readonly></td>
-                                            <td><input type="text" style="width: 100px" readonly></td>
-                                            <td><input type="text" style="width: 100px" readonly></td>
+                                            <td><input type="text" style="width: 100px"></td>
+                                            <td><input type="text" style="width: 100px"></td>
+                                            <td><input type="text" style="width: 100px"></td>
+                                            <td><input type="text" style="width: 100px"></td>
+                                            <td><input type="text" style="width: 100px"></td>
+                                            <td><input type="text" style="width: 100px"></td>
                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                             <td class="text-end">0,1000mV</td>
                                             <td class="text-end">1,1000mV</td>
@@ -516,12 +516,12 @@
                                           </tr>
                                           <tr class="text-center">
                                               <td class="text-end">1000,00 V</td>
-                                              <td><input type="text" style="width: 100px" readonly></td>
-                                              <td><input type="text" style="width: 100px" readonly></td>
-                                              <td><input type="text" style="width: 100px" readonly></td>
-                                              <td><input type="text" style="width: 100px" readonly></td>
-                                              <td><input type="text" style="width: 100px" readonly></td>
-                                              <td><input type="text" style="width: 100px" readonly></td>
+                                              <td><input type="text" style="width: 100px"></td>
+                                              <td><input type="text" style="width: 100px"></td>
+                                              <td><input type="text" style="width: 100px"></td>
+                                              <td><input type="text" style="width: 100px"></td>
+                                              <td><input type="text" style="width: 100px"></td>
+                                              <td><input type="text" style="width: 100px"></td>
                                               <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                               <td class="text-end">0,1000mV</td>
                                               <td class="text-end">1,1000mV</td>
@@ -530,9 +530,9 @@
                                         </tbody>
                                     </table>
                                     <div class="btn pt-3 pb-0" style="float: right;">
-                                      <a href="#" class="btn btn-primary" >Submit</a>
-                                      <a href="#" class="btn btn-secondary">Edit</a>
-                                      <a href="#" class="btn btn-danger" >Clear</a>
+                                      <a href="input.html" class="btn btn-primary ">Submit</a>
+                                      <a href="edit.html" class="btn btn-secondary ">Edit</a>
+                                      <a href="delete.html" class="btn btn-danger " >Clear</a>
                                   </div>
                                     </div>
                                     </div>
@@ -568,12 +568,12 @@
                                                     <td rowspan="6">Arus DC</td>
                                                     <td>500 μA</td>
                                                     <td class="text-end">400,000 μA</td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
                                                     <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                     <td class="text-end">0,1000mV</td>
                                                     <td class="text-end">1,1000mV</td>
@@ -582,12 +582,12 @@
                                                   <tr class="text-center">
                                                     <td>5000 μA</td>
                                                     <td class="text-end">4000,000 μA</td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
                                                     <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                     <td class="text-end">0,1000mV</td>
                                                     <td class="text-end">1,1000mV</td>
@@ -596,12 +596,12 @@
                                                   <tr class="text-center">
                                                       <td>50 mA</td>
                                                       <td class="text-end">40,000 mA</td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
                                                       <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                       <td class="text-end">0,1000mV</td>
                                                       <td class="text-end">1,1000mV</td>
@@ -611,12 +611,12 @@
                                                   <tr class="text-center">
                                                     <td>400 mA</td>
                                                     <td class="text-end">350,000 mA</td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
-                                                    <td><input type="text" style="width: 100px" readonly></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
+                                                    <td><input type="text" style="width: 100px"></td>
                                                     <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                     <td class="text-end">0,1000mV</td>
                                                     <td class="text-end">1,1000mV</td>
@@ -625,12 +625,12 @@
                                                   <tr class="text-center">
                                                       <td>5 A</td>
                                                       <td class="text-end">4,000 A</td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
                                                       <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                       <td class="text-end">0,1000mV</td>
                                                       <td class="text-end">1,1000mV</td>
@@ -639,12 +639,12 @@
                                                     <tr class="text-center">
                                                       <td>10 A</td>
                                                       <td class="text-end">9,000 A</td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
-                                                      <td><input type="text" style="width: 100px" readonly></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
+                                                      <td><input type="text" style="width: 100px"></td>
                                                       <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                       <td class="text-end">0,1000mV</td>
                                                       <td class="text-end">1,1000mV</td>
@@ -653,9 +653,9 @@
                                               </tbody>
                                               </table>
                                             <div class="btn pt-3 pb-0" style="float: right;">
-                                              <a href="#" class="btn btn-primary" >Submit</a>
-                                              <a href="#" class="btn btn-secondary">Edit</a>
-                                              <a href="#" class="btn btn-danger" >Clear</a>
+                                              <a href="input.html" class="btn btn-primary ">Submit</a>
+                                              <a href="edit.html" class="btn btn-secondary ">Edit</a>
+                                              <a href="delete.html" class="btn btn-danger " >Clear</a>
                                           </div>
                                             </div>
                                             </div>
@@ -690,12 +690,12 @@
                                                             <td rowspan="6">Arus AC</td>
                                                             <td>500 μA</td>
                                                             <td class="text-end">400,000 μA</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -704,12 +704,12 @@
                                                           <tr class="text-center">
                                                             <td>5000 μA</td>
                                                             <td class="text-end">4000,000 μA</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -718,12 +718,12 @@
                                                           <tr class="text-center">
                                                               <td>50 mA</td>
                                                               <td class="text-end">40,000 mA</td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
                                                               <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                               <td class="text-end">0,1000mV</td>
                                                               <td class="text-end">1,1000mV</td>
@@ -733,12 +733,12 @@
                                                           <tr class="text-center">
                                                             <td>400 mA</td>
                                                             <td class="text-end">350,000 mA</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -747,12 +747,12 @@
                                                           <tr class="text-center">
                                                               <td>5 A</td>
                                                               <td class="text-end">4,000 A</td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
                                                               <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                               <td class="text-end">0,1000mV</td>
                                                               <td class="text-end">1,1000mV</td>
@@ -761,12 +761,12 @@
                                                             <tr class="text-center">
                                                               <td>10 A</td>
                                                               <td class="text-end">9,000 A</td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
-                                                              <td><input type="text" style="width: 100px" readonly></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
                                                               <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                               <td class="text-end">0,1000mV</td>
                                                               <td class="text-end">1,1000mV</td>
@@ -775,9 +775,9 @@
                                                       </tbody>
                                                       </table>
                                                     <div class="btn pt-3 pb-0" style="float: right;">
-                                                      <a href="#" class="btn btn-primary" >Submit</a>
-                                                      <a href="#" class="btn btn-secondary">Edit</a>
-                                                      <a href="#" class="btn btn-danger" >Clear</a>
+                                                      <a href="input.html" class="btn btn-primary ">Submit</a>
+                                                      <a href="edit.html" class="btn btn-secondary ">Edit</a>
+                                                      <a href="delete.html" class="btn btn-danger " >Clear</a>
                                                   </div>
                                                   </div>
                                                 </div>
@@ -812,12 +812,12 @@
                                                           <td rowspan="7">Resistansi</td>
                                                           <td rowspan="2">600 Ω</td>
                                                           <td class="text-end">10,00 Ω</td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
                                                           <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                           <td class="text-end">0,1000mV</td>
                                                           <td class="text-end">1,1000mV</td>
@@ -825,12 +825,12 @@
                                                         </tr>
                                                         <tr class="text-center">
                                                           <td class="text-end">100,00 Ω</td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
                                                           <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                           <td class="text-end">0,1000mV</td>
                                                           <td class="text-end">1,1000mV</td>
@@ -839,12 +839,12 @@
                                                         <tr class="text-center">
                                                             <td rowspan="1">6 KΩ</td>
                                                             <td class="text-end">1,0000 Ω</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -853,12 +853,12 @@
                                                           <tr class="text-center">
                                                             <td rowspan="1">60 KΩ</td>
                                                             <td class="text-end">10,000 Ω</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -867,12 +867,12 @@
                                                           <tr class="text-center">
                                                             <td rowspan="1">600 KΩ</td>
                                                             <td class="text-end">100,00 Ω</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -881,12 +881,12 @@
                                                           <tr class="text-center">
                                                             <td rowspan="1">6 MΩ</td>
                                                             <td class="text-end">1,0000 MΩ</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -895,12 +895,12 @@
                                                           <tr class="text-center">
                                                             <td rowspan="1">50 MΩ</td>
                                                             <td class="text-end">10,0000 MΩ</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -909,9 +909,9 @@
                                                         </tbody>
                                                     </table>
                                                     <div class="btn pt-3 pb-0" style="float: right;">
-                                                      <a href="#" class="btn btn-primary" >Submit</a>
-                                                      <a href="#" class="btn btn-secondary">Edit</a>
-                                                      <a href="#" class="btn btn-danger" >Clear</a>
+                                                      <a href="input.html" class="btn btn-primary ">Submit</a>
+                                                      <a href="edit.html" class="btn btn-secondary ">Edit</a>
+                                                      <a href="delete.html" class="btn btn-danger " >Clear</a>
                                                   </div>
                                                   </div>
                                                 </div>
@@ -946,12 +946,12 @@
                                                           <td rowspan="12">Frequensi</td>
                                                           <td rowspan="3">199,99 Hz</td>
                                                           <td class="text-end">20,000 Hz</td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
-                                                          <td><input type="text" style="width: 100px" readonly></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
                                                           <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                           <td class="text-end">0,1000mV</td>
                                                           <td class="text-end">1,1000mV</td>
@@ -959,12 +959,12 @@
                                                         </tr>
                                                         <tr class="text-center">
                                                             <td class="text-end">100,000 Hz</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -972,12 +972,12 @@
                                                           </tr>
                                                           <tr class="text-center">
                                                             <td class="text-end">180,000 Hz</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -986,12 +986,12 @@
                                                         <tr class="text-center">
                                                             <td rowspan="3">1999,9 Hz</td>
                                                             <td class="text-end">200,000 Hz</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -999,12 +999,12 @@
                                                           </tr>
                                                           <tr class="text-center">
                                                             <td class="text-end">1000,0 Hz</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -1012,12 +1012,12 @@
                                                           </tr>
                                                           <tr class="text-center">
                                                             <td class="text-end">1800,0 Hz</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -1026,12 +1026,12 @@
                                                           <tr class="text-center">
                                                             <td rowspan="3">19,999 KHz</td>
                                                             <td class="text-end">2,0000 KHz</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -1039,12 +1039,12 @@
                                                           </tr>
                                                           <tr class="text-center">
                                                             <td class="text-end">10,0000 KHz</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -1052,12 +1052,12 @@
                                                           </tr>
                                                           <tr class="text-center">
                                                             <td class="text-end">18,0000 KHz</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -1066,12 +1066,12 @@
                                                           <tr class="text-center">
                                                             <td rowspan="3">199,99 KHz</td>
                                                             <td class="text-end">20,0000 KHz</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -1079,12 +1079,12 @@
                                                           </tr>
                                                           <tr class="text-center">
                                                             <td class="text-end">100,00 KHz</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -1092,12 +1092,12 @@
                                                           </tr>
                                                           <tr class="text-center">
                                                             <td class="text-end">180,00 KHz</td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
-                                                            <td><input type="text" style="width: 100px" readonly></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
                                                             <td><input type="text" style="width: 100px; text-align: right" value="0" readonly></td>
                                                             <td class="text-end">0,1000mV</td>
                                                             <td class="text-end">1,1000mV</td>
@@ -1106,9 +1106,9 @@
                                                         </tbody>
                                                     </table>
                                                     <div class="btn pt-3 pb-0" style="float: right;">
-                                                      <a href="#" class="btn btn-primary" >Submit</a>
-                                                      <a href="#" class="btn btn-secondary">Edit</a>
-                                                      <a href="#" class="btn btn-danger" >Clear</a>
+                                                      <a href="input.html" class="btn btn-primary ">Submit</a>
+                                                      <a href="edit.html" class="btn btn-secondary ">Edit</a>
+                                                      <a href="delete.html" class="btn btn-danger " >Clear</a>
                                                   </div>
                                                   </div>
                                                 </div>
