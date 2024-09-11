@@ -114,7 +114,7 @@
                           <td>
                             <div class="btn p-0">
                               <a href="edit_kalibrasi.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-secondary">Edit</a>
-                              <a href="edit.php" class="btn btn-danger">Delete</a>
+                              <a href="hapus_kalibrasi.php?id=<?php echo $data['detail_order'] ?>" class="btn btn-danger">Delete</a>
                               <a href="detail_kalibrasi.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-info" >Detail</a>
                             </div>
                           </td>
