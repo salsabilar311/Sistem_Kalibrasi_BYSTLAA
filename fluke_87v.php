@@ -67,21 +67,9 @@
           </nav>
 
           <div class="container-fluid p-4">
-            <h4>FLUKE 87V</h4>
-
-            <!-- button no order -->
-            <div class="dropdown">
-              <a class="btn btn-primary dropdown-toggle" style="width: 200px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                No. Order
-              </a>
-              <ul class="dropdown-menu">
-                <?php
-                  $data_kalibrasi = mysqli_query($conn, "SELECT * FROM detail");
-                  foreach($data_kalibrasi as $row) {
-                ?>
-                <li><a class="dropdown-item" href="#"><?php echo $row['detail_order']; ?></a></li>
-                <?php } ?>
-              </ul>
+            <div class="row">
+              <div class="col-6"><h4>Form Input Data Fluke 87 V</h4></div>
+              <div class="col-6" style="text-align: right"><a href="input_pengukuran.php" class="btn btn-danger rounded-circle">X</a></div>
             </div>
 
             <!-- tabel pengukuran kalibrasi -->
