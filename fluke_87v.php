@@ -67,7 +67,7 @@
           </nav>
 
           <div class="container-fluid p-4">
-            <h4>Input Pengukuran Kalibrasi</h4>
+            <h4>FLUKE 87V</h4>
 
             <!-- button no order -->
             <div class="dropdown">

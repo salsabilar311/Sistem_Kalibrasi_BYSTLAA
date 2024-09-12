@@ -79,7 +79,7 @@
                   $data_kalibrasi = mysqli_query($conn, "SELECT * FROM detail");
                   foreach($data_kalibrasi as $row) {
                 ?>
-                <li><a class="dropdown-item" href="#"><?php echo $row['detail_order']; ?></a></li>
+                <li><a class="dropdown-item" href="periksa_form.php?detail_order=<?php echo $row['detail_order']; ?>"><?php echo $row['detail_order']; ?></a></li>
                 <?php } ?>
               </ul>
             </div>
