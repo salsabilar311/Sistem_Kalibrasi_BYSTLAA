@@ -15,6 +15,9 @@
     $tgl_sertifikat=$_POST['tgl_sertifikat'];
     $parts = explode('-', $detail_order);
     $no_order_from_detail = trim($parts[0]);
+    // ngambil tahun nya aja
+    $tahun = date("Y", strtotime($tgl_kalibrasi));
+    $new_detail_order = $no_order . "-" . $calibrator . "-" . $asal . "-" . $tahun;
 
     $sql = "UPDATE detail
             SET no_order = '$no_order',
@@ -25,7 +28,8 @@
             tgl_masuk = '$tgl_masuk',
             no_seri = '$no_seri',
             region = '$asal',
-            tgl_sertifikat = '$tgl_sertifikat'
+            tgl_sertifikat = '$tgl_sertifikat',
+            detail_order = '$new_detail_order'
             WHERE no_order = '$no_order_from_detail'";
     $result=mysqli_query($conn, $sql);
     if($result){
@@ -122,7 +126,7 @@
                         <!-- no order DAN tgl kalibrasi -->
                         <div class="row">
                           <div class="col-2">No. Order</div>
-                          <div class="col-4"><input type="text" name="no_order" style="width: 100px;" value="<?php echo $data['no_order']; ?>" readonly></div>
+                          <div class="col-4"><input type="text" name="no_order" style="width: 100px;" value="<?php echo $data['no_order']; ?>"></div>
                           <div class="col-2">Tanggal Kalibrasi</div>
                           <div class="col-4"><input type="date" name="tgl_kalibrasi" value="<?php echo $data['tgl_kalibrasi']; ?>"></div>
                         </div> 
