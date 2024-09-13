@@ -118,7 +118,7 @@
                     <!-- no order DAN tgl kalibrasi -->
                     <div class="row">
                       <?php
-                        $query = "SELECT d.no_order, d.detail_order, m.nama_merk, t.nama_tipe, d.no_seri, d.tgl_kalibrasi, p.name_owner, d.calibrator, d.tgl_masuk, d.tgl_sertifikat, d.region, d.id_merk 
+                        $query = "SELECT d.no_order, d.detail_order, m.nama_merk, t.nama_tipe, d.no_seri, d.tgl_kalibrasi, p.name_owner, d.calibrator, d.tgl_masuk, d.tgl_sertifikat, d.region, d.id_merk, d.id_tipe 
                                   FROM detail d
                                   INNER JOIN merk m ON d.id_merk = m.id_merk
                                   INNER JOIN tipe t ON d.id_tipe = t.id_tipe
@@ -168,12 +168,15 @@
 
                             // Initialize default option when the page loads
                             $(document).ready(function() {
-                                // Pada saat halaman pertama kali dimuat, kita akan mengambil id_merk yang aktif
+                                // Ambil id_merk yang aktif
                                 var id_merk = $('#id_merk').val();
                                 
-                                // Memuat opsi tipe yang sesuai dengan id_merk yang aktif
-                                $.get("ambil-data.php?id=" + id_merk, function(data) {
-                                    $('#id_tipe').html(data); // Isi dropdown tipe dengan hasil query
+                                // Cek apakah id_tipe dari PHP valid atau tidak
+                                var id_tipe_terpilih = <?php echo isset($data['id_tipe']) ? json_encode($data['id_tipe']) : 'null'; ?>;
+                                
+                                // Memuat opsi tipe berdasarkan id_merk dan id_tipe yang sudah dipilih (jika ada)
+                                $.get("pilih_tipe.php", { id: id_merk, selected_tipe: id_tipe_terpilih }, function(data) {
+                                    $('#id_tipe').html(data); // Isi dropdown tipe dengan data dari server
                                 });
                             });
                           </script>
