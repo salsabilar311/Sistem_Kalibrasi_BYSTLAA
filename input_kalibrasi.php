@@ -15,7 +15,7 @@
 
     $sql = "INSERT INTO detail (no_order, tgl_kalibrasi, id_merk, calibrator, id_tipe, tgl_masuk, no_seri, region, tgl_sertifikat, detail_order)
         VALUES ('$no_order', '$tgl_kalibrasi', '$merk', '$calibrator', '$tipe', '$tgl_masuk', '$no_seri', '$asal', '$tgl_sertifikat',
-        CONCAT('$no_order', '-', '$calibrator', '-', '$asal', '-', YEAR('$tgl_kalibrasi')))";
+        CONCAT('$no_order', '-', '$calibrator', '-BYSTLAA-', YEAR('$tgl_kalibrasi')))";
     $result=mysqli_query($conn, $sql);
     if($result){
       header('Location: data_kalibrasi.php');
@@ -107,15 +107,15 @@
                         $no_order = mt_rand(1, 999);
                       ?>
                       <div class="col-2">No. Order</div>
-                      <div class="col-4"><input type="text" name="no_order" style="width: 100px;" value="<?php echo $no_order; ?>"></div>
+                      <div class="col-4"><input type="text" name="no_order" style="width: 100px;" value="<?php echo $no_order; ?>" required></div>
                       <div class="col-2">Tanggal Kalibrasi</div>
-                      <div class="col-4"><input type="date" name="tgl_kalibrasi"></div>
+                      <div class="col-4"><input type="date" name="tgl_kalibrasi" required></div>
                     </div>
 
                     <!-- merk DAN kalibrator -->
                     <div class="row mt-2">
                       <div class="col-2">Merk</div>
-                      <div class="col-4"><select class="p-1" name="id_merk" id="id_merk" onchange="tipe()" >
+                      <div class="col-4"><select class="p-1" name="id_merk" id="id_merk" onchange="tipe()" required>
                         <?php
                           $query = mysqli_query($conn, "select * from merk");
                           while($data = mysqli_fetch_array($query)){                    
@@ -127,7 +127,7 @@
                       </select>
                       </div>
                       <div class="col-2">Kalibrator</div>
-                      <div class="col-4"><select class="p-1" name="calibrator" id="calibrator">
+                      <div class="col-4"><select class="p-1" name="calibrator" id="calibrator" required>
                         <?php
                           $query_k = mysqli_query($conn, "SELECT * FROM kalibrator");
                           while($data = mysqli_fetch_array($query_k)){
@@ -142,30 +142,47 @@
                       <!-- tipe DAN tgl masuk -->
                       <div class="row mt-2">
                         <div class="col-2">Tipe</div>
-                        <div class="col-4"><select class="p-1" name="id_tipe" id="id_tipe"></select>
-                          <script>
-                            function tipe(){
-                              var id_merk = $('#id_merk').val();
-                              $('#id_tipe').load("ambil-data.php?id="+id_merk+"");
+                        <div class="col-4"><select class="p-1" name="id_tipe" id="id_tipe" required></select>
+                        <script>
+                            function tipe() {
+                                var id_merk = $('#id_merk').val();
+                                // Reset dropdown with default option
+                                $('#id_tipe').html('<select></select>');
+                                
+                                // Load new options from server and append to the dropdown
+                                $.get("ambil-data.php?id=" + id_merk, function(data) {
+                                    $('#id_tipe').append(data);
+                                });
                             }
+
+                            // Initialize default option when the page loads
+                            $(document).ready(function() {
+                                // Pada saat halaman pertama kali dimuat, kita akan mengambil id_merk yang aktif
+                                var id_merk = $('#id_merk').val();
+                                
+                                // Memuat opsi tipe yang sesuai dengan id_merk yang aktif
+                                $.get("ambil-data.php?id=" + id_merk, function(data) {
+                                    $('#id_tipe').html(data); // Isi dropdown tipe dengan hasil query
+                                });
+                            });
                           </script>
                         </div>
                         <div class="col-2">Tanggal Masuk</div>
-                        <div class="col-4"><input type="date" name="tgl_masuk" id="tgl_masuk"></div>
+                        <div class="col-4"><input type="date" name="tgl_masuk" id="tgl_masuk" required></div>
                       </div>
                        
                       <!-- no seri DAN tgl sertifikat -->
                       <div class="row mt-2">
                           <div class="col-2">No. Seri</div>
-                          <div class="col-4"><input type="text" name="no_seri" style="width: 50%;"></div>
+                          <div class="col-4"><input type="text" name="no_seri" style="width: 50%;" required></div>
                           <div class="col-2">Tanggal Sertifikat</div>
-                          <div class="col-4"><input type="date" name="tgl_sertifikat" id="tgl_sertifikat"></div>
+                          <div class="col-4"><input type="date" name="tgl_sertifikat" id="tgl_sertifikat" required></div>
                       </div>
 
                       <!-- asal -->
                       <div class="row mt-2">
                         <div class="col-2">Asal</div>
-                        <div class="col-4"><select class="p-1" name="asal" id="asal">
+                        <div class="col-4"><select class="p-1" name="asal" id="asal" required>
                         <?php
                             $query_asal = mysqli_query($conn, "SELECT * FROM pemilik");
                             while($data = mysqli_fetch_array($query_asal)){
