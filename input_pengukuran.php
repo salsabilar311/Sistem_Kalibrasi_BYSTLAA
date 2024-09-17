@@ -100,7 +100,7 @@
                             <td><?= $data['tgl_masuk']; ?></td>
                             <td>
                               <div class="btn p-0">
-                                <a href="periksa_form.php?detail_order=<?php echo $data['detail_order']; ?>" class="btn btn-secondary">Input Data</a>
+                                <a href="periksa_form.php?detail_order=<?php echo $data['detail_order']; ?>" class="btn btn-primary">Input Data</a>
                             </div>
                             </td>
                           </tr>

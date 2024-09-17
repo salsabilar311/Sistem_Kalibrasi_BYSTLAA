@@ -17,7 +17,7 @@
             $merk = $row['nama_merk'];
             $tipe =  $row['nama_tipe'];
             $page = $merk . "_" . $tipe . ".php";
-            header('Location: ' . $page);
+            header('Location: ' . $page . '?detail_order=' . $detail_order);
             exit();
         }
     } else {
