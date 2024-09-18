@@ -21,7 +21,7 @@
     foreach($standar as $index => $value) {
         // Hitung rata-rata dari nilai x1 hingga x6
         $rata_rata = ($x1[$index] + $x2[$index] + $x3[$index] + $x4[$index] + $x5[$index] + $x6[$index]) / 6;
-        $avg = number_format($rata_rata, 1) . " " . explode(' ', $range[0])[1]; // Tambahkan satuan pada rata-rata
+        $avg = number_format($rata_rata, 1) . " " . explode(' ', $range[$index])[1]; // Tambahkan satuan pada rata-rata
 
         // Query untuk insert setiap data pengukuran
         $sql = "INSERT INTO pengukuran (detail_order, besaran_ukur, range_, standar, x1, x2, x3, x4, x5, x6, rata_rata, koreksi_standar, std_dev, rata_rata_koreksi)
@@ -84,21 +84,11 @@
 
           <div class="menu">
             <ul class="list-unstyled pt-3">
-              <li class="">
-                <a href="index.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-home"></i> Beranda</a>
-              </li>
-              <li class="">
-                <a href="data_kalibrasi.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-table"></i> Form Data Kalibrasi</a>
-              </li>
-              <li class="">
-                <a href="input_pengukuran.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-keyboard"></i> Form Input Pengukuran</a>
-              </li>
-              <li class="">
-                <a href="progres.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-chart-bar"></i> Form Progres Kalibrasi</a>
-              </li>
-              <li class="">
-                <a href="analisis.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-diagnoses"></i> Analisis Kalibrasi</a>
-              </li>
+              <li class=""><a href="index.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-home"></i> Beranda</a></li>
+              <li class=""><a href="data_kalibrasi.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-table"></i> Form Data Kalibrasi</a></li>
+              <li class=""><a href="input_pengukuran.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-keyboard"></i> Form Input Kalibrasi</a></li>
+              <li class=""><a href="progres.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-chart-bar"></i> Form Progress Kalibrasi</a></li>
+              <li class=""><a href="analisis.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-diagnoses"></i> Analisis Kalibrasi</a></li>
             </ul>
           </div>
 
@@ -130,11 +120,10 @@
           <div class="container-fluid p-4">
             <div class="row">
               <div class="col-6"><h4>Form Input Data Fluke 87 V</h4></div>
-              <div class="col-6" style="text-align: right"><a href="input_pengukuran.php" class="btn btn-danger rounded-circle">X</a></div>
+              <div class="col-6" style="text-align: right"><a href="input_pengukuran.php" class="btn btn-danger rounded-circle">X</a></div>              
             </div>
 
-            <!-- tabel pengukuran kalibrasi -->
-            <!-- tampilkan hasil rata-rata -->
+            <!-- SCRIPT JAVASCRIPT (MENAMPILKAN RATA-RATA) -->
             <script>
               function calculateAVG(row) {
                   // Ambil nilai input x1 hingga x6
@@ -163,6 +152,9 @@
                 });
               }
             </script>
+            <!-- SCRIPT JAVASCRIPT (MENAMPILKAN RATA-RATA) -->
+            
+            <!-- TABEL PENGUKURAN KALIBRASI -->
             <!-- TEGANGAN DC -->
             <div class="row">
               <div class="card p-0 m-2">
@@ -413,255 +405,905 @@
                 </form>
               </div>
             </div>
-              <!-- TEGANGAN DC -->
+            <!-- TEGANGAN DC -->
 
-              <!-- TEGANGAN AC -->
-              <div class="row">
-                <div class="card p-0 m-2">
+            <!-- TEGANGAN AC -->
+            <div class="row">
+              <div class="card p-0 m-2">
+                <form action="" method="POST">
                   <div class="card-header fw-bold">Pengukuran Tegangan AC</div>
-                  <form action="" method="POST">
-                    <div class="card-body">
-                      <table class="table-bordered table-sm fs-6" style="width: 100%">
-                        <thead class="text-white bg-dark text-center">
-                          <tr>
-                            <td rowspan="2">Besaran Ukur</td>
-                            <td rowspan="2">Range</td>
-                            <td rowspan="2">Standar</td>
-                            <td colspan="10">uut</td>
-                          </tr>
-                          <tr>
-                            <td>x1</td>
-                            <td>x2</td>
-                            <td>x3</td>
-                            <td>x4</td>
-                            <td>x5</td>
-                            <td>x6</td>
-                            <td>RATA-RATA</td>
-                            <td>KOREKSI STANDAR</td>
-                            <td>STD DEVIASI</td>
-                            <td>RATA-RATA + KOREKSI</td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="text-center">
-                            <td rowspan="14">Tegangan AC<input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required></td>
-                            <td rowspan="3">600 mV<input type="hidden" style="width: 100px" name="range[]" id="range" value="600 mV" readonly required></td>
-                            <td class="text-end">100.000 mV<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="100.000 mV" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-15" name="x1[]" oninput="calculateAVG(15)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-15" name="x2[]" oninput="calculateAVG(15)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-15" name="x3[]" oninput="calculateAVG(15)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-15" name="x4[]" oninput="calculateAVG(15)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-15" name="x5[]" oninput="calculateAVG(15)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-15" name="x6[]" oninput="calculateAVG(15)" required></td>
-                            <td id="avg-15">0<input type="hidden" name="rata_rata[]" data-row="15" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <input type="hidden" style="width: 100px" name="range[]" id="range" value="600 mV" readonly required>
-                            <td class="text-end">300.000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="300.000 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-16" name="x1[]" oninput="calculateAVG(16)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-16" name="x2[]" oninput="calculateAVG(16)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-16" name="x3[]" oninput="calculateAVG(16)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-16" name="x4[]" oninput="calculateAVG(16)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-16" name="x5[]" oninput="calculateAVG(16)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-16" name="x6[]" oninput="calculateAVG(16)" required></td>
-                            <td id="avg-16">0<input type="hidden" name="rata_rata[]" data-row="16" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <input type="hidden" style="width: 100px" name="range[]" id="range" value="600 mV" readonly required>
-                            <td class="text-end">500.000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="500.000 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-17" name="x1[]" oninput="calculateAVG(17)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-17" name="x2[]" oninput="calculateAVG(17)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-17" name="x3[]" oninput="calculateAVG(17)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-17" name="x4[]" oninput="calculateAVG(17)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-17" name="x5[]" oninput="calculateAVG(17)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-17" name="x6[]" oninput="calculateAVG(17)" required></td>
-                            <td id="avg-17">0<input type="hidden" name="rata_rata[]" data-row="17" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <td rowspan="3">6 V<input type="hidden" style="width: 100px" name="range[]" id="range" value="6 V" readonly required></td>
-                            <td class="text-end">1.00000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="1.00000 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-18" name="x1[]" oninput="calculateAVG(18)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-18" name="x2[]" oninput="calculateAVG(18)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-18" name="x3[]" oninput="calculateAVG(18)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-18" name="x4[]" oninput="calculateAVG(18)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-18" name="x5[]" oninput="calculateAVG(18)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-18" name="x6[]" oninput="calculateAVG(18)" required></td>
-                            <td id="avg-18">0<input type="hidden" name="rata_rata[]" data-row="18" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <input type="hidden" style="width: 100px" name="range[]" id="range" value="6 V" readonly required>
-                            <td class="text-end">3.0000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="3.0000 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-19" name="x1[]" oninput="calculateAVG(19)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-19" name="x2[]" oninput="calculateAVG(19)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-19" name="x3[]" oninput="calculateAVG(19)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-19" name="x4[]" oninput="calculateAVG(19)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-19" name="x5[]" oninput="calculateAVG(19)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-19" name="x6[]" oninput="calculateAVG(19)" required></td>
-                            <td id="avg-19">0<input type="hidden" name="rata_rata[]" data-row="19" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <input type="hidden" style="width: 100px" name="range[]" id="range" value="6 V" readonly required>
-                            <td class="text-end">5.0000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="5.0000 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-20" name="x1[]" oninput="calculateAVG(20)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-20" name="x2[]" oninput="calculateAVG(20)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-20" name="x3[]" oninput="calculateAVG(20)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-20" name="x4[]" oninput="calculateAVG(20)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-20" name="x5[]" oninput="calculateAVG(20)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-20" name="x6[]" oninput="calculateAVG(20)" required></td>
-                            <td id="avg-20">0<input type="hidden" name="rata_rata[]" data-row="20" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <td rowspan="3">60 V<input type="hidden" style="width: 100px" name="range[]" id="range" value="60 V" readonly required></td>
-                            <td class="text-end">10.0000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="10.0000 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-21" name="x1[]" oninput="calculateAVG(21)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-21" name="x2[]" oninput="calculateAVG(21)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-21" name="x3[]" oninput="calculateAVG(21)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-21" name="x4[]" oninput="calculateAVG(21)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-21" name="x5[]" oninput="calculateAVG(21)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-21" name="x6[]" oninput="calculateAVG(21)" required></td>
-                            <td id="avg-21">0<input type="hidden" name="rata_rata[]" data-row="21" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <input type="hidden" style="width: 100px" name="range[]" id="range" value="60 V" readonly required>
-                            <td class="text-end">30.000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="30.000 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-22" name="x1[]" oninput="calculateAVG(22)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-22" name="x2[]" oninput="calculateAVG(22)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-22" name="x3[]" oninput="calculateAVG(22)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-22" name="x4[]" oninput="calculateAVG(22)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-22" name="x5[]" oninput="calculateAVG(22)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-22" name="x6[]" oninput="calculateAVG(22)" required></td>
-                            <td id="avg-22">0<input type="hidden" name="rata_rata[]" data-row="22" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <input type="hidden" style="width: 100px" name="range[]" id="range" value="60 V" readonly required>
-                            <td class="text-end">50.000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="50.000 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-23" name="x1[]" oninput="calculateAVG(23)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-23" name="x2[]" oninput="calculateAVG(23)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-23" name="x3[]" oninput="calculateAVG(23)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-23" name="x4[]" oninput="calculateAVG(23)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-23" name="x5[]" oninput="calculateAVG(23)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-23" name="x6[]" oninput="calculateAVG(23)" required></td>
-                            <td id="avg-23">0<input type="hidden" name="rata_rata[]" data-row="23" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <td rowspan="3">600 V<input type="hidden" style="width: 100px" name="range[]" id="range" value="600 V" readonly required></td>
-                            <td class="text-end">100.000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="100.000 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-24" name="x1[]" oninput="calculateAVG(24)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-24" name="x2[]" oninput="calculateAVG(24)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-24" name="x3[]" oninput="calculateAVG(24)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-24" name="x4[]" oninput="calculateAVG(24)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-24" name="x5[]" oninput="calculateAVG(24)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-24" name="x6[]" oninput="calculateAVG(24)" required></td>
-                            <td id="avg-24">0<input type="hidden" name="rata_rata[]" data-row="24" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <input type="hidden" style="width: 100px" name="range[]" id="range" value="600 V" readonly required>
-                            <td class="text-end">300.00 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="300.00 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-25" name="x1[]" oninput="calculateAVG(25)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-25" name="x2[]" oninput="calculateAVG(25)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-25" name="x3[]" oninput="calculateAVG(25)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-25" name="x4[]" oninput="calculateAVG(25)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-25" name="x5[]" oninput="calculateAVG(25)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-25" name="x6[]" oninput="calculateAVG(25)" required></td>
-                            <td id="avg-25">0<input type="hidden" name="rata_rata[]" data-row="25" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <input type="hidden" style="width: 100px" name="range[]" id="range" value="600 V" readonly required>
-                            <td class="text-end">500.00 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="500.00 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-26" name="x1[]" oninput="calculateAVG(26)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-26" name="x2[]" oninput="calculateAVG(26)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-26" name="x3[]" oninput="calculateAVG(26)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-26" name="x4[]" oninput="calculateAVG(26)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-26" name="x5[]" oninput="calculateAVG(26)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-26" name="x6[]" oninput="calculateAVG(26)" required></td>
-                            <td id="avg-26">0<input type="hidden" name="rata_rata[]" data-row="26" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <td rowspan="2">1000 V<input type="hidden" style="width: 100px" name="range[]" id="range" value="1000 V" readonly required></td>
-                            <td class="text-end">700.00 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="700.00 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-27" name="x1[]" oninput="calculateAVG(27)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-27" name="x2[]" oninput="calculateAVG(27)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-27" name="x3[]" oninput="calculateAVG(27)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-27" name="x4[]" oninput="calculateAVG(27)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-27" name="x5[]" oninput="calculateAVG(27)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-27" name="x6[]" oninput="calculateAVG(27)" required></td>
-                            <td id="avg-27">0<input type="hidden" name="rata_rata[]" data-row="27" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                          <tr class="text-center">
-                            <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
-                            <input type="hidden" style="width: 100px" name="range[]" id="range" value="1000 V" readonly required>
-                            <td class="text-end">1000.00 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="1000.00 V" readonly required></td>
-                            <td><input type="text" style="width: 100px" id="x1-28" name="x1[]" oninput="calculateAVG(28)" required></td>
-                            <td><input type="text" style="width: 100px" id="x2-28" name="x2[]" oninput="calculateAVG(28)" required></td>
-                            <td><input type="text" style="width: 100px" id="x3-28" name="x3[]" oninput="calculateAVG(28)" required></td>
-                            <td><input type="text" style="width: 100px" id="x4-28" name="x4[]" oninput="calculateAVG(28)" required></td>
-                            <td><input type="text" style="width: 100px" id="x5-28" name="x5[]" oninput="calculateAVG(28)" required></td>
-                            <td><input type="text" style="width: 100px" id="x6-28" name="x6[]" oninput="calculateAVG(28)" required></td>
-                            <td id="avg-28">0<input type="hidden" name="rata_rata[]" data-row="28" value="0" readonly></td>
-                            <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
-                            <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <div class="btn pt-3 pb-1" style="float: right;">
-                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                        <button onclick="hapusSemuaInput()" class="btn btn-danger">Clear</button>
-                      </div>
+                  <div class="card-body">
+                    <table class="table-bordered table-sm fs-6" style="width: 100%">
+                      <thead class="text-white bg-dark text-center">
+                        <tr>
+                          <td rowspan="2">Besaran Ukur</td>
+                          <td rowspan="2">Range</td>
+                          <td rowspan="2">Standar</td>
+                          <td colspan="10">uut</td>
+                        </tr>
+                        <tr>
+                          <td>x1</td>
+                          <td>x2</td>
+                          <td>x3</td>
+                          <td>x4</td>
+                          <td>x5</td>
+                          <td>x6</td>
+                          <td>RATA-RATA</td>
+                          <td>KOREKSI STANDAR</td>
+                          <td>STD DEVIASI</td>
+                          <td>RATA-RATA + KOREKSI</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="text-center">
+                          <td rowspan="14">Tegangan AC<input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required></td>
+                          <td rowspan="3">600 mV<input type="hidden" style="width: 100px" name="range[]" id="range" value="600 mV" readonly required></td>
+                          <td class="text-end">100.000 mV<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="100.000 mV" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-15" name="x1[]" oninput="calculateAVG(15)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-15" name="x2[]" oninput="calculateAVG(15)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-15" name="x3[]" oninput="calculateAVG(15)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-15" name="x4[]" oninput="calculateAVG(15)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-15" name="x5[]" oninput="calculateAVG(15)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-15" name="x6[]" oninput="calculateAVG(15)" required></td>
+                          <td id="avg-15">0<input type="hidden" name="rata_rata[]" data-row="15" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <input type="hidden" style="width: 100px" name="range[]" id="range" value="600 mV" readonly required>
+                          <td class="text-end">300.000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="300.000 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-16" name="x1[]" oninput="calculateAVG(16)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-16" name="x2[]" oninput="calculateAVG(16)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-16" name="x3[]" oninput="calculateAVG(16)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-16" name="x4[]" oninput="calculateAVG(16)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-16" name="x5[]" oninput="calculateAVG(16)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-16" name="x6[]" oninput="calculateAVG(16)" required></td>
+                          <td id="avg-16">0<input type="hidden" name="rata_rata[]" data-row="16" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <input type="hidden" style="width: 100px" name="range[]" id="range" value="600 mV" readonly required>
+                          <td class="text-end">500.000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="500.000 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-17" name="x1[]" oninput="calculateAVG(17)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-17" name="x2[]" oninput="calculateAVG(17)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-17" name="x3[]" oninput="calculateAVG(17)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-17" name="x4[]" oninput="calculateAVG(17)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-17" name="x5[]" oninput="calculateAVG(17)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-17" name="x6[]" oninput="calculateAVG(17)" required></td>
+                          <td id="avg-17">0<input type="hidden" name="rata_rata[]" data-row="17" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <td rowspan="3">6 V<input type="hidden" style="width: 100px" name="range[]" id="range" value="6 V" readonly required></td>
+                          <td class="text-end">1.00000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="1.00000 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-18" name="x1[]" oninput="calculateAVG(18)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-18" name="x2[]" oninput="calculateAVG(18)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-18" name="x3[]" oninput="calculateAVG(18)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-18" name="x4[]" oninput="calculateAVG(18)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-18" name="x5[]" oninput="calculateAVG(18)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-18" name="x6[]" oninput="calculateAVG(18)" required></td>
+                          <td id="avg-18">0<input type="hidden" name="rata_rata[]" data-row="18" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <input type="hidden" style="width: 100px" name="range[]" id="range" value="6 V" readonly required>
+                          <td class="text-end">3.0000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="3.0000 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-19" name="x1[]" oninput="calculateAVG(19)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-19" name="x2[]" oninput="calculateAVG(19)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-19" name="x3[]" oninput="calculateAVG(19)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-19" name="x4[]" oninput="calculateAVG(19)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-19" name="x5[]" oninput="calculateAVG(19)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-19" name="x6[]" oninput="calculateAVG(19)" required></td>
+                          <td id="avg-19">0<input type="hidden" name="rata_rata[]" data-row="19" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <input type="hidden" style="width: 100px" name="range[]" id="range" value="6 V" readonly required>
+                          <td class="text-end">5.0000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="5.0000 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-20" name="x1[]" oninput="calculateAVG(20)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-20" name="x2[]" oninput="calculateAVG(20)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-20" name="x3[]" oninput="calculateAVG(20)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-20" name="x4[]" oninput="calculateAVG(20)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-20" name="x5[]" oninput="calculateAVG(20)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-20" name="x6[]" oninput="calculateAVG(20)" required></td>
+                          <td id="avg-20">0<input type="hidden" name="rata_rata[]" data-row="20" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <td rowspan="3">60 V<input type="hidden" style="width: 100px" name="range[]" id="range" value="60 V" readonly required></td>
+                          <td class="text-end">10.0000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="10.0000 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-21" name="x1[]" oninput="calculateAVG(21)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-21" name="x2[]" oninput="calculateAVG(21)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-21" name="x3[]" oninput="calculateAVG(21)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-21" name="x4[]" oninput="calculateAVG(21)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-21" name="x5[]" oninput="calculateAVG(21)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-21" name="x6[]" oninput="calculateAVG(21)" required></td>
+                          <td id="avg-21">0<input type="hidden" name="rata_rata[]" data-row="21" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <input type="hidden" style="width: 100px" name="range[]" id="range" value="60 V" readonly required>
+                          <td class="text-end">30.000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="30.000 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-22" name="x1[]" oninput="calculateAVG(22)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-22" name="x2[]" oninput="calculateAVG(22)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-22" name="x3[]" oninput="calculateAVG(22)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-22" name="x4[]" oninput="calculateAVG(22)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-22" name="x5[]" oninput="calculateAVG(22)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-22" name="x6[]" oninput="calculateAVG(22)" required></td>
+                          <td id="avg-22">0<input type="hidden" name="rata_rata[]" data-row="22" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <input type="hidden" style="width: 100px" name="range[]" id="range" value="60 V" readonly required>
+                          <td class="text-end">50.000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="50.000 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-23" name="x1[]" oninput="calculateAVG(23)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-23" name="x2[]" oninput="calculateAVG(23)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-23" name="x3[]" oninput="calculateAVG(23)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-23" name="x4[]" oninput="calculateAVG(23)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-23" name="x5[]" oninput="calculateAVG(23)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-23" name="x6[]" oninput="calculateAVG(23)" required></td>
+                          <td id="avg-23">0<input type="hidden" name="rata_rata[]" data-row="23" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <td rowspan="3">600 V<input type="hidden" style="width: 100px" name="range[]" id="range" value="600 V" readonly required></td>
+                          <td class="text-end">100.000 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="100.000 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-24" name="x1[]" oninput="calculateAVG(24)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-24" name="x2[]" oninput="calculateAVG(24)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-24" name="x3[]" oninput="calculateAVG(24)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-24" name="x4[]" oninput="calculateAVG(24)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-24" name="x5[]" oninput="calculateAVG(24)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-24" name="x6[]" oninput="calculateAVG(24)" required></td>
+                          <td id="avg-24">0<input type="hidden" name="rata_rata[]" data-row="24" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <input type="hidden" style="width: 100px" name="range[]" id="range" value="600 V" readonly required>
+                          <td class="text-end">300.00 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="300.00 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-25" name="x1[]" oninput="calculateAVG(25)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-25" name="x2[]" oninput="calculateAVG(25)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-25" name="x3[]" oninput="calculateAVG(25)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-25" name="x4[]" oninput="calculateAVG(25)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-25" name="x5[]" oninput="calculateAVG(25)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-25" name="x6[]" oninput="calculateAVG(25)" required></td>
+                          <td id="avg-25">0<input type="hidden" name="rata_rata[]" data-row="25" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <input type="hidden" style="width: 100px" name="range[]" id="range" value="600 V" readonly required>
+                          <td class="text-end">500.00 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="500.00 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-26" name="x1[]" oninput="calculateAVG(26)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-26" name="x2[]" oninput="calculateAVG(26)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-26" name="x3[]" oninput="calculateAVG(26)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-26" name="x4[]" oninput="calculateAVG(26)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-26" name="x5[]" oninput="calculateAVG(26)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-26" name="x6[]" oninput="calculateAVG(26)" required></td>
+                          <td id="avg-26">0<input type="hidden" name="rata_rata[]" data-row="26" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <td rowspan="2">1000 V<input type="hidden" style="width: 100px" name="range[]" id="range" value="1000 V" readonly required></td>
+                          <td class="text-end">700.00 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="700.00 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-27" name="x1[]" oninput="calculateAVG(27)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-27" name="x2[]" oninput="calculateAVG(27)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-27" name="x3[]" oninput="calculateAVG(27)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-27" name="x4[]" oninput="calculateAVG(27)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-27" name="x5[]" oninput="calculateAVG(27)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-27" name="x6[]" oninput="calculateAVG(27)" required></td>
+                          <td id="avg-27">0<input type="hidden" name="rata_rata[]" data-row="27" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Tegangan AC" readonly required>
+                          <input type="hidden" style="width: 100px" name="range[]" id="range" value="1000 V" readonly required>
+                          <td class="text-end">1000.00 V<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="1000.00 V" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-28" name="x1[]" oninput="calculateAVG(28)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-28" name="x2[]" oninput="calculateAVG(28)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-28" name="x3[]" oninput="calculateAVG(28)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-28" name="x4[]" oninput="calculateAVG(28)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-28" name="x5[]" oninput="calculateAVG(28)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-28" name="x6[]" oninput="calculateAVG(28)" required></td>
+                          <td id="avg-28">0<input type="hidden" name="rata_rata[]" data-row="28" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="btn pt-3 pb-1" style="float: right;">
+                      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                      <button onclick="hapusSemuaInput()" class="btn btn-danger">Clear</button>
                     </div>
-                  </form>
                   </div>
-                </div>
+                </form>
               </div>
-              <!-- TEGANGAN AC -->
+            </div>
+            <!-- TEGANGAN AC -->
+
+            <!-- ARUS DC -->
+            <div class="row">
+              <div class="card p-0 m-2">
+                <form action="" method="POST">
+                  <div class="card-header fw-bold">Pengukuran Arus DC</div>
+                  <div class="card-body">
+                    <table class="table-bordered table-sm fs-6" style="width: 100%">
+                      <thead class="text-white bg-dark text-center">
+                        <tr>
+                          <td rowspan="2">Besaran Ukur</td>
+                          <td rowspan="2">Range</td>
+                          <td rowspan="2">Standar</td>
+                          <td colspan="10">uut</td>
+                        </tr>
+                        <tr>
+                          <td>x1</td>
+                          <td>x2</td>
+                          <td>x3</td>
+                          <td>x4</td>
+                          <td>x5</td>
+                          <td>x6</td>
+                          <td>RATA-RATA</td>
+                          <td>KOREKSI STANDAR</td>
+                          <td>STD DEVIASI</td>
+                          <td>RATA-RATA + KOREKSI</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="text-center">
+                          <td rowspan="6">Arus DC<input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Arus DC" readonly required></td>
+                          <td>500 μA<input type="hidden" style="width: 100px" name="range[]" id="range" value="500 μA" readonly required></td>
+                          <td class="text-end">400.000 μA<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="400.000 μA" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-29" name="x1[]" oninput="calculateAVG(29)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-29" name="x2[]" oninput="calculateAVG(29)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-29" name="x3[]" oninput="calculateAVG(29)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-29" name="x4[]" oninput="calculateAVG(29)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-29" name="x5[]" oninput="calculateAVG(29)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-29" name="x6[]" oninput="calculateAVG(29)" required></td>
+                          <td id="avg-29">0<input type="hidden" name="rata_rata[]" data-row="29" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Arus DC" readonly required>
+                          <td>5000 μA<input type="hidden" style="width: 100px" name="range[]" id="range" value="5000 μA" readonly required></td>
+                          <td class="text-end">4000.000 μA<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="4000.000 μA" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-30" name="x1[]" oninput="calculateAVG(30)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-30" name="x2[]" oninput="calculateAVG(30)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-30" name="x3[]" oninput="calculateAVG(30)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-30" name="x4[]" oninput="calculateAVG(30)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-30" name="x5[]" oninput="calculateAVG(30)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-30" name="x6[]" oninput="calculateAVG(30)" required></td>
+                          <td id="avg-30">0<input type="hidden" name="rata_rata[]" data-row="30" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Arus DC" readonly required>
+                          <td>50 mA<input type="hidden" style="width: 100px" name="range[]" id="range" value="50 mA" readonly required></td>
+                          <td class="text-end">40.000 mA<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="40.000 mA" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-31" name="x1[]" oninput="calculateAVG(31)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-31" name="x2[]" oninput="calculateAVG(31)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-31" name="x3[]" oninput="calculateAVG(31)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-31" name="x4[]" oninput="calculateAVG(31)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-31" name="x5[]" oninput="calculateAVG(31)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-31" name="x6[]" oninput="calculateAVG(31)" required></td>
+                          <td id="avg-31">0<input type="hidden" name="rata_rata[]" data-row="31" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Arus DC" readonly required>
+                          <td>400 mA<input type="hidden" style="width: 100px" name="range[]" id="range" value="400 mA" readonly required></td>
+                          <td class="text-end">350.000 mA<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="350.000 mA" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-32" name="x1[]" oninput="calculateAVG(32)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-32" name="x2[]" oninput="calculateAVG(32)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-32" name="x3[]" oninput="calculateAVG(32)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-32" name="x4[]" oninput="calculateAVG(32)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-32" name="x5[]" oninput="calculateAVG(32)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-32" name="x6[]" oninput="calculateAVG(32)" required></td>
+                          <td id="avg-32">0<input type="hidden" name="rata_rata[]" data-row="32" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Arus DC" readonly required>
+                          <td>5 A<input type="hidden" style="width: 100px" name="range[]" id="range" value="5 A" readonly required></td>
+                          <td class="text-end">4.000 A<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="4.000 A" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-33" name="x1[]" oninput="calculateAVG(33)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-33" name="x2[]" oninput="calculateAVG(33)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-33" name="x3[]" oninput="calculateAVG(33)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-33" name="x4[]" oninput="calculateAVG(33)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-33" name="x5[]" oninput="calculateAVG(33)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-33" name="x6[]" oninput="calculateAVG(33)" required></td>
+                          <td id="avg-33">0<input type="hidden" name="rata_rata[]" data-row="33" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                        <tr class="text-center">
+                          <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Arus DC" readonly required>
+                          <td>10 A<input type="hidden" style="width: 100px" name="range[]" id="range" value="10 A" readonly required></td>
+                          <td class="text-end">9.000 A<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="9.000 A" readonly required></td>
+                          <td><input type="text" style="width: 100px" id="x1-34" name="x1[]" oninput="calculateAVG(34)" required></td>
+                          <td><input type="text" style="width: 100px" id="x2-34" name="x2[]" oninput="calculateAVG(34)" required></td>
+                          <td><input type="text" style="width: 100px" id="x3-34" name="x3[]" oninput="calculateAVG(34)" required></td>
+                          <td><input type="text" style="width: 100px" id="x4-34" name="x4[]" oninput="calculateAVG(34)" required></td>
+                          <td><input type="text" style="width: 100px" id="x5-34" name="x5[]" oninput="calculateAVG(34)" required></td>
+                          <td><input type="text" style="width: 100px" id="x6-34" name="x6[]" oninput="calculateAVG(34)" required></td>
+                          <td id="avg-34">0<input type="hidden" name="rata_rata[]" data-row="34" value="0" readonly></td>
+                          <td class="text-end">0.1000 mV<input type="hidden" style="width: 100px" name="koreksi_standar[]" value="0.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="std_deviasi[]" value="1.1000 mV" readonly required></td>
+                          <td class="text-end">1.1000 mV<input type="hidden" style="width: 100px" name="rata_rata_koreksi[]" value="1.1000 mV" readonly required></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="btn pt-3 pb-1" style="float: right;">
+                      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                      <button onclick="hapusSemuaInput()" class="btn btn-danger">Clear</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- ARUS DC -->
+
+            <!-- ARUS AC -->
+            <div class="row">
+              <div class="card p-0 m-2">
+                <form action="" method="POST">
+                  <div class="card-header fw-bold">Pengukuran Arus AC</div>
+                  <div class="card-body">
+                    <table class="table-bordered table-sm fs-6" style="width: 100%">
+                      <thead class="text-white bg-dark text-center">
+                        
+                      </thead>
+                    </table>
+                    <div class="btn pt-3 pb-1" style="float: right;">
+                      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                      <button onclick="hapusSemuaInput()" class="btn btn-danger">Clear</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- ARUS AC -->
+
+            <!-- TEGANGAN AC -->
+            <div class="row">
+              <div class="card p-0 m-2">
+                <form action="" method="POST">
+                  <div class="card-header fw-bold">Pengukuran Tegangan AC</div>
+                  <div class="card-body">
+                    <table class="table-bordered table-sm fs-6" style="width: 100%">
+                      <thead class="text-white bg-dark text-center">
+                        
+                      </thead>
+                    </table>
+                    <div class="btn pt-3 pb-1" style="float: right;">
+                      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                      <button onclick="hapusSemuaInput()" class="btn btn-danger">Clear</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- TEGANGAN AC -->
+            <!-- TABEL PENGUKURAN KALIBRASI -->
+                      
+                      
+
+                                     
+                                            <div class="row">
+                                                <div class="card p-0 m-2">
+                                                  <div class="card-header fw-bold">Pengukuran Arus AC</div>
+                                                  <div class="card-body">
+                                                    <table class="table-bordered table-sm fs-6" style="width: 100%">
+                                                        <thead class="text-white bg-dark text-center">
+                                                          <tr>
+                                                            <td rowspan="2">Besaran Ukur</td>
+                                                            <td rowspan="2">Range</td>
+                                                            <td rowspan="2">Standar</td>
+                                                            <td colspan="10">uut</td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td>x1</td>
+                                                            <td>x2</td>
+                                                            <td>x3</td>
+                                                            <td>x4</td>
+                                                            <td>x5</td>
+                                                            <td>x6</td>
+                                                            <td>RATA-RATA</td>
+                                                            <td>KOREKSI STANDAR</td>
+                                                            <td>STD DEVIASI</td>
+                                                            <td>RATA-RATA + KOREKSI</td>
+                                                          </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                          <tr class="text-center">
+                                                            <td rowspan="6">Arus DC</td>
+                                                            <td>500 μA</td>
+                                                            <td class="text-end">400,000 μA</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td>5000 μA</td>
+                                                            <td class="text-end">4000,000 μA</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                              <td>50 mA</td>
+                                                              <td class="text-end">40,000 mA</td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td class="text-end">100,0000mV</td>
+                                                              <td class="text-end">0,1000mV</td>
+                                                              <td class="text-end">1,1000mV</td>
+                                                              <td class="text-end">1,1000mV</td>
+                                                            </tr>
+                                                          
+                                                          <tr class="text-center">
+                                                            <td>400 mA</td>
+                                                            <td class="text-end">350,000 mA</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                              <td>5 A</td>
+                                                              <td class="text-end">4,000 A</td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td class="text-end">100,0000mV</td>
+                                                              <td class="text-end">0,1000mV</td>
+                                                              <td class="text-end">1,1000mV</td>
+                                                              <td class="text-end">1,1000mV</td>
+                                                            </tr>
+                                                            <tr class="text-center">
+                                                              <td>10 A</td>
+                                                              <td class="text-end">9,000 A</td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td><input type="text" style="width: 100px"></td>
+                                                              <td class="text-end">100,0000mV</td>
+                                                              <td class="text-end">0,1000mV</td>
+                                                              <td class="text-end">1,1000mV</td>
+                                                              <td class="text-end">1,1000mV</td>
+                                                            </tr>
+                                                      </tbody>
+                                                      </table>
+                                                    <div class="btn pt-3 pb-0" style="float: right;">
+                                                      <a href="input.html" class="btn btn-primary ">Submit</a>
+                                                      <a href="edit.html" class="btn btn-secondary ">Edit</a>
+                                                      <a href="delete.html" class="btn btn-danger " >Clear</a>
+                                                  </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="card p-0 m-2">
+                                                  <div class="card-header fw-bold">Pengukuran Resistansi</div>
+                                                  <div class="card-body">
+                                                    <table class="table-bordered table-sm fs-6" style="width: 100%">
+                                                      <thead class="text-white bg-dark text-center">
+                                                        <tr>
+                                                          <td rowspan="2">Besaran Ukur</td>
+                                                          <td rowspan="2">Range</td>
+                                                          <td rowspan="2">Standar</td>
+                                                          <td colspan="10">uut</td>
+                                                        </tr>
+                                                        <tr>
+                                                          <td>x1</td>
+                                                          <td>x2</td>
+                                                          <td>x3</td>
+                                                          <td>x4</td>
+                                                          <td>x5</td>
+                                                          <td>x6</td>
+                                                          <td>RATA-RATA</td>
+                                                          <td>KOREKSI STANDAR</td>
+                                                          <td>STD DEVIASI</td>
+                                                          <td>RATA-RATA + KOREKSI</td>
+                                                        </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                        <tr class="text-center">
+                                                          <td rowspan="7">Resistansi</td>
+                                                          <td rowspan="2">600 Ω</td>
+                                                          <td class="text-end">10,00 Ω</td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td class="text-end">100,0000mV</td>
+                                                          <td class="text-end">0,1000mV</td>
+                                                          <td class="text-end">1,1000mV</td>
+                                                          <td class="text-end">1,1000mV</td>
+                                                        </tr>
+                                                        <tr class="text-center">
+                                                          <td class="text-end">100,00 Ω</td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td class="text-end">100,0000mV</td>
+                                                          <td class="text-end">0,1000mV</td>
+                                                          <td class="text-end">1,1000mV</td>
+                                                          <td class="text-end">1,1000mV</td>
+                                                        </tr>
+                                                        <tr class="text-center">
+                                                            <td rowspan="1">6 KΩ</td>
+                                                            <td class="text-end">1,0000 Ω</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td rowspan="1">60 KΩ</td>
+                                                            <td class="text-end">10,000 Ω</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td rowspan="1">600 KΩ</td>
+                                                            <td class="text-end">100,00 Ω</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td rowspan="1">6 MΩ</td>
+                                                            <td class="text-end">1,0000 MΩ</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td rowspan="1">50 MΩ</td>
+                                                            <td class="text-end">10,0000 MΩ</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn pt-3 pb-0" style="float: right;">
+                                                      <a href="input.html" class="btn btn-primary ">Submit</a>
+                                                      <a href="edit.html" class="btn btn-secondary ">Edit</a>
+                                                      <a href="delete.html" class="btn btn-danger " >Clear</a>
+                                                  </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <div class="card p-0 m-2">
+                                                  <div class="card-header fw-bold">Pengukuran Frequensi</div>
+                                                  <div class="card-body">
+                                                    <table class="table-bordered table-sm fs-6" style="width: 100%">
+                                                      <thead class="text-white bg-dark text-center">
+                                                        <tr>
+                                                          <td rowspan="2">Besaran Ukur</td>
+                                                          <td rowspan="2">Range</td>
+                                                          <td rowspan="2">Standar</td>
+                                                          <td colspan="10">uut</td>
+                                                        </tr>
+                                                        <tr>
+                                                          <td>x1</td>
+                                                          <td>x2</td>
+                                                          <td>x3</td>
+                                                          <td>x4</td>
+                                                          <td>x5</td>
+                                                          <td>x6</td>
+                                                          <td>RATA-RATA</td>
+                                                          <td>KOREKSI STANDAR</td>
+                                                          <td>STD DEVIASI</td>
+                                                          <td>RATA-RATA + KOREKSI</td>
+                                                        </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                        <tr class="text-center">
+                                                          <td rowspan="12">Frequensi</td>
+                                                          <td rowspan="3">199,99 Hz</td>
+                                                          <td class="text-end">20,000 Hz</td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td><input type="text" style="width: 100px"></td>
+                                                          <td class="text-end">100,0000mV</td>
+                                                          <td class="text-end">0,1000mV</td>
+                                                          <td class="text-end">1,1000mV</td>
+                                                          <td class="text-end">1,1000mV</td>
+                                                        </tr>
+                                                        <tr class="text-center">
+                                                            <td class="text-end">100,000 Hz</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td class="text-end">180,000 Hz</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                        <tr class="text-center">
+                                                            <td rowspan="3">1999,9 Hz</td>
+                                                            <td class="text-end">200,000 Hz</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td class="text-end">1000,0 Hz</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td class="text-end">1800,0 Hz</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td rowspan="3">19,999 KHz</td>
+                                                            <td class="text-end">2,0000 KHz</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td class="text-end">10,0000 KHz</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td class="text-end">18,0000 KHz</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td rowspan="3">199,99 KHz</td>
+                                                            <td class="text-end">20,0000 KHz</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td class="text-end">100,00 KHz</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                          <tr class="text-center">
+                                                            <td class="text-end">180,00 KHz</td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td><input type="text" style="width: 100px"></td>
+                                                            <td class="text-end">100,0000mV</td>
+                                                            <td class="text-end">0,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                            <td class="text-end">1,1000mV</td>
+                                                          </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="btn pt-3 pb-0" style="float: right;">
+                                                      <a href="input.html" class="btn btn-primary ">Submit</a>
+                                                      <a href="edit.html" class="btn btn-secondary ">Edit</a>
+                                                      <a href="delete.html" class="btn btn-danger " >Clear</a>
+                                                  </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              
+                                          </div>
+                                          
+                                      </div>
+                                    </div>
+                                
+                                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+                                    <!-- googleapis -->
+                                    <!-- <script src="https://ajax.goggleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+                                
+                                    <script>
+                                      $(".sidebar ul li").on("click", function () {
+                                        $(".sidebar ul li.active").removeClass("active");
+                                        $(this).addClass("active");
+                                      });
+                                    </script>
+                                  </body>
+                                </html>
+                                
+                                              
+                              
