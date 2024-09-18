@@ -205,48 +205,84 @@
                           <td>Besaran Ukur</td>
                           <td>Range</td>
                           <td>Standar</td>
-                          <td>X1</td>
-                          <td>X2</td>
-                          <td>X3</td>
-                          <td>X4</td>
-                          <td>X5</td>
-                          <td>X6</td>
-                          <td>Rata-rata</td>
-                          <td>Koreksi Standar</td>
-                          <td>Std Dev</td>
-                          <td>Rata-rata Koreksi</td>
+                          <td>x1</td>
+                          <td>x2</td>
+                          <td>x3</td>
+                          <td>x4</td>
+                          <td>x5</td>
+                          <td>x6</td>
+                          <td>RATA-RATA</td>
+                          <td>KOREKSI STANDAR</td>
+                          <td>STD DEVIASI</td>
+                          <td>RATA-RATA + KOREKSI</td>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
-                          // $query = "SELECT p.besaran_ukur, p.range_, p.standar, p.x1, p.x2, p.x3, p.x4, p.x5, p.x6, p.rata_rata, p.koreksi_standar, p.std_dev, p.rata_rata_koreksi
-                          //           FROM detail d
-                          //           INNER JOIN pengukuran p ON d.detail_order = p.detail_order
-                          //           WHERE d.detail_order = '$detail_order'";
-                          // $result = mysqli_query($conn, $query);
-                          $pengukuran = mysqli_query($conn, "SELECT p.besaran_ukur, p.range_, p.standar, p.x1, p.x2, p.x3, p.x4, p.x5, p.x6, p.rata_rata, p.koreksi_standar, p.std_dev, p.rata_rata_koreksi
-                                                                  FROM detail d
-                                                                  INNER JOIN pengukuran p ON d.detail_order = p.detail_order
-                                                                  WHERE d.detail_order = '$detail_order'");
-                          while ($ukur=mysqli_fetch_array($pengukuran)){
+                        // Variabel untuk menyimpan nilai besaran_ukur dan range_ sebelumnya
+                        $prev_besaran_ukur = '';
+                        $prev_range = '';
+
+                        // Query untuk mengambil data pengukuran
+                        $pengukuran = mysqli_query($conn, "SELECT p.besaran_ukur, p.range_, p.standar, p.x1, p.x2, p.x3, p.x4, p.x5, p.x6, p.rata_rata, p.koreksi_standar, p.std_dev, p.rata_rata_koreksi
+                                                          FROM detail d
+                                                          INNER JOIN pengukuran p ON d.detail_order = p.detail_order
+                                                          WHERE d.detail_order = '$detail_order'");
+
+                        while ($ukur = mysqli_fetch_array($pengukuran)) {
+                            echo "<tr>";
+
+                            // Jika besaran_ukur berubah, tampilkan dengan rowspan
+                            if ($ukur['besaran_ukur'] != $prev_besaran_ukur) {
+                                // Hitung jumlah baris yang memiliki besaran_ukur yang sama
+                                $besaran_ukur_rowspan_query = "SELECT COUNT(*) as count FROM pengukuran 
+                                                              WHERE besaran_ukur = '" . $ukur['besaran_ukur'] . "' 
+                                                              AND detail_order = '$detail_order'";
+                                $besaran_ukur_rowspan_result = mysqli_fetch_assoc(mysqli_query($conn, $besaran_ukur_rowspan_query));
+                                $besaran_ukur_rowspan = $besaran_ukur_rowspan_result['count'];
+
+                                // Tampilkan besaran_ukur dengan rowspan
+                                echo "<td rowspan='$besaran_ukur_rowspan'>" . $ukur['besaran_ukur'] . "</td>";
+
+                                // Reset prev_range karena besaran_ukur baru
+                                $prev_range = '';
+                            }
+
+                            // Jika range_ berubah, tampilkan dengan rowspan
+                            if ($ukur['range_'] != $prev_range) {
+                                // Hitung jumlah baris yang memiliki range_ yang sama di dalam besaran_ukur yang sama
+                                $range_rowspan_query = "SELECT COUNT(*) as count FROM pengukuran 
+                                                        WHERE besaran_ukur = '" . $ukur['besaran_ukur'] . "' 
+                                                        AND range_ = '" . $ukur['range_'] . "' 
+                                                        AND detail_order = '$detail_order'";
+                                $range_rowspan_result = mysqli_fetch_assoc(mysqli_query($conn, $range_rowspan_query));
+                                $range_rowspan = $range_rowspan_result['count'];
+
+                                // Tampilkan range_ dengan rowspan
+                                echo "<td rowspan='$range_rowspan'>" . $ukur['range_'] . "</td>";
+                            }
+
+                            // Tampilkan kolom lainnya pada setiap baris
+                            echo "
+                                <td>" . $ukur['standar'] . "</td>
+                                <td>" . $ukur['x1'] . "</td>
+                                <td>" . $ukur['x2'] . "</td>
+                                <td>" . $ukur['x3'] . "</td>
+                                <td>" . $ukur['x4'] . "</td>
+                                <td>" . $ukur['x5'] . "</td>
+                                <td>" . $ukur['x6'] . "</td>
+                                <td>" . $ukur['rata_rata'] . "</td>
+                                <td>" . $ukur['koreksi_standar'] . "</td>
+                                <td>" . $ukur['std_dev'] . "</td>
+                                <td>" . $ukur['rata_rata_koreksi'] . "</td>
+                              </tr>";
+
+                            // Simpan besaran_ukur dan range_ sebelumnya untuk perbandingan di baris berikutnya
+                            $prev_besaran_ukur = $ukur['besaran_ukur'];
+                            $prev_range = $ukur['range_'];
+                        }
                         ?>
-                        <tr>
-                          <td><?= $ukur['besaran_ukur']; ?></td>
-                          <td><?= $ukur['range_']; ?></td>
-                          <td><?= $ukur['standar']; ?></td>
-                          <td><?= $ukur['x1']; ?></td>
-                          <td><?= $ukur['x2']; ?></td>
-                          <td><?= $ukur['x3']; ?></td>
-                          <td><?= $ukur['x4']; ?></td>
-                          <td><?= $ukur['x5']; ?></td>
-                          <td><?= $ukur['x6']; ?></td>
-                          <td><?= $ukur['rata_rata']; ?></td>
-                          <td><?= $ukur['koreksi_standar']; ?></td>
-                          <td><?= $ukur['std_dev']; ?></td>
-                          <td><?= $ukur['rata_rata_koreksi']; ?></td>
-                        </tr>
-                      <?php } ?>
-                      </tbody>
+                    </tbody>
                     </table>
                   </div>
                 </div>
