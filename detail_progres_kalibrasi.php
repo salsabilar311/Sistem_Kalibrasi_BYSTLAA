@@ -75,6 +75,7 @@
               <!-- DATA KALIBRASI -->
               <div class="row">
                 <div class="card col-10 p-0 m-2" style="width: 99%;">
+                  <div class="card-header fw-bold">Data Kalibrasi</div>
                   <div class="card-body">
                     <?php
                       $detail_order = $_GET['detail_order'];
@@ -132,8 +133,8 @@
 
                       <!-- alat standar -->
                       <div class="row mt-2">
-                        <div class="col-2">Detail Order</div>
-                        <div class="col-4">: Precision Multi Product Calibration Transmille, 3041A</div>
+                        <div class="col-2">Alat standar</div>
+                        <div class="col-6">: Precision Multi Product Calibration Transmille, 3041A</div>
                       </div>
                       
                       <!-- metode kalibrasi -->
@@ -144,7 +145,7 @@
 
                       <!-- tempat -->
                       <div class="row mt-2">
-                        <div class="col-2">Tempat</div>
+                        <div class="col-2">Tempat Kalibrasi</div>
                         <div class="col-6">: BYSTLAA</div>
                       </div>
 
@@ -169,7 +170,7 @@
                       <!-- asal -->
                       <div class="row mt-2">
                         <div class="col-2">Asal</div>
-                        <div class="col-4"><?php echo ": " .$data['name_owner']; ?></div>
+                        <div class="col-6"><?php echo ": " .$data['name_owner']; ?></div>
                       </div>
 
                       <!-- kalibrator -->
@@ -198,6 +199,7 @@
             <!-- PENGUKURAN -->
               <div class="row">
                 <div class="card p-0 m-2">
+                <div class="card-header fw-bold">Data Pengukuran</div>
                   <div class="card-body">
                     <table class="table-bordered table-sm fs-6" style="width: 100%">
                       <thead class="text-white bg-dark text-center">
