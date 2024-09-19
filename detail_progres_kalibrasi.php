@@ -221,7 +221,7 @@
                       </thead>
                       <tbody>
                         <?php
-                        // Variabel untuk menyimpan nilai besaran_ukur dan range_ sebelumnya
+                        // Variabel untuk menyimpan besaran_ukur dan range_ sebelumnya
                         $prev_besaran_ukur = '';
                         $prev_range = '';
 
@@ -250,9 +250,9 @@
                                 $prev_range = '';
                             }
 
-                            // Jika range_ berubah, tampilkan dengan rowspan
+                            // Jika range_ berbeda dari sebelumnya, cek apakah perlu rowspan
                             if ($ukur['range_'] != $prev_range) {
-                                // Hitung jumlah baris yang memiliki range_ yang sama di dalam besaran_ukur yang sama
+                                // Hitung berapa banyak baris yang memiliki range_ yang sama dalam besaran_ukur yang sama
                                 $range_rowspan_query = "SELECT COUNT(*) as count FROM pengukuran 
                                                         WHERE besaran_ukur = '" . $ukur['besaran_ukur'] . "' 
                                                         AND range_ = '" . $ukur['range_'] . "' 
@@ -260,8 +260,12 @@
                                 $range_rowspan_result = mysqli_fetch_assoc(mysqli_query($conn, $range_rowspan_query));
                                 $range_rowspan = $range_rowspan_result['count'];
 
-                                // Tampilkan range_ dengan rowspan
-                                echo "<td rowspan='$range_rowspan'>" . $ukur['range_'] . "</td>";
+                                // Jika ada lebih dari satu baris dengan range_ yang sama, gunakan rowspan
+                                if ($range_rowspan > 1) {
+                                    echo "<td rowspan='$range_rowspan'>" . $ukur['range_'] . "</td>";
+                                } else {
+                                    echo "<td>" . $ukur['range_'] . "</td>";
+                                }
                             }
 
                             // Tampilkan kolom lainnya pada setiap baris
