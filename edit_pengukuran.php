@@ -1,5 +1,6 @@
 <?php 
   include 'koneksi.php';
+  $detail_order = $_GET['detail_order'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,137 +69,9 @@
           <div class="container-fluid p-4">
             <!-- header -->
             <div class="row">
-              <div class="col-6"><h4>Detail Data Progres Kalibrasi BYSTLAA</h4></div>
+              <div class="col-6"><h4>Edit Data Pengukuran</h4></div>
               <div class="col-6" style="text-align: right"><a href="progres.php" class="btn btn-danger rounded-circle">X</a></div>
             </div>
-
-              <!-- DATA KALIBRASI -->
-              <div class="row">
-                <div class="card col-10 p-0 m-2" style="width: 99%;">
-                  <div class="card-header fw-bold">Data Kalibrasi</div>
-                  <div class="card-body">
-                    <?php
-                      $detail_order = $_GET['detail_order'];
-                      $query = "SELECT d.no_order, d.detail_order, m.nama_merk, t.nama_tipe, d.no_seri, d.tgl_kalibrasi, p.name_owner, d.calibrator, d.tgl_masuk, d.tgl_sertifikat 
-                                FROM detail d
-                                INNER JOIN merk m ON d.id_merk = m.id_merk
-                                INNER JOIN tipe t ON d.id_tipe = t.id_tipe
-                                INNER JOIN pemilik p ON d.region = p.region
-                                WHERE d.detail_order = '$detail_order'";
-                      $result = mysqli_query($conn, $query);
-                      if ($data = mysqli_fetch_assoc($result)) {
-                    ?>
-
-                      <!-- no order -->
-                      <div class="row">
-                        <div class="col-2">No. Order</div>
-                        <div class="col-4"><?php echo ": " .$data['no_order']; ?></div>
-                      </div>
-
-                      <!-- detail order -->
-                      <div class="row mt-2">
-                        <div class="col-2">Detail Order</div>
-                        <div class="col-4"><?php echo ": " .$data['detail_order']; ?></div>
-                      </div>
-
-                      <!-- nama alat -->
-                      <div class="row mt-2">
-                        <div class="col-2">Nama Alat</div>
-                        <div class="col-4">: Digital multimeter</div>
-                      </div>
-
-                      <!-- merk -->
-                      <div class="row mt-2">
-                        <div class="col-2">Merk</div>
-                        <div class="col-4"><?php echo ": " .$data['nama_merk']; ?></div>
-                      </div>
-
-                      <!-- tipe -->
-                      <div class="row mt-2">
-                        <div class="col-2">Tipe</div>
-                        <div class="col-4"><?php echo ": " .$data['nama_tipe']; ?></div>
-                      </div>
-
-                      <!-- no seri -->
-                      <div class="row mt-2">
-                        <div class="col-2">No. Seri</div>
-                        <div class="col-4"><?php echo ": " .$data['no_seri']; ?></div>
-                      </div>
-
-                      <!-- resolusi -->
-                      <div class="row mt-2">
-                        <div class="col-2">Resolusi</div>
-                        <div class="col-4">: Multi resolusi</div>
-                      </div>
-
-                      <!-- alat standar -->
-                      <div class="row mt-2">
-                        <div class="col-2">Alat standar</div>
-                        <div class="col-6">: Precision Multi Product Calibration Transmille, 3041A</div>
-                      </div>
-                      
-                      <!-- metode kalibrasi -->
-                      <div class="row mt-2">
-                        <div class="col-2">Metode Kalibrasi</div>
-                        <div class="col-4">: Perbandingan Langsung</div>
-                      </div>
-
-                      <!-- tempat -->
-                      <div class="row mt-2">
-                        <div class="col-2">Tempat Kalibrasi</div>
-                        <div class="col-6">: BYSTLAA</div>
-                      </div>
-
-                      <!-- tgl kalibrasi -->
-                      <div class="row mt-2">
-                        <div class="col-2">Tanggal Kalibrasi</div>
-                        <div class="col-4"><?php echo ": " .$data['tgl_kalibrasi']; ?></div>
-                      </div>
-
-                      <!-- suhu -->
-                      <div class="row mt-2">
-                        <div class="col-2">Suhu</div>
-                        <div class="col-4">: (23  ± 1.3)°С</div>
-                      </div>
-                      
-                      <!-- kelembapan -->
-                      <div class="row mt-2">
-                        <div class="col-2">Kelembapan</div>
-                        <div class="col-4">: (55± 3,1) %</div>
-                      </div>
-
-                      <!-- asal -->
-                      <div class="row mt-2">
-                        <div class="col-2">Asal</div>
-                        <div class="col-6"><?php echo ": " .$data['name_owner']; ?></div>
-                      </div>
-
-                      <!-- kalibrator -->
-                      <div class="row mt-2">
-                        <div class="col-2">Kalibrator</div>
-                        <div class="col-4"><?php echo ": " .$data['calibrator']; ?></div>
-                      </div>
-
-                      <!-- tgl masuk -->
-                      <div class="row mt-2">
-                        <div class="col-2">Tanggal Masuk</div>
-                        <div class="col-4"><?php echo ": " .$data['tgl_masuk']; ?></div>
-                      </div>
-
-                      <!-- tgl sertifikat -->
-                      <div class="row mt-2">
-                        <div class="col-2">Tanggal Sertifikat</div>
-                        <div class="col-4"><?php echo ": " .$data['tgl_sertifikat']; ?></div>
-                      </div>
-                    <?php } ?>
-                  </div>
-                </div>
-              </div>
-              <!-- DATA KALIBRASI -->
-
-              <div class="d-grid gap-2">
-                <a href="edit_pengukuran.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-primary">Edit Data Pengukuran</a>
-              </div>
 
             <!-- PENGUKURAN -->
               <div class="row">
