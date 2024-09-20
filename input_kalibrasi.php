@@ -1,5 +1,6 @@
 <?php 
   include 'koneksi.php';
+  session_start();
 
   // input data to database
   if(isset($_POST['submit'])){
@@ -18,6 +19,7 @@
         CONCAT('$no_order', '-', '$calibrator', '-BYSTLAA-', YEAR('$tgl_kalibrasi')))";
     $result=mysqli_query($conn, $sql);
     if($result){
+      $_SESSION['status'] = "Data Berhasil Ditambahkan";
       header('Location: data_kalibrasi.php');
       exit();
     }

@@ -1,5 +1,6 @@
 <?php 
   include 'koneksi.php';
+  session_start();
 ?>
 
 <!DOCTYPE html>
@@ -75,6 +76,24 @@
                 <a href="input_kalibrasi.php" class="btn btn-primary">Input Kalibrasi</a>
               </div>
             </div>
+
+            <!-- ALERT DATA BERHASIL DITAMBAHKAN -->
+            <?php
+              if(isset($_SESSION['status'])):
+            ?>
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+              <strong>
+                <?php
+                  echo $_SESSION['status'];
+                ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </strong>
+            </div>
+            <?php 
+              session_destroy();
+              endif
+            ?>
+            <!-- ALERT DATA BERHASIL DITAMBAHKAN -->
             
             <!-- form kalibrasi -->
               <div class="row">

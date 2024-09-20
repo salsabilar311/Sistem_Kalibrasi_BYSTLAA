@@ -70,7 +70,7 @@
             <!-- header -->
             <div class="row">
               <div class="col-6"><h4>Edit Data Pengukuran</h4></div>
-              <div class="col-6" style="text-align: right"><a href="progres.php" class="btn btn-danger rounded-circle">X</a></div>
+              <div class="col-6" style="text-align: right"><a href="detail_progres_kalibrasi.php?detail_order=<?php echo $detail_order; ?>" class="btn btn-danger rounded-circle">X</a></div>
             </div>
 
             <!-- PENGUKURAN -->

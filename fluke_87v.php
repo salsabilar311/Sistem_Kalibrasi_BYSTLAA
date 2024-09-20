@@ -39,28 +39,6 @@
     // Tampilkan pesan sukses jika semua data berhasil disimpan
     echo "Semua data berhasil disimpan ke database.";
 }
-
-
-    // if($result){
-    //   echo "$besaran_ukur  ";
-    //   echo "$range  ";
-    //   echo "$standar  ";
-    //   echo "$x1  ";
-    //   echo "$x2  ";
-    //   echo "$x3  ";
-    //   echo "$x4  ";
-    //   echo "$x5  ";
-    //   echo "$x6  ";
-    //   echo "$koreksi_standar  ";
-    //   echo "$std_deviasi  ";
-    //   echo "$rata_rata_koreksi  ";
-    //   echo "$rata_rata  ";
-    //   echo "$satuan ";
-    // }
-    // else{
-    //   die(mysqli_error($conn));
-    // }
-  // input data to database
 ?>
 <!DOCTYPE html>
 <html lang="en">

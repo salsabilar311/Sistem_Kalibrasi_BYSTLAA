@@ -1,5 +1,6 @@
 <?php 
   include 'koneksi.php';
+  session_start();
   $detail_order = $_GET['detail_order'];
 
   // edit data to database
@@ -33,6 +34,7 @@
             WHERE no_order = '$no_order_from_detail'";
     $result=mysqli_query($conn, $sql);
     if($result){
+      $_SESSION['status'] = "Data Berhasil Diubah";
       header('Location: data_kalibrasi.php');
       exit();
     }

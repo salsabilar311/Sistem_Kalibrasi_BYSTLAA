@@ -1,6 +1,7 @@
 <?php
 
 include('koneksi.php');
+session_start();
 
 //get id
 $id = $_GET['id'];
@@ -21,6 +22,7 @@ $query_detail = "DELETE FROM detail WHERE detail_order = '$id'";
 $result_detail = mysqli_query($conn, $query_detail);
 
 if($result_detail){
+    $_SESSION['status'] = "Data Berhasil Dihapus";
     header("location: data_kalibrasi.php");
 } else {
     die(mysqli_error($conn));
