@@ -69,6 +69,25 @@
           <div class="container-fluid p-4">
             <h4>Input Pengukuran Kalibrasi</h4>
 
+            <!-- ALERT DATA BERHASIL DITAMBAHKAN -->
+            <?php
+              session_start();
+              if(isset($_SESSION['status'])):
+            ?>
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+              <strong>
+                <?php
+                  echo $_SESSION['status'];
+                ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </strong>
+            </div>
+            <?php 
+              session_destroy();
+              endif
+            ?>
+            <!-- ALERT DATA BERHASIL DITAMBAHKAN -->
+
             <!-- table view progres kalibrasi -->
             <div class="row">
                 <div class="card col-12 p-0 m-2" style="width: 99%;">

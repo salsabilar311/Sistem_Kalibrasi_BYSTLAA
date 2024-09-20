@@ -1,7 +1,9 @@
 <?php 
   include 'koneksi.php';
+  session_start();
   $detail_order = $_GET['detail_order'];
-  $periksa = mysqli_query($conn, "SELECT p.besaran_ukur, p.range_, p.standar, p.x1, p.x2, p.x3, p.x4, p.x5, p.x6, p.rata_rata, p.koreksi_standar, p.std_dev, p.rata_rata_koreksi
+  // YANG DIUBAH
+  $periksa = mysqli_query($conn, "SELECT p.besaran_ukur
                                   FROM detail d
                                   INNER JOIN pengukuran p ON d.detail_order = p.detail_order
                                   WHERE d.detail_order = '$detail_order'");
@@ -14,6 +16,7 @@
           $arr[] = $ukur['besaran_ukur']; // Tambahkan ke array jika belum ada
       }
   }
+  // YANG DIUBAH
 
   // Tampilkan nilai-nilai yang unik
   // foreach ($arr as $besaran) {
@@ -49,8 +52,13 @@
         $result = mysqli_query($conn, $sql);
 
         // Jika ada error pada query, hentikan proses dan tampilkan error
-        if(!$result){
-            die('Error: '. mysqli_error($conn));
+        if($result){
+          $_SESSION['status'] = "Data Berhasil Ditambahkan";
+          header('Location: input_pengukuran.php');
+          exit();
+        }
+        else{
+          die(mysqli_error($conn));
         }
     }
 
@@ -150,6 +158,7 @@
             </script>
             <!-- SCRIPT JAVASCRIPT (MENAMPILKAN RATA-RATA) -->
             
+            <!-- YANG DIUBAH -->
             <!-- TABEL PENGUKURAN KALIBRASI -->
             <!-- END TEGANGAN DC -->
             <?php
