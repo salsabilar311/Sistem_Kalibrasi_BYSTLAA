@@ -162,9 +162,7 @@
             <!-- TABEL PENGUKURAN KALIBRASI -->
             <!-- END TEGANGAN DC -->
             <?php
-              $kondisi = false; //hanya menampilkan tabel sekali
-              foreach ($arr as $besaran):
-                if (!in_array('Tegangan DC', $arr) && !$kondisi):
+              if (!in_array('Tegangan DC', $arr) || empty($arr)):
             ?>
             <!-- TEGANGAN DC -->
             <div class="row">
@@ -418,17 +416,13 @@
             </div>
             <!-- TEGANGAN DC -->
             <?php
-                  endif;
-                  $kondisi = true;
-                endforeach;
+              endif;
             ?>
             <!-- END TEGANGAN DC -->
 
             <!-- END TEGANGAN AC -->
             <?php
-              $kondisi = false;
-              foreach ($arr as $besaran):
-                if (!in_array('Tegangan AC', $arr) && !$kondisi):
+              if (!in_array('Tegangan AC', $arr) || empty($arr)):
             ?>
             <!-- TEGANGAN AC -->
             <div class="row">
@@ -680,17 +674,13 @@
             </div>
             <!-- TEGANGAN AC -->
             <?php
-                endif;
-                $kondisi = true;
-              endforeach;
+              endif;
             ?>
             <!-- END TEGANGAN AC -->
 
             <!-- END ARUS DC -->
             <?php
-              $kondisi = false;
-              foreach ($arr as $besaran):
-                if (!in_array('Arus DC', $arr) && !$kondisi):
+              if (!in_array('Arus DC', $arr) || empty($arr)):
             ?>
             <!-- ARUS DC -->
             <div class="row">
@@ -822,17 +812,13 @@
             </div>
             <!-- ARUS DC -->
             <?php
-                endif;
-                $kondisi = true;
-              endforeach;
+              endif;
             ?>
             <!-- END ARUS DC -->
 
             <!-- END ARUS AC -->
             <?php
-              $kondisi = false;
-              foreach ($arr as $besaran):
-                if (!in_array('Arus AC', $arr) && !$kondisi):
+              if (!in_array('Arus AC', $arr) || empty($arr)):
             ?>
             <!-- ARUS AC -->
             <div class="row">
@@ -964,17 +950,13 @@
             </div>
             <!-- ARUS AC -->
             <?php
-                endif;
-                $kondisi = true;
-              endforeach;
+              endif;
             ?>
             <!-- END ARUS AC -->
 
             <!-- KONDISI RESISTENSI -->
             <?php
-              $kondisi = false;
-              foreach ($arr as $besaran):
-                if (!in_array('Resistensi', $arr) && !$kondisi):
+              if (!in_array('Resistensi', $arr) || empty($arr)):
             ?>
             <!-- RESISTANSI -->
             <div class="row">
@@ -1121,17 +1103,13 @@
             </div>
             <!-- RESISTENSI -->
             <?php
-                endif;
-                $kondisi = true;
-              endforeach;
+              endif;
             ?>
             <!-- END RESISTENSI -->
 
             <!-- END FREKUENSI -->
             <?php
-              $kondisi = false;
-              foreach ($arr as $besaran):
-                if (!in_array('Frekuensi', $arr) && !$kondisi):
+              if (!in_array('Frekuensi', $arr) || empty($arr)):
             ?>
             <!-- FREKUENSI -->
             <div class="row">
@@ -1353,9 +1331,7 @@
             </div>
             <!-- FREKUENSI -->
             <?php
-                endif;
-                $kondisi = true;
-              endforeach;
+              endif;
             ?>
             <!-- END FREKUENSI -->
             <!-- TABEL PENGUKURAN KALIBRASI -->
