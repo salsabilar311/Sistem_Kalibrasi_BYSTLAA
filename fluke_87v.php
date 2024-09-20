@@ -1,6 +1,24 @@
 <?php 
   include 'koneksi.php';
   $detail_order = $_GET['detail_order'];
+  $periksa = mysqli_query($conn, "SELECT p.besaran_ukur, p.range_, p.standar, p.x1, p.x2, p.x3, p.x4, p.x5, p.x6, p.rata_rata, p.koreksi_standar, p.std_dev, p.rata_rata_koreksi
+                                  FROM detail d
+                                  INNER JOIN pengukuran p ON d.detail_order = p.detail_order
+                                  WHERE d.detail_order = '$detail_order'");
+
+  $arr = []; // Inisialisasi array untuk menyimpan besaran_ukur
+
+  while ($ukur = mysqli_fetch_array($periksa)) {
+      // Cek apakah besaran_ukur sudah ada di array
+      if (!in_array($ukur['besaran_ukur'], $arr)) {
+          $arr[] = $ukur['besaran_ukur']; // Tambahkan ke array jika belum ada
+      }
+  }
+
+  // Tampilkan nilai-nilai yang unik
+  // foreach ($arr as $besaran) {
+  //     echo $besaran . "<br>"; // Atau sesuai format yang diinginkan
+  // }
 
   // input data to database
   if(isset($_POST['submit'])){
@@ -133,6 +151,12 @@
             <!-- SCRIPT JAVASCRIPT (MENAMPILKAN RATA-RATA) -->
             
             <!-- TABEL PENGUKURAN KALIBRASI -->
+            <!-- END TEGANGAN DC -->
+            <?php
+              $kondisi = false; //hanya menampilkan tabel sekali
+              foreach ($arr as $besaran):
+                if (!in_array('Tegangan DC', $arr) && !$kondisi):
+            ?>
             <!-- TEGANGAN DC -->
             <div class="row">
               <div class="card p-0 m-2">
@@ -384,7 +408,19 @@
               </div>
             </div>
             <!-- TEGANGAN DC -->
+            <?php
+                  endif;
+                  $kondisi = true;
+                endforeach;
+            ?>
+            <!-- END TEGANGAN DC -->
 
+            <!-- END TEGANGAN AC -->
+            <?php
+              $kondisi = false;
+              foreach ($arr as $besaran):
+                if (!in_array('Tegangan AC', $arr) && !$kondisi):
+            ?>
             <!-- TEGANGAN AC -->
             <div class="row">
               <div class="card p-0 m-2">
@@ -634,7 +670,19 @@
               </div>
             </div>
             <!-- TEGANGAN AC -->
+            <?php
+                endif;
+                $kondisi = true;
+              endforeach;
+            ?>
+            <!-- END TEGANGAN AC -->
 
+            <!-- END ARUS DC -->
+            <?php
+              $kondisi = false;
+              foreach ($arr as $besaran):
+                if (!in_array('Arus DC', $arr) && !$kondisi):
+            ?>
             <!-- ARUS DC -->
             <div class="row">
               <div class="card p-0 m-2">
@@ -764,7 +812,19 @@
               </div>
             </div>
             <!-- ARUS DC -->
+            <?php
+                endif;
+                $kondisi = true;
+              endforeach;
+            ?>
+            <!-- END ARUS DC -->
 
+            <!-- END ARUS AC -->
+            <?php
+              $kondisi = false;
+              foreach ($arr as $besaran):
+                if (!in_array('Arus AC', $arr) && !$kondisi):
+            ?>
             <!-- ARUS AC -->
             <div class="row">
               <div class="card p-0 m-2">
@@ -894,7 +954,19 @@
               </div>
             </div>
             <!-- ARUS AC -->
+            <?php
+                endif;
+                $kondisi = true;
+              endforeach;
+            ?>
+            <!-- END ARUS AC -->
 
+            <!-- KONDISI RESISTENSI -->
+            <?php
+              $kondisi = false;
+              foreach ($arr as $besaran):
+                if (!in_array('Resistensi', $arr) && !$kondisi):
+            ?>
             <!-- RESISTANSI -->
             <div class="row">
               <div class="card p-0 m-2">
@@ -1039,7 +1111,19 @@
               </div>
             </div>
             <!-- RESISTENSI -->
+            <?php
+                endif;
+                $kondisi = true;
+              endforeach;
+            ?>
+            <!-- END RESISTENSI -->
 
+            <!-- END FREKUENSI -->
+            <?php
+              $kondisi = false;
+              foreach ($arr as $besaran):
+                if (!in_array('Frekuensi', $arr) && !$kondisi):
+            ?>
             <!-- FREKUENSI -->
             <div class="row">
               <div class="card p-0 m-2">
@@ -1259,6 +1343,12 @@
               </div>
             </div>
             <!-- FREKUENSI -->
+            <?php
+                endif;
+                $kondisi = true;
+              endforeach;
+            ?>
+            <!-- END FREKUENSI -->
             <!-- TABEL PENGUKURAN KALIBRASI -->
                                       
           </div>                               
