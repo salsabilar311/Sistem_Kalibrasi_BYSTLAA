@@ -105,11 +105,37 @@
                       </thead>
                       <tbody  class="text-center">
                       <?php
-                        $data_kalibrasi = mysqli_query($conn, "SELECT d.detail_order, p.name_owner, d.tgl_masuk, d.no_seri
+                        $data_kalibrasi = mysqli_query($conn, "SELECT d.detail_order, p.name_owner, d.tgl_masuk, d.no_seri, d.id_merk, d.id_tipe, d.progres
                                                                 FROM detail d
                                                                 INNER JOIN pemilik p ON d.region = p.region");
                         $row_number = 1;
-                        while ($data=mysqli_fetch_array($data_kalibrasi)){
+                        while ($data=mysqli_fetch_array($data_kalibrasi)):
+                          // memeriksa jika pengukuran sudah selesai maka tidak ditampilkan di tabel
+                          if (!(
+                            // Progres 6
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 1 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 2 && $data['id_tipe'] == 3 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 2 && $data['id_tipe'] == 4 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 5 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 6 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 7 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 8 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 9 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 2 && $data['id_tipe'] == 15 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 3 && $data['id_tipe'] == 16 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 4 && $data['id_tipe'] == 18 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 4 && $data['id_tipe'] == 19 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 4 && $data['id_tipe'] == 20 && $data['progres'] == 6) ||
+                            // Progres 5
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 2 && $data['progres'] == 5) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 10 && $data['progres'] == 5) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 11 && $data['progres'] == 5) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 12 && $data['progres'] == 5) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 13 && $data['progres'] == 5) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 14 && $data['progres'] == 5) ||
+                            // Progres 2
+                            ($data['id_merk'] == 4 && $data['id_tipe'] == 14 && $data['progres'] == 17)
+                        )):                       
                       ?>
                           <tr>
                             <td><?= $row_number; ?></td>
@@ -125,7 +151,8 @@
                           </tr>
                       <?php
                       $row_number++;
-                      } ?>
+                      endif;
+                    endwhile; ?>
                       </tbody>
                     </table>
                   </div>
