@@ -39,7 +39,7 @@
     $rata_rata_koreksi = $_POST['rata_rata_koreksi'];
 
     // Loop melalui data dan insert satu per satu
-    foreach($standar as $index => $value) {
+    foreach($standar as $index => $value):
         // Hitung rata-rata dari nilai x1 hingga x6
         $rata_rata = ($x1[$index] + $x2[$index] + $x3[$index] + $x4[$index] + $x5[$index] + $x6[$index]) / 6;
         $avg = number_format($rata_rata, 1) . " " . explode(' ', $range[$index])[1]; // Tambahkan satuan pada rata-rata
@@ -52,18 +52,18 @@
         $result = mysqli_query($conn, $sql);
 
         // Jika ada error pada query, hentikan proses dan tampilkan error
-        if($result){
-          $_SESSION['status'] = "Data Berhasil Ditambahkan";
-          header('Location: input_pengukuran.php');
-          exit();
-        }
-        else{
+        if (!$result) {
           die(mysqli_error($conn));
         }
-    }
+      endforeach;
 
-    // Tampilkan pesan sukses jika semua data berhasil disimpan
-    echo "Semua data berhasil disimpan ke database.";
+    // Tambah progres setelah semua data berhasil disimpan
+    $updateProgres = "UPDATE detail SET progres = progres + 1 WHERE detail_order = '$detail_order'";
+    mysqli_query($conn, $updateProgres);
+    
+    $_SESSION['status'] = "Data Berhasil Ditambahkan";
+    header('Location: input_pengukuran.php');
+    exit();
 }
 ?>
 <!DOCTYPE html>
