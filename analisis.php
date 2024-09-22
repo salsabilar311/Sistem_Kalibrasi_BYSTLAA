@@ -1,3 +1,6 @@
+<?php 
+  include 'koneksi.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +11,6 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
   </head>
   <body class="homepage">
     <div class="index">
@@ -65,114 +67,98 @@
           </nav>
 
           <div class="container-fluid p-4">
-            <h4>Analisis Kalibrasi BYSTLAA</h4>
+            <h4>History Data Kalibrasi</h4>
 
+            <!-- ALERT DATA BERHASIL DITAMBAHKAN -->
+            <?php
+              session_start();
+              if(isset($_SESSION['status'])):
+            ?>
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+              <strong>
+                <?php
+                  echo $_SESSION['status'];
+                ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </strong>
+            </div>
+            <?php 
+              session_destroy();
+              endif
+            ?>
+            <!-- ALERT DATA BERHASIL DITAMBAHKAN -->
+
+            <!-- table view progres kalibrasi -->
             <div class="row">
-                <div class="card col-10 p-0 m-2" style="width: 99%;">
-                  <div class="card-header fw-bold">Detail Alat yang diukur</div>
+                <div class="card col-12 p-0 m-2" style="width: 99%;">
                   <div class="card-body">
-                    <div class="row">
-                      <div class="col-2">Calibrator</div>
-                      <div class="col-4">
-                        <select class= "p-1" name="calibrator" id="calibrator">
-                          <option value="k1">K1</option>
-                          <option value="k2">K2</option>
-                        </select>
-                      </div>
-                      <div class="col-2">Tempat Kalibrasi</div>
-                      <div class="col-4">BYSTLAA</div>
-                    </div>
-
-                    <div class="row mt-2">
-                      <div class="col-2">No.Order</div>
-                      <div class="col-4"><input type="text"></div>
-                      <div class="col-2">Tanggal Kalibrasi</div>
-                      <div class="col-4">
-                        <input type="date">
-                      </div>
-                    </div>
-                    <div class="row mt-2">
-                      
-                      <div class="col-2">Nama Alat</div>
-                      <div class="col-4">
-                        : Digital Multimeter
-                      </div>
-                      <div class="col-2">Resolusi</div>
-                      <div class="col-4">: Multi Resolusi</div>
-                      
-                          
-                    </div>
-
-                    <div class="row mt-2">
-                      <div class="col-2">Merk Alat</div>
-                      <div class="col-4">
-                        <select class="p-1" name="merk" id="merk" onchange="tipe()" >
-                          <?php
-                          include "koneksi.php";
-
-                          $query = mysqli_query($conn, "select * from merk");
-                          while($data = mysqli_fetch_array($query)){
-                                                    
-                          ?>
-                          <option value="<?php echo $data['id_merk']?>"><?php echo $data['nama_merk']?></option>
-                          
-                          <?php
-                          }
-                          ?>
-                        </select>
-                      </div>
-                      <div class="col-2">Suhu</div>
-                      <div class="col-4">(23 ± 1.3)°C</div>
-                    </div>
-
-                    <div class="row mt-2">
-                      <div class="col-2">Tipe</div>
-                      <div class="col-4">
-                        <select class="p-1" name="tipe" id="tipe">
-                        </select>
-                        <script>
-                          function tipe(){
-                            var merk = $('#merk').val();
-                            $('#tipe').load("ambil-data.php?id="+merk+"");
-                          }
-                        </script>
-                      </div>
-
-                      <div class="col-2">Kelembaban</div>
-                      <div class="col-4">(57 ± 3.1) %</div>
-                    </div>
-                    
-                    <div class="row mt-2">
-                      
-                      <div class="col-2">Identitas Pemilik</div>
-                      <div class="col-4"><input type="text"></div>
-                      
-                      <div class="col-2"></div>
-                      <div class="col-4" style="float: right;">
-                      <button class="btn btn-secondary btn-sm" type="submit" name="proses">Submit form</button>
-                      </div>
-                          
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-2">Alat standar</div>
-                      <div class="col-4">
-                        : Precision Multi Product Calibration Transmille, 3041A
-                      </div>
-                      
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-2">Metoda kalibrasi</div>
-                      <div class="col-4">: Perbandingan langsung</div>
-                      
-                    </div>
-                    
-                    
-                    
+                    <table class="table-bordered table-sm fs-6 p-0" style="width: 100%;" >
+                      <thead class="text-white bg-dark text-center">
+                        <tr>
+                          <td>No</td>
+                          <td>No. Order</td>
+                          <td>Asal</td>
+                          <td>No. Seri</td>
+                          <td>Tanggal Masuk</td>
+                          <td>Action</td>
+                        </tr>
+                      </thead>
+                      <tbody  class="text-center">
+                      <?php
+                        $data_kalibrasi = mysqli_query($conn, "SELECT d.detail_order, p.name_owner, d.tgl_masuk, d.no_seri, d.id_merk, d.id_tipe, d.progres
+                                                                FROM detail d
+                                                                INNER JOIN pemilik p ON d.region = p.region");
+                        $row_number = 1;
+                        while ($data=mysqli_fetch_array($data_kalibrasi)):
+                          // memeriksa jika pengukuran sudah selesai maka tidak ditampilkan di tabel
+                          if (
+                            // Progres 6
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 1 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 2 && $data['id_tipe'] == 3 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 2 && $data['id_tipe'] == 4 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 5 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 6 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 7 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 8 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 9 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 2 && $data['id_tipe'] == 15 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 3 && $data['id_tipe'] == 16 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 4 && $data['id_tipe'] == 18 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 4 && $data['id_tipe'] == 19 && $data['progres'] == 6) ||
+                            ($data['id_merk'] == 4 && $data['id_tipe'] == 20 && $data['progres'] == 6) ||
+                            // Progres 5
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 2 && $data['progres'] == 5) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 10 && $data['progres'] == 5) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 11 && $data['progres'] == 5) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 12 && $data['progres'] == 5) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 13 && $data['progres'] == 5) ||
+                            ($data['id_merk'] == 1 && $data['id_tipe'] == 14 && $data['progres'] == 5) ||
+                            // Progres 2
+                            ($data['id_merk'] == 4 && $data['id_tipe'] == 14 && $data['progres'] == 17)
+                        ):                       
+                      ?>
+                          <tr>
+                            <td><?= $row_number; ?></td>
+                            <td><?= $data['detail_order']; ?></td>
+                            <td><?= $data['name_owner']; ?></td>
+                            <td><?= $data['no_seri']; ?></td>
+                            <td><?= $data['tgl_masuk']; ?></td>
+                            <td>
+                              <div class="btn p-0">
+                                <a href="history_kalibrasi.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-primary">Detail</a>
+                            </div>
+                            </td>
+                          </tr>
+                      <?php
+                      $row_number++;
+                      endif;
+                    endwhile; ?>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
-            
-
+              
           </div>
           
       </div>
@@ -181,11 +167,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <!-- <script src="https://ajax.goggleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
-    <script>
+    <!-- <script>
       $(".sidebar ul li").on("click", function () {
         $(".sidebar ul li.active").removeClass("active");
         $(this).addClass("active");
       });
-    </script>
+    </script> -->
   </body>
 </html>

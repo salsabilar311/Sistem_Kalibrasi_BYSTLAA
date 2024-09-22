@@ -103,6 +103,7 @@
                       <thead class="text-white bg-dark text-center">
                         <!-- header tabel -->
                         <tr>
+                          <td>No</td>
                           <td>No. Order</td>
                           <td>Kalibrator</td>
                           <td>Merk</td>
@@ -120,9 +121,12 @@
                                                                 FROM detail d
                                                                 INNER JOIN merk m ON d.id_merk = m.id_merk
                                                                 INNER JOIN tipe t ON d.id_tipe = t.id_tipe");
+                                                              
+                        $row_number = 1;
                         while ($data=mysqli_fetch_array($data_kalibrasi)){
                       ?>
                         <tr>
+                          <td><?= $row_number; ?></td>
                           <td><?= $data['detail_order']; ?></td>
                           <td><?= $data['calibrator']; ?></td>
                           <td><?= $data['nama_merk']; ?></td>
@@ -147,7 +151,9 @@
                             </script>
                           </td>
                         </tr>
-                      <?php } ?>
+                      <?php
+                        $row_number++; 
+                        } ?>
                       </tbody>
                     </table>
                   </div>

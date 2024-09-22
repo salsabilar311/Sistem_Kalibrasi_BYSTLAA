@@ -79,24 +79,69 @@
                           <td>No. Order</td>
                           <td>Pemilik</td>
                           <td>Tanggal Kalibrasi</td>
-                          <td>Keterangan</td>
+                          <td>Progres</td>
                           <td>Action</td>
                         </tr>
                       </thead>
                       <tbody  class="text-center">
                       <?php
-                        $data_kalibrasi = mysqli_query($conn, "SELECT d.detail_order, p.name_owner, d.tgl_kalibrasi
+                        $data_kalibrasi = mysqli_query($conn, "SELECT d.detail_order, p.name_owner, d.tgl_kalibrasi, d.progres, d.id_tipe, d.id_merk
                                                                 FROM detail d
                                                                 INNER JOIN pemilik p ON d.region = p.region");
                         $row_number = 1;
                         while ($data=mysqli_fetch_array($data_kalibrasi)){
+                          $progress_current = $data['progres'];
+                          $progress_max = 1; // Default max
+                      
+                          // Tentukan progres maksimum berdasarkan tipe dan merk
+                          if (
+                              // Progres max 6
+                              ($data['id_merk'] == 1 && $data['id_tipe'] == 1) ||
+                              ($data['id_merk'] == 2 && $data['id_tipe'] == 3) ||
+                              ($data['id_merk'] == 2 && $data['id_tipe'] == 4) ||
+                              ($data['id_merk'] == 1 && $data['id_tipe'] == 5) ||
+                              ($data['id_merk'] == 1 && $data['id_tipe'] == 6) ||
+                              ($data['id_merk'] == 1 && $data['id_tipe'] == 7) ||
+                              ($data['id_merk'] == 1 && $data['id_tipe'] == 8) ||
+                              ($data['id_merk'] == 1 && $data['id_tipe'] == 9) ||
+                              ($data['id_merk'] == 2 && $data['id_tipe'] == 15) ||
+                              ($data['id_merk'] == 3 && $data['id_tipe'] == 16) ||
+                              ($data['id_merk'] == 4 && $data['id_tipe'] == 18) ||
+                              ($data['id_merk'] == 4 && $data['id_tipe'] == 19) ||
+                              ($data['id_merk'] == 4 && $data['id_tipe'] == 20)
+                          ) {
+                              $progress_max = 6; // Maksimum 6
+                          } elseif (
+                              // Progres max 5
+                              ($data['id_merk'] == 1 && $data['id_tipe'] == 2) ||
+                              ($data['id_merk'] == 1 && $data['id_tipe'] == 10) ||
+                              ($data['id_merk'] == 1 && $data['id_tipe'] == 11) ||
+                              ($data['id_merk'] == 1 && $data['id_tipe'] == 12) ||
+                              ($data['id_merk'] == 1 && $data['id_tipe'] == 13) ||
+                              ($data['id_merk'] == 1 && $data['id_tipe'] == 14)
+                          ) {
+                              $progress_max = 5; // Maksimum 5
+                          } elseif (
+                              // Progres max 2
+                              ($data['id_merk'] == 4 && $data['id_tipe'] == 14) ||
+                              ($data['id_merk'] == 4 && $data['id_tipe'] == 17)
+                          ) {
+                              $progress_max = 2; // Maksimum 2
+                          }
+                      
+                          // Hitung persentase progres
+                          $progress_percentage = ($progress_current / $progress_max) * 100;
                       ?>
                           <tr>
                             <td><?= $row_number; ?></td>
                             <td><?= $data['detail_order']; ?></td>
                             <td><?= $data['name_owner']; ?></td>
                             <td><?= $data['tgl_kalibrasi']; ?></td>
-                            <td>-</td>
+                            <td>
+                              <div class="progress" role="progressbar" aria-label="Basic Example" aria-valuenow="<?= $progress_percentage; ?>" aria-valuemin="0" aria-valuemax="100">
+                                  <div class="progress-bar" style="width: <?= $progress_percentage; ?>%"></div>
+                              </div>
+                            </td>
                             <td>
                               <div class="btn p-0">
                                 <a href="detail_progres_kalibrasi.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-info">Detail</a>
