@@ -146,6 +146,7 @@
                             <td>
                               <div class="btn p-0">
                                 <a href="history_kalibrasi.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-primary">Detail</a>
+                                <a href="sertifikat.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-secondary">Cetak</a>
                             </div>
                             </td>
                           </tr>

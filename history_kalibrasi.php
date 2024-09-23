@@ -68,8 +68,8 @@
           <div class="container-fluid p-4">
             <!-- header -->
             <div class="row">
-              <div class="col-6"><h4>Detail Data Progres Kalibrasi BYSTLAA</h4></div>
-              <div class="col-6" style="text-align: right"><a href="progres.php" class="btn btn-danger rounded-circle">X</a></div>
+              <div class="col-6"><h4>Detail Data Kalibrasi BYSTLAA</h4></div>
+              <div class="col-6" style="text-align: right"><a href="analisis.php" class="btn btn-danger rounded-circle">X</a></div>
             </div>
 
               <!-- DATA KALIBRASI -->
