@@ -196,7 +196,7 @@
               <!-- DATA KALIBRASI -->
 
               <!-- button no order -->
-              <div class="dropdown">
+              <!-- <div class="dropdown">
                   <a class="btn btn-primary dropdown-toggle" style="width: 1051px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cetak Hasil Kalibrasi</a>
                   <ul class="dropdown-menu" style="width: 1051px;">
                       <?php
@@ -212,7 +212,7 @@
                       ?>
                   </ul>
               </div>
-              <?php } ?>
+              <?php } ?> -->
 
 
               <?php

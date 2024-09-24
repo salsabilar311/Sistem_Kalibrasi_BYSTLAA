@@ -1,3 +1,4 @@
+<!-- GA KEPAKE -->
 <?php
     // Include library FPDF
     require('library/fpdf.php');

@@ -1,3 +1,4 @@
+<!-- GA KEPAKE -->
 <?php
     // Include library FPDF
     require('library/fpdf.php');
@@ -19,7 +20,7 @@
     $pdf->AddPage();
     
     // Header
-    function header_sertif() {
+    function header_sertif_2() {
         global $pdf;
         global $data;
     
@@ -70,7 +71,7 @@
     }
     
     // Body
-    function body_sertif() {
+    function body_sertif_2() {
         global $pdf;
         global $data;
         global $detail_order;
@@ -196,7 +197,7 @@
     }
 
     // Tabel
-    function tabel_tegangan(){
+    function tabel_tegangan_2(){
         global $pdf;
         global $data;
         global $conn;
@@ -317,7 +318,7 @@
     }
     
     // Footer
-    function footer_sertif() {
+    function footer_sertif_2() {
         global $pdf;
         global $data;
         $pdf->SetAutoPageBreak(true, 0);
@@ -345,10 +346,10 @@
     
 
     // Memanggil function
-    header_sertif();
-    body_sertif();
-    tabel_tegangan();
-    footer_sertif();
+    header_sertif_2();
+    body_sertif_2();
+    tabel_tegangan_2();
+    footer_sertif_2();
     
     // Output PDF ke browser
     $pdf->Output('I', "hasil-kalibrasi-1_$detail_order.pdf");
