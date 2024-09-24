@@ -97,7 +97,7 @@
         $pdf->SetX($leftMargin);
         $pdf->Cell(0, 0, 'Laboratorium Kalibrasi Kelistrikan', 0, 1);
         $pdf->SetX($leftMargin);
-        $pdf->Cell(0, 9, 'Halaman ke 2 dari 4 halaman', 0, 1);
+        $pdf->Cell(0, 9, 'Halaman ke 3 dari 4 halaman', 0, 1);
         // END BARIS 1
 
         $leftMargin = 20; // set margin kiri
@@ -202,13 +202,13 @@
         global $conn;
         global $detail_order;
 
-        // TABEL TEGANGAN DC
+        // TABEL ARUS DC
         $pdf->Ln(8);
         $leftMargin = 50;
         $pdf->SetX($leftMargin);
         $pdf->SetFont('Arial', '', 10);
-        $tegangan_dc = 'Tegangan DC';
-        $pdf->Cell(0, 0, $tegangan_dc, 0, 0);
+        $arus_dc = 'Arus DC';
+        $pdf->Cell(0, 0, $arus_dc, 0, 0);
 
         $pdf->Ln(3);
         $pdf->SetX($leftMargin);
@@ -227,7 +227,7 @@
                                                               FROM detail d
                                                               INNER JOIN pengukuran p ON d.detail_order = p.detail_order
                                                               WHERE d.detail_order = '$detail_order' AND
-                                                              p.besaran_ukur = 'Tegangan DC'");
+                                                              p.besaran_ukur = 'Arus DC'");
         $prev_range = '';
         while ($ukur = mysqli_fetch_assoc($pengukuran)) {
             // Menambah baris baru
@@ -253,15 +253,15 @@
             $pdf->Cell(20, 5, $ukur['koreksi_standar'], 1, 0, 'C');
             $pdf->Cell(30, 5, $ukur['rata_rata_koreksi'], 1, 0, 'C');
         }
-        // END TABEL TEGANGAN DC
+        // END TABEL ARUS DC
 
-        // TABEL TEGANGAN AC
+        // TABEL ARUS AC
         $pdf->Ln(10);
         $leftMargin = 50;
         $pdf->SetX($leftMargin);
         $pdf->SetFont('Arial', '', 10);
-        $tegangan_dc = 'Tegangan AC';
-        $pdf->Cell(0, 0, $tegangan_dc, 0, 0);
+        $arus_dc = 'Arus AC';
+        $pdf->Cell(0, 0, $arus_dc, 0, 0);
 
         $pdf->Ln(3);
         $pdf->SetX($leftMargin);
@@ -280,7 +280,7 @@
                                                               FROM detail d
                                                               INNER JOIN pengukuran p ON d.detail_order = p.detail_order
                                                               WHERE d.detail_order = '$detail_order' AND
-                                                              p.besaran_ukur = 'Tegangan AC'");
+                                                              p.besaran_ukur = 'Arus AC'");
         $prev_range = '';
         while ($ukur = mysqli_fetch_assoc($pengukuran)) {
             // Menambah baris baru
@@ -306,7 +306,60 @@
             $pdf->Cell(20, 5, $ukur['koreksi_standar'], 1, 0, 'C');
             $pdf->Cell(30, 5, $ukur['rata_rata_koreksi'], 1, 0, 'C');
         }
-        // END TABEL TEGANGAN AC
+        // END TABEL ARUS AC
+
+        // TABEL RESISTENSI
+        $pdf->Ln(10);
+        $leftMargin = 50;
+        $pdf->SetX($leftMargin);
+        $pdf->SetFont('Arial', '', 10);
+        $resistensi = 'Resistensi';
+        $pdf->Cell(0, 0, $resistensi, 0, 0);
+
+        $pdf->Ln(3);
+        $pdf->SetX($leftMargin);
+        $x = $pdf->GetX(); // Mendapatkan posisi X setelah cell sebelumnya
+        $y = $pdf->GetY();
+        $pdf->SetFont('Arial', '', 10);
+        $pdf->Cell(18, 8, 'Range', 1, 0, 'C');
+        $pdf->MultiCell(22, 4, "Nilai\nStandar", 1, 'C');
+        $pdf->SetXY($x + 40, $y);
+        $pdf->MultiCell(25, 4, "Penunjukan\nAlat", 1, 'C');
+        $pdf->SetXY($x + 65, $y);
+        $pdf->Cell(20, 8, 'Koreksi', 1, 0, 'C');
+        $pdf->Cell(30, 8, 'Ketidakpastian', 1, 0, 'C');
+
+        $pengukuran = mysqli_query($conn, "SELECT p.besaran_ukur, p.range_, p.standar, p.x1, p.x2, p.x3, p.x4, p.x5, p.x6, p.rata_rata, p.koreksi_standar, p.std_dev, p.rata_rata_koreksi
+                                                              FROM detail d
+                                                              INNER JOIN pengukuran p ON d.detail_order = p.detail_order
+                                                              WHERE d.detail_order = '$detail_order' AND
+                                                              p.besaran_ukur = 'Resistensi'");
+        $prev_range = '';
+        while ($ukur = mysqli_fetch_assoc($pengukuran)) {
+            // Menambah baris baru
+            $pdf->Ln();
+            $pdf->SetX(50);
+            $pdf->SetFont('Arial', '', 10); // Normal font untuk isi data
+        
+            // Jika nilai range_ berbeda dari sebelumnya, tampilkan nilai range_
+            if ($ukur['range_'] != $prev_range) {
+                // Menampilkan nilai range_
+                $pdf->Cell(18, 5, $ukur['range_'], 1, 0, 'C');
+        
+                // Update nilai range sebelumnya
+                $prev_range = $ukur['range_'];
+            } else {
+                // Jika range_ sama, tambahkan cell kosong
+                $pdf->Cell(18, 5, '', 1, 0, 'C');
+            }
+        
+            // Menampilkan data lainnya
+            $pdf->Cell(22, 5, $ukur['standar'], 1, 0, 'C');
+            $pdf->Cell(25, 5, $ukur['rata_rata'], 1, 0, 'C');
+            $pdf->Cell(20, 5, $ukur['koreksi_standar'], 1, 0, 'C');
+            $pdf->Cell(30, 5, $ukur['rata_rata_koreksi'], 1, 0, 'C');
+        }
+        // END TABEL RESISTENSI
 
         // Mengatur auto page break (jika perlu), tetapi pastikan margin bawah tidak mengganggu posisi teks akhir
         $pdf->SetAutoPageBreak(true, 10);
