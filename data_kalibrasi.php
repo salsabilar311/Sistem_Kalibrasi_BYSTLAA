@@ -135,11 +135,12 @@
                           <td><?= $data['region']; ?></td>
                           <td><?= $data['tgl_kalibrasi']; ?></td>
                           <td>
-                            <div class="btn p-0">
+                            <div class="btn d-flex justify-content-start gap-1 p-0">
                               <a href="edit_kalibrasi.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-secondary">Edit</a>
-                              <a href="#" class="btn btn-danger" onclick="konfirmasiHapus('<?php echo $data['detail_order'] ?>')">Delete</a>
-                              <a href="detail_kalibrasi.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-info" >Detail</a>
+                              <a href="#" class="btn btn-danger" onclick="konfirmasiHapus('<?= $data['detail_order']; ?>')">Delete</a>
+                              <a href="detail_kalibrasi.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-info">Detail</a>
                             </div>
+
                             <!-- jendela konfirmasi penghapusan data -->
                             <script>
                               function konfirmasiHapus(id) {

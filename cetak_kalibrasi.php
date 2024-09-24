@@ -1373,6 +1373,29 @@
             }
             // END TABEL ARUS AC
 
+            // TTD
+            $pdf->Ln(20);
+            $leftMargin = 150;
+            $pdf->SetX($leftMargin);
+            $pdf->SetFont('Arial', 'I', 10);
+            $pdf->Cell(0, 5, 'Specialist of Tools Calibration', 0, 1);
+            $pdf->SetFont('Arial', '', 10);
+            $pdf->SetX($leftMargin);
+            $pdf->Cell(0, 3, 'UPT BYSTLAA PT. KAI', 0, 1);
+
+            $pdf->Ln(20);
+            $pdf->SetX($leftMargin);
+            $pdf->SetFont('Arial', 'B', 10);
+            $manager = "Ahmad Kadafi";
+            $pdf->Cell($pdf->GetStringWidth($manager), 3, $manager, 0, 1);
+            $yPosition = $pdf->GetY(); // Ambil posisi Y saat ini
+            $pdf->Line($leftMargin+1, $yPosition, $leftMargin + $pdf->GetStringWidth($manager)+1, $yPosition); // Garis horizontal
+            
+            $pdf->SetX($leftMargin);
+            $pdf->SetFont('Arial', '', 10);
+            $nip = "NIP:      61558";
+            $pdf->Cell($pdf->GetStringWidth($nip), 5, $nip, 0, 1);
+
             // Mengatur auto page break (jika perlu), tetapi pastikan margin bawah tidak mengganggu posisi teks akhir
             $pdf->SetAutoPageBreak(true, 10);
             $pdf->SetY(-25); // Set Y ke 30 mm dari bawah halaman (sesuaikan dengan kebutuhan)

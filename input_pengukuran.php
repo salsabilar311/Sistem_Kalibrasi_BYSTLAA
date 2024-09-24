@@ -134,7 +134,7 @@
                             ($data['id_merk'] == 1 && $data['id_tipe'] == 13 && $data['progres'] == 5) ||
                             ($data['id_merk'] == 1 && $data['id_tipe'] == 14 && $data['progres'] == 5) ||
                             // Progres 2
-                            ($data['id_merk'] == 4 && $data['id_tipe'] == 14 && $data['progres'] == 17)
+                            ($data['id_merk'] == 4 && $data['id_tipe'] == 17 && $data['progres'] == 2)
                         )):                       
                       ?>
                           <tr>
