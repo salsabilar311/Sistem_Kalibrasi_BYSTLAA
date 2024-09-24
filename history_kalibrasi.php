@@ -79,7 +79,7 @@
                   <div class="card-body">
                     <?php
                       $detail_order = $_GET['detail_order'];
-                      $query = "SELECT d.no_order, d.detail_order, m.nama_merk, t.nama_tipe, d.no_seri, d.tgl_kalibrasi, p.name_owner, d.calibrator, d.tgl_masuk, d.tgl_sertifikat 
+                      $query = "SELECT d.no_order, d.detail_order, m.nama_merk, t.nama_tipe, d.no_seri, d.tgl_kalibrasi, p.name_owner, d.calibrator, d.tgl_masuk, d.tgl_sertifikat, d.progres
                                 FROM detail d
                                 INNER JOIN merk m ON d.id_merk = m.id_merk
                                 INNER JOIN tipe t ON d.id_tipe = t.id_tipe
@@ -190,15 +190,34 @@
                         <div class="col-2">Tanggal Sertifikat</div>
                         <div class="col-4"><?php echo ": " .$data['tgl_sertifikat']; ?></div>
                       </div>
-                    <?php } ?>
                   </div>
                 </div>
               </div>
               <!-- DATA KALIBRASI -->
 
+              <!-- button no order -->
+              <div class="dropdown">
+                  <a class="btn btn-primary dropdown-toggle" style="width: 1051px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cetak Hasil Kalibrasi</a>
+                  <ul class="dropdown-menu" style="width: 1051px;">
+                      <?php
+                        if ($data['progres'] == 6) {
+                          echo '<li><a class="dropdown-item" href="hasil_kalibrasi_1.php?detail_order='.$detail_order.'">Hasil Kalibrasi 1</a></li>';
+                          echo '<li><a class="dropdown-item" href="hasil_kalibrasi_2.php?detail_order='.$detail_order.'">Hasil Kalibrasi 2</a></li>';
+                          echo '<li><a class="dropdown-item" href="hasil_kalibrasi_3.php?detail_order='.$detail_order.'">Hasil Kalibrasi 3</a></li>';
+                        }
+                        else if ($data['progres'] == 5) {
+                          echo '<li><a class="dropdown-item" href="hasil_kalibrasi_1.php?detail_order='.$detail_order.'">Hasil Kalibrasi 1</a></li>';
+                          echo '<li><a class="dropdown-item" href="hasil_kalibrasi_2.php?detail_order='.$detail_order.'">Hasil Kalibrasi 2</a></li>';
+                        }
+                      ?>
+                  </ul>
+              </div>
+              <?php } ?>
+
+
               <?php
                   // Query untuk mengambil data pengukuran
-                  $pengukuran = mysqli_query($conn, "SELECT p.besaran_ukur, p.range_, p.standar, p.x1, p.x2, p.x3, p.x4, p.x5, p.x6, p.rata_rata, p.koreksi_standar, p.std_dev, p.rata_rata_koreksi
+                  $pengukuran = mysqli_query($conn, "SELECT p.besaran_ukur, p.range_, p.standar, p.x1, p.x2, p.x3, p.x4, p.x5, p.x6, p.rata_rata, p.koreksi_standar, p.std_dev, p.rata_rata_koreksi, d.progres
                                                     FROM detail d
                                                     INNER JOIN pengukuran p ON d.detail_order = p.detail_order
                                                     WHERE d.detail_order = '$detail_order'");
@@ -208,8 +227,10 @@
                     // Jika ada data pengukuran, tampilkan tabel
                   ?>
 
+              <!-- button no order -->
+              
               <!-- <div class="d-grid gap-2">
-                <a href="edit_pengukuran.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-primary">Edit Data Pengukuran</a>
+                <a href="edit_pengukuran.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-primary">Cetak Hasil Kalibrasi</a>
               </div> -->
 
             <!-- PENGUKURAN -->

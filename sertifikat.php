@@ -320,11 +320,6 @@
         global $pdf;
         global $data;
         $pdf->SetAutoPageBreak(true, 5);
-
-        // $pdf->Ln(3.5);
-        // $pdf->SetFont('Arial', '', 8);
-        // $pdf->Cell(0, 0, 'Dilarang menggandakan sebagian isi Sertifikat ini tanpa persetujuan tertulis dari Kepala UPT BYSTLAA - PT. KAI', 0, 1, 'C');
-        // $pdf->Cell(0, 0, 'atau Spesialist tools calibration UPT BYSTLAA - PT. KAI', 0, 0, 'C');
     
         // Kotak pembungkus
         $leftMargin = 5; // Margin kiri
