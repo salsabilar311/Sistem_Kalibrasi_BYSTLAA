@@ -1,3 +1,6 @@
+<?php
+   include 'koneksi.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,257 +66,288 @@
           </nav>
 
           <div class="container-fluid p-4">
-            <h4>Kalibrasi BYSTLAA</h4>
+            <h4>Dashboard</h4>
+
+            <!-- INFORMASI TOTAL KALIBRASI -->
+            <div class="row g-3">
+              <!-- MENGHITUNG TOTAL KALIBRASI -->
+              <?php
+                $sql = "SELECT d.detail_order FROM detail d";
+                $result = mysqli_query($conn, $sql);
+       
+                $total_kalibrasi = 0;
+
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $total_kalibrasi++;
+                    }
+                }
+              ?>
+                <div class="col-xl-4 col-md-6">
+                    <div class="card bg-primary text-white mb-3" style="min-height: 130px;"> <!-- Atur min-height sesuai kebutuhan -->
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>Total Kalibrasi</div>
+                                <div class="display-4"><?php echo $total_kalibrasi ?></div> <!-- Angka besar -->
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="progres.php">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                  <!-- MENGHITUNG KALIBRASI YANG MASIH DALAM PROSES -->
+                  <?php
+                      $data_kalibrasi = mysqli_query($conn, "SELECT d.detail_order, p.name_owner, d.tgl_masuk, d.no_seri, d.id_merk, d.id_tipe, d.progres
+                                                              FROM detail d
+                                                              INNER JOIN pemilik p ON d.region = p.region");
+                      $kalibrasi_proses = 0;
+                      while ($data=mysqli_fetch_array($data_kalibrasi)):
+                        // memeriksa jika pengukuran sudah selesai maka tidak ditampilkan di tabel
+                        if (!(
+                          // Progres 6
+                          ($data['id_merk'] == 1 && $data['id_tipe'] == 1 && $data['progres'] == 6) ||
+                          ($data['id_merk'] == 2 && $data['id_tipe'] == 3 && $data['progres'] == 6) ||
+                          ($data['id_merk'] == 2 && $data['id_tipe'] == 4 && $data['progres'] == 6) ||
+                          ($data['id_merk'] == 1 && $data['id_tipe'] == 5 && $data['progres'] == 6) ||
+                          ($data['id_merk'] == 1 && $data['id_tipe'] == 6 && $data['progres'] == 6) ||
+                          ($data['id_merk'] == 1 && $data['id_tipe'] == 7 && $data['progres'] == 6) ||
+                          ($data['id_merk'] == 1 && $data['id_tipe'] == 8 && $data['progres'] == 6) ||
+                          ($data['id_merk'] == 1 && $data['id_tipe'] == 9 && $data['progres'] == 6) ||
+                          ($data['id_merk'] == 2 && $data['id_tipe'] == 15 && $data['progres'] == 6) ||
+                          ($data['id_merk'] == 3 && $data['id_tipe'] == 16 && $data['progres'] == 6) ||
+                          ($data['id_merk'] == 4 && $data['id_tipe'] == 18 && $data['progres'] == 6) ||
+                          ($data['id_merk'] == 4 && $data['id_tipe'] == 19 && $data['progres'] == 6) ||
+                          ($data['id_merk'] == 4 && $data['id_tipe'] == 20 && $data['progres'] == 6) ||
+                          // Progres 5
+                          ($data['id_merk'] == 1 && $data['id_tipe'] == 2 && $data['progres'] == 5) ||
+                          ($data['id_merk'] == 1 && $data['id_tipe'] == 10 && $data['progres'] == 5) ||
+                          ($data['id_merk'] == 1 && $data['id_tipe'] == 11 && $data['progres'] == 5) ||
+                          ($data['id_merk'] == 1 && $data['id_tipe'] == 12 && $data['progres'] == 5) ||
+                          ($data['id_merk'] == 1 && $data['id_tipe'] == 13 && $data['progres'] == 5) ||
+                          ($data['id_merk'] == 1 && $data['id_tipe'] == 14 && $data['progres'] == 5) ||
+                          // Progres 2
+                          ($data['id_merk'] == 4 && $data['id_tipe'] == 17 && $data['progres'] == 2)
+                      )){
+                        $kalibrasi_proses++;
+                      }
+                    endwhile;                      
+                    ?>
+                    <div class="card bg-warning text-white mb-3" style="min-height: 130px;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>Kalibrasi yang Berlangsung</div>
+                                <div class="display-4"><?php echo $kalibrasi_proses ?></div> <!-- Angka besar -->
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="input_pengukuran.php">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                  <!-- MENGHITUNG KALIBRASI YANG TELAH SELESAI -->
+                  <?php
+                    $kalibrasi_selesai = 0;
+                    $data_kalibrasi = mysqli_query($conn, "SELECT d.detail_order, p.name_owner, d.tgl_masuk, d.no_seri, d.id_merk, d.id_tipe, d.progres
+                                                            FROM detail d
+                                                            INNER JOIN pemilik p ON d.region = p.region");
+                    $row_number = 1;
+                    while ($data=mysqli_fetch_array($data_kalibrasi)):
+                      if(
+                        // Progres 6
+                        ($data['id_merk'] == 1 && $data['id_tipe'] == 1 && $data['progres'] == 6) ||
+                        ($data['id_merk'] == 2 && $data['id_tipe'] == 3 && $data['progres'] == 6) ||
+                        ($data['id_merk'] == 2 && $data['id_tipe'] == 4 && $data['progres'] == 6) ||
+                        ($data['id_merk'] == 1 && $data['id_tipe'] == 5 && $data['progres'] == 6) ||
+                        ($data['id_merk'] == 1 && $data['id_tipe'] == 6 && $data['progres'] == 6) ||
+                        ($data['id_merk'] == 1 && $data['id_tipe'] == 7 && $data['progres'] == 6) ||
+                        ($data['id_merk'] == 1 && $data['id_tipe'] == 8 && $data['progres'] == 6) ||
+                        ($data['id_merk'] == 1 && $data['id_tipe'] == 9 && $data['progres'] == 6) ||
+                        ($data['id_merk'] == 2 && $data['id_tipe'] == 15 && $data['progres'] == 6) ||
+                        ($data['id_merk'] == 3 && $data['id_tipe'] == 16 && $data['progres'] == 6) ||
+                        ($data['id_merk'] == 4 && $data['id_tipe'] == 18 && $data['progres'] == 6) ||
+                        ($data['id_merk'] == 4 && $data['id_tipe'] == 19 && $data['progres'] == 6) ||
+                        ($data['id_merk'] == 4 && $data['id_tipe'] == 20 && $data['progres'] == 6) ||
+                        // Progres 5
+                        ($data['id_merk'] == 1 && $data['id_tipe'] == 2 && $data['progres'] == 5) ||
+                        ($data['id_merk'] == 1 && $data['id_tipe'] == 10 && $data['progres'] == 5) ||
+                        ($data['id_merk'] == 1 && $data['id_tipe'] == 11 && $data['progres'] == 5) ||
+                        ($data['id_merk'] == 1 && $data['id_tipe'] == 12 && $data['progres'] == 5) ||
+                        ($data['id_merk'] == 1 && $data['id_tipe'] == 13 && $data['progres'] == 5) ||
+                        ($data['id_merk'] == 1 && $data['id_tipe'] == 14 && $data['progres'] == 5) ||
+                        // Progres 2
+                        ($data['id_merk'] == 4 && $data['id_tipe'] == 17 && $data['progres'] == 2)
+                      ){
+                        $kalibrasi_selesai++;
+                      }
+                    endwhile;
+                  ?>
+                    <div class="card bg-success text-white mb-3" style="min-height: 130px;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>Kalibrasi Selesai</div>
+                                <div class="display-4"><?php echo $kalibrasi_selesai ?></div> <!-- Angka besar -->
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="analisis.php">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END INFORMASI TOTAL KALIBRASI -->
+
+            <!-- CHART -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <div class="row">
-              <div class="col-8 m-0 p-0">
-                <div class="card">
-                  <div class="card-header fw-bold">Progress Kalibrasi</div>
-                  <table class="table table-sm table-bordered mt-3">
-                      <thead class="bg-dark text-white text-center">
-                        <tr><th>No</th>
-                        <th>Tgl. Masuk</th>
-                        <th>Asal</th>
-                        <th>Jumlah</th>
-                        <th>Progress</th>
-                        <th>Estimasi Selesai</th>
-                        <th>Details</th>
-                      </tr></thead>
-                      <tbody>
-                        <tr><td class="text-center">1</td>
-                        <td class="text-center">10-12-2023</td>
-                        <td>Daop 1 Jakarta</td>
-                        <td class="text-center">10</td>
-                        <td>
-                          <div class="progress" role="progressbar" aria-label="Basic Example" aria-valuenow="25%" aria-valuemin="0%" aria-valuemax="100%">
-                            <div class="progress-bar" style="width: 50%"></div>
-                          </div>
-                        </td>
-                        <td class="text-center">14-12-2023</td>
-                        <td>Shipment</td>
-                      </tr></tbody>
-                      <tbody>
-                        <tr><td class="text-center">2</td>
-                        <td class="text-center">10-12-2023</td>
-                        <td>Daop 2 Bandung</td>
-                        <td class="text-center">20</td>
-                        <td>
-                          <div class="progress" role="progressbar" aria-label="Basic Example" aria-valuenow="25%" aria-valuemin="0%" aria-valuemax="100%">
-                            <div class="progress-bar" style="width: 75%"></div>
-                          </div>
-                        </td>
-                        <td class="text-center">14-12-2023</td>
-                        <td>Shipment</td>
-                      </tr></tbody>
-                      <tbody>
-                        <tr><td class="text-center">2</td>
-                        <td class="text-center">10-12-2023</td>
-                        <td>Daop 2 Bandung</td>
-                        <td class="text-center">20</td>
-                        <td>
-                          <div class="progress" role="progressbar" aria-label="Basic Example" aria-valuenow="25%" aria-valuemin="0%" aria-valuemax="100%">
-                            <div class="progress-bar" style="width: 75%"></div>
-                          </div>
-                        </td>
-                        <td class="text-center">14-12-2023</td>
-                        <td>Shipment</td>
-                      </tr></tbody>
-                      <tbody>
-                        <tr><td class="text-center">2</td>
-                        <td class="text-center">10-12-2023</td>
-                        <td>Daop 2 Bandung</td>
-                        <td class="text-center">20</td>
-                        <td>
-                          <div class="progress" role="progressbar" aria-label="Basic Example" aria-valuenow="25%" aria-valuemin="0%" aria-valuemax="100%">
-                            <div class="progress-bar" style="width: 75%"></div>
-                          </div>
-                        </td>
-                        <td class="text-center">14-12-2023</td>
-                        <td>Shipment</td>
-                      </tr></tbody>
-                      <tbody>
-                        <tr><td class="text-center">2</td>
-                        <td class="text-center">10-12-2023</td>
-                        <td>Daop 2 Bandung</td>
-                        <td class="text-center">20</td>
-                        <td>
-                          <div class="progress" role="progressbar" aria-label="Basic Example" aria-valuenow="25%" aria-valuemin="0%" aria-valuemax="100%">
-                            <div class="progress-bar" style="width: 75%"></div>
-                          </div>
-                        </td>
-                        <td class="text-center">14-12-2023</td>
-                        <td>Shipment</td>
-                      </tr></tbody>
-                    </table><div class="card-body">
-                    
-                  </div>
-                </div>
-              </div>
-              <div class="col-4 m-0 p-0">
-                <div class="card">
-                  <div class="card-header fw-bold">Jumlah Kalibrasi Per Bulan</div>
-                  <div class="card-body">
-                    <div>
-                      <canvas id="myChart1" style="padding: 20px; height: 40px; display: block; box-sizing: border-box; width: 74px;" width="148" height="80"></canvas>
+
+                <!-- CHART JUMLAH KALIBRASI PERBULAN -->
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-area me-1"></i>
+                            Jumlah Kalibrasi Per Bulan
+                        </div>
+                        <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+
+                        <?php
+                          // Array untuk semua bulan
+                          $all_months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+                          // Query untuk mengambil data hasil kalibrasi dan bulan dari database
+                          $sql = "SELECT DATE_FORMAT(tgl_kalibrasi, '%b') AS bulan, COUNT(*) AS jumlah_kalibrasi 
+                                  FROM detail
+                                  GROUP BY MONTH(tgl_kalibrasi) 
+                                  ORDER BY MONTH(tgl_kalibrasi)";
+                          $result = mysqli_query($conn, $sql);
+
+                          // Inisialisasi array untuk menyimpan data jumlah kalibrasi per bulan
+                          $kalibrasi_per_bulan = array_fill(0, 12, 0); // Array 12 elemen, default 0
+
+                          // Looping hasil query untuk mengisi jumlah kalibrasi ke dalam array
+                          while ($row = mysqli_fetch_assoc($result)) {
+                              $index_bulan = array_search($row['bulan'], $all_months);  // Cari index bulan
+                              if ($index_bulan !== false) {
+                                  $kalibrasi_per_bulan[$index_bulan] = $row['jumlah_kalibrasi'];  // Set nilai jumlah kalibrasi
+                              }
+                          }
+
+                          // Encode data dalam format JSON untuk digunakan di JavaScript
+                          $all_months_json = json_encode($all_months);
+                          $kalibrasi_per_bulan_json = json_encode($kalibrasi_per_bulan);
+                        ?>
+                        <script>
+                          // Ambil data bulan dan jumlah kalibrasi dari PHP
+                          var bulan = <?php echo $all_months_json; ?>;
+                          var jumlahKalibrasi = <?php echo $kalibrasi_per_bulan_json; ?>;
+
+                          var ctx1 = document.getElementById("myAreaChart");
+                          new Chart(ctx1, {
+                            type: "line",
+                            data: {
+                              labels: bulan,  // Menggunakan data bulan dari PHP
+                              datasets: [
+                                {
+                                  label: "Hasil Kalibrasi Multimeter",
+                                  data: jumlahKalibrasi,  // Menggunakan data jumlah kalibrasi dari PHP
+                                  borderWidth: 1,
+                                  borderColor: 'rgba(75, 192, 192, 1)',
+                                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                },
+                              ],
+                            },
+                            options: {
+                              scales: {
+                                y: {
+                                  beginAtZero: true,
+                                },
+                              },
+                            },
+                          });
+                        </script>
                     </div>
-    
-                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-                    <script>
-                      var ctx1 = document.getElementById("myChart1");
-    
-                      new Chart(ctx1, {
-                        type: "line",
-                        data: {
-                          labels: [
-                            "Jan",
-                            "Feb",
-                            "Mar",
-                            "Apr",
-                            "Mei",
-                            "Jun",
-                            "Jul",
-                            "Ags",
-                            "Sep",
-                            "Okt",
-                            "Nov",
-                            "Des",
-                          ],
-                          datasets: [
-                            {
-                              label: "Hasil Kalibrasi Multimeter",
-                              data: [12, 19, 3, 5, 2, 3, 7, 8, 10, 25, 17, 20],
-                              borderWidth: 1,
-                            },
-                          ],
-                        },
-                        options: {
-                          scales: {
-                            y: {
-                              beginAtZero: true,
-                            },
-                          },
-                        },
-                      });
-                    </script>
-                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-6 m-0 p-0">
-                <!-- history kalibrasi -->
-                <div class="card">
-                  <div class="card-header fw-bold">History Kalibrasi</div>
-                  <div class="card-body">
-                    <table class="table table-sm table-bordered">
-                      <thead class="bg-dark text-center text-white">
-                        <tr>
-                          <th>No</th>
-                          <th>Asal</th>
-                          <th>Merk</th>
-                          <th>Tipe</th>
-                          <th>Serial</th>
-                          <th>Tanggal Kalibrasi</th>
-                          <th>Details</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr><td class="text-center">1</td>
-                        <td>Daop 4 Semarang</td>
-                        <td class="text-center">SANWA</td>
-                        <td class="text-center">CD901</td>
-                        <td class="text-center">1234901882</td>
-                        <td class="text-center">12-04-2023</td>
-                        <td class="text-center">
-                          <a href="#" class="btn btn-dark text-decoration-none">
-                            Lihat Hasil
-                          </a>
-                        </td>
-                      </tr></tbody>
-                      <tbody>
-                        <tr><td class="text-center">2</td>
-                        <td>Daop 4 Semarang</td>
-                        <td class="text-center">SANWA</td>
-                        <td class="text-center">CD901</td>
-                        <td class="text-center">1234901882</td>
-                        <td class="text-center">12-04-2023</td>
-                        <td class="text-center">
-                          <a href="#" class="btn btn-dark text-decoration-none">
-                            Lihat Hasil
-                          </a>
-                      </tr></tbody>
-                      <tbody>
-                        <tr><td class="text-center">3</td>
-                        <td>Daop 4 Semarang</td>
-                        <td class="text-center">SANWA</td>
-                        <td class="text-center">CD901</td>
-                        <td class="text-center">1234901882</td>
-                        <td class="text-center">12-04-2023</td>
-                        <td class="text-center">
-                          <a href="#" class="btn btn-dark text-decoration-none">
-                            Lihat Hasil
-                          </a>
-                      </tr></tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 m-0 p-0">
-                <div class="card">
-                  <div class="card-header fw-bold">Grafik Kalibrasi Daop/Divre</div>
-                  <div class="card-body">
-                    <div>
-                      <canvas id="myChart" style="padding: 20px; height: 40px; display: block; box-sizing: border-box; width: 74px;" width="148" height="80"></canvas>
+                <!-- END CHART JUMLAH KALIBRASI PERBULAN -->
+
+                <!-- CHART KALIBRASI PER WILAYAH -->
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-bar me-1"></i>
+                            Grafik Kalibrasi Daop/Divre
+                        </div>
+                        <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                        <?php
+                          include 'koneksi.php';
+
+                          // Daftar semua region yang ingin ditampilkan
+                          $all_regions = [
+                              'BPSTL', 'BYSTLAA', 'LAA D1', 'LAA D6', 'STL D1', 'STL D2', 'STL D3', 'STL D4', 
+                              'STL D5', 'STL D6', 'STL D7', 'STL D8', 'STL D9', 'STL DI', 'STL DII', 'STL DIII', 'STL DIV'
+                          ];
+
+                          // Query untuk mengambil data region dan menghitung jumlah per region
+                          $sql = "SELECT region, COUNT(*) AS jumlah_region 
+                                  FROM detail 
+                                  GROUP BY region";
+                          $result = mysqli_query($conn, $sql);
+
+                          // Inisialisasi array untuk menyimpan jumlah data per region
+                          $jumlah_per_region = array_fill(0, count($all_regions), 0); // Isi dengan 0 untuk semua region
+
+                          // Looping hasil query untuk mengisi jumlah kalibrasi berdasarkan region yang ada di database
+                          while ($row = mysqli_fetch_assoc($result)) {
+                              $index_region = array_search($row['region'], $all_regions);  // Cari index region
+                              if ($index_region !== false) {
+                                  $jumlah_per_region[$index_region] = $row['jumlah_region'];  // Set nilai jumlah kalibrasi
+                              }
+                          }
+
+                          // Encode data dalam format JSON untuk digunakan di JavaScript
+                          $all_regions_json = json_encode($all_regions);
+                          $jumlah_per_region_json = json_encode($jumlah_per_region);
+                        ?>
+                        <script>
+                          // Ambil data region dan jumlah region dari PHP
+                          var regions = <?php echo $all_regions_json; ?>;
+                          var jumlahRegion = <?php echo $jumlah_per_region_json; ?>;
+
+                          var ctx1 = document.getElementById("myBarChart");
+                          new Chart(ctx1, {
+                            type: "bar",  // Menggunakan bar chart
+                            data: {
+                              labels: regions,  // Menggunakan data region dari PHP
+                              datasets: [
+                                {
+                                  label: "Hasil Kalibrasi Multimeter",
+                                  data: jumlahRegion,  // Menggunakan data jumlah region dari PHP
+                                  borderWidth: 1,
+                                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                  borderColor: 'rgba(75, 192, 192, 1)',
+                                },
+                              ],
+                            },
+                            options: {
+                              scales: {
+                                y: {
+                                  beginAtZero: true,  // Skala y dimulai dari 0
+                                },
+                              },
+                            },
+                          });
+                        </script>
                     </div>
-    
-                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-                    <script>
-                      const ctx = document.getElementById("myChart");
-    
-                      new Chart(ctx, {
-                        type: "bar",
-                        data: {
-                          labels: [
-                            "Divre I",
-                            "Divre II",
-                            "Divre III",
-                            "Divre IV",
-                            "Daop 1",
-                            "Daop 2",
-                            "Daop 3",
-                            "Daop 4",
-                            "Daop 5",
-                            "Daop 6",
-                            "Daop 7",
-                            "Daop 8",
-                            "Daop 9",
-                          ],
-                          datasets: [
-                            {
-                              label: "Hasil Kalibrasi Multimeter",
-                              data: [12, 19, 3, 5, 2, 3],
-                              borderWidth: 1,
-                            },
-                          ],
-                        },
-                        options: {
-                          scales: {
-                            y: {
-                              beginAtZero: true,
-                            },
-                          },
-                        },
-                      });
-                    </script>
-                  </div>
                 </div>
-              </div>
+                <!-- END CHART KALIBRASI PER WILAYAH -->
             </div>
-          </div>
-          
-      </div>
-    </div>
+            <!-- END CHART -->
+        </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <!-- <script src="https://ajax.goggleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
