@@ -1082,7 +1082,7 @@
                         <tr class="text-center">
                           <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Frekuensi" readonly required>
                           <td>9.9999 KHz<input type="hidden" style="width: 100px" name="range[]" id="range" value="9.9999 KHz" readonly required></td>
-                          <td class="text-end">9.00000 KHz<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="9.00000 KHz" readonly required></td>
+                          <td class="text-end">9.0000 KHz<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="9.0000 KHz" readonly required></td>
                           <td><input type="text" style="width: 50px" id="x1-44" name="x1[]" oninput="calculateAVG(44)" required></td>
                           <td><input type="text" style="width: 50px" id="x2-44" name="x2[]" oninput="calculateAVG(44)" required></td>
                           <td><input type="text" style="width: 50px" id="x3-44" name="x3[]" oninput="calculateAVG(44)" required></td>
