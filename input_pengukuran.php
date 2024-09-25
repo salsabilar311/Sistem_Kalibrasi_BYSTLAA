@@ -144,7 +144,7 @@
                             <td><?= $data['no_seri']; ?></td>
                             <td><?= $data['tgl_masuk']; ?></td>
                             <td>
-                              <div class="btn p-0">
+                              <div class="btn d-flex justify-content-center gap-1 p-0">
                                 <a href="periksa_form.php?detail_order=<?php echo $data['detail_order']; ?>" class="btn btn-primary">Input Data</a>
                             </div>
                             </td>

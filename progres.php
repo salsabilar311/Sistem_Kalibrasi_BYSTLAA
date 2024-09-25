@@ -143,7 +143,7 @@
                               </div>
                             </td>
                             <td>
-                              <div class="btn p-0">
+                              <div class="btn d-flex justify-content-center gap-1 p-0">
                                 <a href="detail_progres_kalibrasi.php?detail_order=<?= $data['detail_order']; ?>" class="btn btn-info">Detail</a>
                                 <a href="delete.php" class="btn btn-danger">Delete</a>
                             </div>
