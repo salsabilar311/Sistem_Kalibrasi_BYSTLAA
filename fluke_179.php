@@ -1,6 +1,22 @@
 <?php 
   include 'koneksi.php';
+  session_start();
   $detail_order = $_GET['detail_order'];
+  // YANG DIUBAH
+  $periksa = mysqli_query($conn, "SELECT p.besaran_ukur
+                                  FROM detail d
+                                  INNER JOIN pengukuran p ON d.detail_order = p.detail_order
+                                  WHERE d.detail_order = '$detail_order'");
+
+  $arr = []; // Inisialisasi array untuk menyimpan besaran_ukur
+
+  while ($ukur = mysqli_fetch_array($periksa)) {
+      // Cek apakah besaran_ukur sudah ada di array
+      if (!in_array($ukur['besaran_ukur'], $arr)) {
+          $arr[] = $ukur['besaran_ukur']; // Tambahkan ke array jika belum ada
+      }
+  }
+  // YANG DIUBAH
 
   // input data to database
   if(isset($_POST['submit'])){
@@ -35,10 +51,14 @@
             die('Error: '. mysqli_error($conn));
         }
     }
+    // Tambah progres setelah semua data berhasil disimpan
+    $updateProgres = "UPDATE detail SET progres = progres + 1 WHERE detail_order = '$detail_order'";
+    mysqli_query($conn, $updateProgres);
 
-    // Tampilkan pesan sukses jika semua data berhasil disimpan
-    echo "Semua data berhasil disimpan ke database.";
-}
+    $_SESSION['status'] = "Data Berhasil Ditambahkan";
+    header('Location: input_pengukuran.php');
+    exit();
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -134,6 +154,9 @@
             
             <!-- TABEL PENGUKURAN KALIBRASI -->
             <!-- TEGANGAN DC -->
+            <?php
+              if (!in_array('Tegangan DC', $arr) || empty($arr)):
+            ?>
             <div class="row">
               <div class="card p-0 m-2">
                 <form action="" method="POST">
@@ -383,9 +406,15 @@
                 </form>
               </div>
             </div>
+            <?php
+              endif;
+            ?>
             <!-- TEGANGAN DC -->
 
             <!-- TEGANGAN AC -->
+            <?php
+              if (!in_array('Tegangan AC', $arr) || empty($arr)):
+            ?>
             <div class="row">
               <div class="card p-0 m-2">
                 <form action="" method="POST">
@@ -633,9 +662,15 @@
                 </form>
               </div>
             </div>
+            <?php
+              endif;
+            ?>
             <!-- TEGANGAN AC -->
 
             <!-- ARUS DC -->
+            <?php
+              if (!in_array('Arus DC', $arr) || empty($arr)):
+            ?>
             <div class="row">
               <div class="card p-0 m-2">
                 <form action="" method="POST">
@@ -763,9 +798,15 @@
                 </form>
               </div>
             </div>
+            <?php
+              endif;
+            ?>
             <!-- ARUS DC -->
 
             <!-- ARUS AC -->
+            <?php
+              if (!in_array('Arus AC', $arr) || empty($arr)):
+            ?>
             <div class="row">
               <div class="card p-0 m-2">
                 <form action="" method="POST">
@@ -893,9 +934,15 @@
                 </form>
               </div>
             </div>
+            <?php
+              endif;
+            ?>
             <!-- ARUS AC -->
 
             <!-- RESISTANSI -->
+            <?php
+              if (!in_array('Resistensi', $arr) || empty($arr)):
+            ?>
             <div class="row">
               <div class="card p-0 m-2">
                 <form action="" method="POST">
@@ -1038,9 +1085,15 @@
                 </form>
               </div>
             </div>
+            <?php
+              endif;
+            ?>
             <!-- RESISTENSI -->
 
             <!-- FREKUENSI -->
+            <?php
+              if (!in_array('Frekuensi', $arr) || empty($arr)):
+            ?>
             <div class="row">
               <div class="card p-0 m-2">
                 <form action="" method="POST">
@@ -1183,6 +1236,9 @@
                 </form>
               </div>
             </div>
+            <?php
+              endif;
+            ?>
             <!-- FREKUENSI -->
             <!-- TABEL PENGUKURAN KALIBRASI -->
                                       
