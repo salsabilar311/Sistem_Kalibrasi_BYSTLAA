@@ -119,7 +119,7 @@
 
           <div class="container-fluid p-4">
             <div class="row">
-              <div class="col-6"><h4>Form Input Data Fluke 317</h4></div>
+              <div class="col-6"><h4>Form Input Data Fluke 319</h4></div>
               <div class="col-6" style="text-align: right"><a href="input_pengukuran.php" class="btn btn-danger rounded-circle">X</a></div>              
             </div>
 
