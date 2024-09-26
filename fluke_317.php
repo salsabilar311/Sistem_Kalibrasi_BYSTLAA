@@ -671,7 +671,7 @@
                         </tr>
                         <tr class="text-center">
                           <input type="hidden" style="width: 100px" name="besaran_ukur[]" id="besaran_ukur" value="Arus DC" readonly required>
-                          <td rowspan="1">600 A<input type="hidden" style="width: 100px" name="range[]" id="range" value="690 A" readonly required></td>
+                          <td rowspan="1">600 A<input type="hidden" style="width: 100px" name="range[]" id="range" value="600 A" readonly required></td>
                           <td class="text-end">500.000 A<input type="hidden" style="width: 100px" name="standar[]" id="standar" value="500.000 A" readonly required></td>
                           <td><input type="text" style="width: 50px" id="x1-27" name="x1[]" oninput="calculateAVG(27)" required></td>
                           <td><input type="text" style="width: 50px" id="x2-27" name="x2[]" oninput="calculateAVG(27)" required></td>
